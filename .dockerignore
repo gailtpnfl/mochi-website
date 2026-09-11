@@ -1,0 +1,62 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+!.env.local.example
+
+# vercel
+.vercel
+
+# design source + reference material — build inputs only, never served at
+# runtime (landing.css/chrome.css were generated from ref-package and are
+# committed in their built form).
+/design-assets/
+/ref-package/
+mochi-design-reference.zip
+mochi-web3-source.zip
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# Third-party clone with its own .git — committing it would record a broken
+# empty gitlink. Re-clone with: gh repo clone Graphify-Labs/graphify
+/graphify/
+
+# Personal Claude Code overrides (permissions etc) — not team-wide
+.claude/settings.local.json
+
+# Stale static exports of the old design — superseded by the Next.js app in src/.
+# Kept out of the repo because they look like the live site but predate it.
+/landing-page.html
+/core-team.html
