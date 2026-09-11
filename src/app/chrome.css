@@ -1,0 +1,417 @@
+/* Global nav + footer chrome
+   Generated from ref-package/reference-styles.css — do not edit by hand.
+   Regenerate with: node scripts/scope-landing-css.js */
+
+.container { max-width: 1160px; margin: 0 auto; padding: 0 32px; }
+nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 16px 0;
+    background: rgba(13,11,36,0.82);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--border);
+    transition: background 0.3s;
+  }
+nav.scrolled {
+    background: rgba(13,11,36,0.96);
+    border-bottom: 1px solid var(--border2);
+  }
+.nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+.nav-logo {
+    font-family: var(--font-urania), sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: var(--text);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+.nav-logo img { border-radius: 8px; }
+.nav-links {
+    display: flex;
+    gap: 18px;
+    list-style: none;
+  }
+.nav-avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--accent3);
+    border: 1px solid var(--accent);
+    color: #fff;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+.nav-avatar:hover { background: var(--accent2); transform: translateY(-1px); }
+.nav-links a {
+    color: rgba(220,210,255,0.75);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: color 0.2s;
+  }
+.nav-links a:hover { color: var(--text); }
+/* Same "sticker" pill treatment as .btn-light (see landing.css's "Book a
+   Call" button) — white fill, thick ink border, hard offset shadow, no
+   icon badge, ink-fill swap on hover — rather than .btn-dark's purple fill.
+   Padding is the even/no-icon variant (.btn-light:not(:has(.btn-icon))),
+   since this button carries no arrow. Shadow is white, not ink: the nav's
+   background is always the dark navy/near-black chrome
+   (rgba(13,11,36,...)), so an ink-colored shadow just disappears into it —
+   same fix, same reasoning, as .ft-subscribe's white shadow below, which
+   sits on the same dark background. */
+.nav-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    color: var(--ink) !important;
+    padding: 13px 32px;
+    border-radius: 30px;
+    border: 2.5px solid var(--ink);
+    /* Shadow matches the Partnership section's gradient background
+       (.partner-cta, var(--gradient-brand)) instead of plain white — a
+       box-shadow can't render a gradient, so --accent3 (the gradient's
+       purple end, also the site's core brand purple) stands in for it. */
+    box-shadow: 4px 4px 0 0 var(--accent3);
+    font-size: 13px !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.9px;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease !important;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+.nav-cta:hover {
+  background: var(--ink);
+  color: #fff !important;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 0 var(--accent3);
+}
+/* Same "sticker" pill treatment as .btn-dark (see landing.css) — unscoped,
+   like .nav-cta above, since the footer (and this Subscribe button with
+   it) renders outside .mw-landing, so that scoped class never reaches it. */
+.ft-subscribe {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--accent3);
+  color: var(--ink);
+  padding: 8px 8px 8px 22px;
+  border-radius: var(--radius-pill);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 2.5px solid var(--ink);
+  /* Footer background is always dark navy, so (unlike the .btn-dark/
+     .btn-light twins in landing.css, which switch per-section) this one's
+     shadow is just always white — a black ink shadow would disappear
+     against the near-black footer. */
+  box-shadow: 4px 4px 0 0 #fff;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+}
+.ft-subscribe:hover {
+  background: var(--ink);
+  color: #fff;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 0 #fff;
+}
+.ft-subscribe:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.ft-subscribe .btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  background: var(--ink);
+  color: #fff;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-style: normal;
+  transform: rotate(45deg);
+  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+.ft-subscribe:hover .btn-icon {
+  background: var(--accent3);
+  color: var(--ink);
+  transform: rotate(0deg);
+}
+footer {
+    border-top:1px solid var(--border);
+    padding:56px 0 36px;
+  }
+.footer-inner {
+    display:grid;
+    grid-template-columns:1.5fr 1fr 1fr 1fr;
+    gap:48px;
+    margin-bottom:56px;
+  }
+.footer-brand p { font-size:13px; color:var(--text-muted); line-height:1.7; margin:14px 0 24px; max-width:260px; }
+.footer-socials { display:flex; gap:10px; }
+.footer-col h4 { font-family:var(--font-urania), sans-serif; font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:var(--text-sub); margin-bottom:18px; }
+.footer-col ul { list-style:none; display:flex; flex-direction:column; gap:12px; }
+.footer-col a { color:var(--text-muted); text-decoration:none; font-size:14px; transition:color 0.2s; }
+.footer-col a:hover { color:var(--text); }
+.footer-bottom { border-top:1px solid var(--border); padding-top:24px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+.footer-bottom p { font-size:12px; color:var(--text-sub); }
+@media (max-width: 900px) {
+  .footer-inner { grid-template-columns:1fr 1fr; }
+  nav { padding:14px 0; }
+}
+.progress-bar {
+  position: fixed; bottom: 0; left: 0;
+  width: 100%; height: 3px;
+  background: var(--gradient-brand-horizontal);
+  transform-origin: 0 center;
+  transform: scaleX(0);
+  z-index: 9999;
+  pointer-events: none;
+  will-change: transform;
+}
+.nav-links a { position: relative !important; }
+.nav-links a:not(.nav-cta)::after {
+  content: ""; position: absolute;
+  bottom: -4px; left: 0; width: 0; height: 2px;
+  background: var(--gradient-brand-horizontal);
+  transition: width 0.35s var(--ease-out-expo);
+}
+.nav-links a:not(.nav-cta):hover::after { width: 100%; }
+nav.nav--scrolled {
+  background: rgba(13,11,36,0.92) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid rgba(149,34,230,0.2) !important;
+}
+.ft-soc {
+  position: relative; overflow: hidden;
+  width: 40px; height: 40px;
+  border: 1px solid rgba(149,34,230,0.25); border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  text-decoration: none; font-size: 1rem; color: rgba(220,210,255,0.7);
+  transition: border-color 0.3s, box-shadow 0.3s, color 0.3s;
+}
+.ft-soc::before {
+  content: ""; position: absolute; inset: 0;
+  background: var(--gradient-brand); opacity: 0;
+  transition: opacity 0.3s; border-radius: inherit; z-index: 0;
+}
+.ft-soc:hover::before { opacity: 1; }
+.ft-soc:hover { border-color: transparent; box-shadow: rgba(149,34,230,0.4) 0px 6px 20px; color: #fff; }
+.ft-soc > * { position: relative; z-index: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .progress-bar { transition: none !important; }
+}
+nav { background: var(--bd-dark); }
+footer {
+  background: var(--bd-dark) !important;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+footer { background: #050f1e !important; color: #e8e8f0; }
+footer { padding-block: 4rem 3rem; }
+.footer-inner { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 2.5rem; margin-bottom: 3rem; }
+@media (max-width: 1024px) {
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .footer-inner { grid-template-columns: 1fr; }
+}
+/* Only Company and Community render now (Learn/Tools hidden — see
+   footer.tsx's HIDDEN_COLUMNS), which left the old 5-track grid with two
+   empty trailing tracks: the visible columns sat right after the brand
+   block instead of balancing the row. Flex + margin-left:auto on the
+   .footer-nav-cols wrapper pins however many columns are visible to the
+   right edge instead, regardless of how many that ends up being. */
+.footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2.5rem; }
+.footer-brand { max-width: 320px; }
+.footer-nav-cols { display: flex; gap: 3rem; margin-left: auto; }
+@media (max-width: 640px) {
+  .footer-nav-cols { margin-left: 0; gap: 2rem; flex-wrap: wrap; }
+}
+.footer-col h4 { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(232,232,240,0.5); margin-bottom: 1rem; }
+.footer-col ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.6rem; }
+.footer-col ul li a { color: rgba(232,232,240,0.65); font-size: 0.9rem; text-decoration: none; transition: color 0.2s; }
+.footer-col ul li a:hover { color: var(--accent); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.footer-bottom p { font-size: 0.85rem; color: rgba(232,232,240,0.35); }
+.footer-legal { display: flex; gap: 1.5rem; }
+.footer-legal a { font-size: 0.85rem; color: rgba(232,232,240,0.35); text-decoration: none; }
+.footer-legal a:hover { color: var(--accent); }
+.mob-menu {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(13,11,36,0.97); z-index: 998;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none; transition: opacity 0.3s;
+}
+.mob-menu.open { opacity: 1; pointer-events: auto; }
+.mob-menu ul { list-style: none; text-align: center; display: flex; flex-direction: column; gap: 1.5rem; }
+.mob-menu ul li a { font-size: 1.5rem; font-weight: 700; color: var(--text); text-decoration: none; letter-spacing: -0.02em; }
+.mob-menu ul li a:hover { color: var(--accent); }
+.nav-links li { position: relative; }
+.nav-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  transform: none;
+  padding-top: 14px;
+  min-width: 200px;
+  z-index: 200;
+  white-space: nowrap;
+}
+.nav-dropdown-inner {
+  background: rgba(8,18,40,0.97);
+  border: 1px solid rgba(149,34,230,0.2);
+  border-radius: 14px;
+  padding: 0.5rem;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  backdrop-filter: blur(20px);
+}
+.nav-links li:hover .nav-dropdown { display: block; }
+.nav-dropdown a {
+  display: block;
+  padding: 0.6rem 1rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(220,210,255,0.75);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+.nav-dropdown a:hover {
+  background: rgba(149,34,230,0.12);
+  color: #fff;
+}
+.nav-link-arrow::after {
+  content: ' ▾';
+  font-size: 0.6rem;
+  opacity: 0.6;
+  vertical-align: middle;
+}
+.nav-logo img {
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,.5)) drop-shadow(0 0 20px rgba(120,80,220,.35)) !important;
+  animation: logoBob 6s ease-in-out infinite !important;
+  transition: filter 0.3s;
+  transform-origin: center bottom;
+}
+.nav-logo:hover img {
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,.6)) drop-shadow(0 0 30px rgba(120,80,220,.55)) !important;
+}
+.nav-logo .brand-word {
+  font-family: var(--font-urania), sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  color: #fff;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+footer { position: relative; overflow: hidden; }
+/* Glued to the very bottom edge of <footer> and cropped by its
+   overflow:hidden, sitting behind the disclaimer/copyright content — same
+   look as projectone.website's footer wordmark, which bleeds off the
+   bottom of the page with its lower portion cut off rather than sitting
+   fully visible as an in-flow divider.
+
+   Solid low-contrast fill instead of an outline stroke, and full viewport
+   width (via left:50%/translateX, breaking out of the 1160px .container)
+   so it bleeds past the edges at wide viewports the way the reference
+   does. The negative `bottom` offset (an em value, so it scales with the
+   --footer-wm-size custom property below) pushes the text past the
+   footer's own bottom edge; footer's overflow:hidden then crops it there.
+
+   --footer-wm-size is shared with the footer padding-bottom rule further
+   down: the wordmark's own height scales with viewport width (the
+   clamp()), so the empty space reserved below the copyright row has to
+   scale the same way, or a wide viewport (large wordmark) overlaps the
+   copyright row while a narrow one (small wordmark) leaves too much gap. */
+.footer-watermark {
+  --footer-wm-size: clamp(80px, 16vw, 240px);
+  position: absolute;
+  left: 50%;
+  bottom: -0.32em;
+  transform: translateX(-50%);
+  width: 100vw;
+  z-index: 0;
+  overflow: hidden;
+  text-align: center;
+  font-family: var(--font-urania), sans-serif;
+  font-weight: 900;
+  font-size: var(--footer-wm-size);
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+  color: rgba(255, 255, 255, 0.05);
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+}
+footer .container { position: relative; z-index: 1; }
+/* Room for the wordmark above: with bottom:-0.32em, ~0.68 of its own
+   font-size shows above the footer's bottom edge before the crop — so the
+   footer needs at least that much clear space below the copyright row, plus
+   a fixed gap, or the two overlap (as they did before this rule existed). */
+footer {
+  padding-bottom: calc(3rem + clamp(80px, 16vw, 240px) * 0.68 + 32px);
+}
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 8px;
+  z-index: 1001;
+  transition: background 0.2s;
+}
+.burger:hover { background: rgba(255,255,255,0.08); }
+.burger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.burger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+/* Single collapse point: below this the row can't fit the items, so switch to
+   the burger menu (which already lists everything, incl. profile). Keeps the
+   desktop row from ever cramming/overlapping. */
+@media (max-width: 1200px) {
+  .nav-links { display: none; }
+  .nav-avatar { display: none; }
+  .burger { display: flex !important; }
+}

@@ -1,0 +1,870 @@
+/* Core Team page.
+   Ported from the approved redesign (1/uploads/core-team-page.html), which
+   carried every value as an inline style attribute. Colours here are tokens
+   from globals.css — no hex literals in this file or in the components.
+
+   Scoped to .ct-page so the warm "paper" palette never leaks into the dark
+   site chrome. */
+
+.ct-page {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  min-height: 100vh;
+  padding: 28px 40px 120px;
+}
+
+.ct-shell {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.ct-page a {
+  color: var(--accent3);
+  text-decoration: none;
+}
+
+.ct-page a:hover {
+  color: var(--accent-hover);
+}
+
+.ct-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-dm-mono), ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ── Masthead ── */
+.ct-masthead {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 40px;
+  padding: 52px 0 26px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.ct-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 26px;
+}
+
+.ct-eyebrow p {
+  margin: 0;
+  letter-spacing: 0.2em;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent3);
+  text-transform: uppercase;
+}
+
+.ct-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent3);
+  flex-shrink: 0;
+}
+
+.ct-title {
+  margin: 0;
+  font-family: var(--font-urania), sans-serif;
+  font-weight: 800;
+  font-size: clamp(52px, 9vw, 132px);
+  line-height: 0.86;
+  letter-spacing: -0.05em;
+  color: var(--ink);
+}
+
+.ct-lede {
+  margin: 0;
+  max-width: 340px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink-muted);
+  text-wrap: pretty;
+  padding-bottom: 10px;
+}
+
+/* ── "Meet the team" intro row + teaser strip ──
+   The "People behind Mochi Web3!" note (caption + hand-drawn arrow) sits
+   inline with the intro lede paragraph, right-aligned against it, instead
+   of stacked above the avatar row — see .ct-meet-intro-row and
+   TeamStripNote in about-section.tsx. The avatar row (with its
+   speech-bubble callout that swaps to whichever member is
+   hovered/focused/tapped) follows directly underneath with a small gap,
+   not the large empty band a stacked note+row used to leave. Purple/teal
+   brand pair (--accent3/--teal) rather than the reference screenshot's
+   neon green, to match the rest of the site.
+
+   justify-content stays flex-start so the lede paragraph itself stays put
+   on the left (flex-end here would shove BOTH children — lede included —
+   over to the right). Only .ct-meet-note is pushed over, via its own
+   margin-left: auto, so it lands near this row's right edge — which is
+   the SAME width as .ct-meet-strip below it. The avatar row is
+   shrink-to-fit (19 avatars @ ~46px pitch ≈ 890px) inside a wider
+   container (≈1036px at desktop widths), so that right edge sits past
+   where the avatars actually end — .ct-meet-note's margin-right pulls it
+   back left by roughly that gap so the arrow lands on the LAST few
+   avatars instead of on the empty space beyond them. This is tuned to the
+   current 19-member roster at desktop widths — if members are
+   added/removed, or the avatar size changes, re-check against a
+   screenshot and adjust the margins. */
+.ct-meet-intro-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.ct-meet-strip {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 10px 0 46px;
+}
+
+.ct-meet-left {
+  /* Positioned ancestor for .ct-meet-callout below, and the reference frame
+     for the avatar offsetLeft/offsetTop math in about-section.tsx. */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  width: 100%;
+}
+
+.ct-meet-callout {
+  /* Anchored to the active avatar's own offsetLeft/offsetTop (computed in
+     about-section.tsx) rather than a fixed flex position — this is what
+     lets the row wrap onto multiple lines (19 members no longer fit one
+     row on every viewport) while the callout still tracks whichever avatar,
+     in whichever row, is actually active. `top` is the active avatar's own
+     top edge minus a 14px gap; translateY(-100%) then lifts the box by its
+     own (variable) height so its BOTTOM sits at that point, without this
+     needing to know the callout's height up front. */
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translateY(-100%);
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  padding: 12px 18px 13px;
+  min-width: 180px;
+  box-shadow: 0 10px 26px rgba(12, 11, 20, 0.08);
+  /* The callout sits close above the avatar row (14px gap), and the active
+     avatar itself lifts 6px on hover — close enough that a real mouse
+     drifting up off the avatar can land on the callout/tail instead. Since
+     this is a display-only bubble nobody needs to click, pointer-events:none
+     makes the cursor pass straight through it, so hovering never gets
+     handed off to the callout and back off the avatar row (which fired our
+     .ct-meet-avatars onMouseLeave and hid the bubble the instant it
+     appeared — the "callout never shows" bug). */
+  pointer-events: none;
+  /* Slides to track whichever avatar is active (see the inline `left`/`top`
+     style in about-section.tsx), tail included, instead of staying glued
+     above the first one. */
+  transition: left 0.2s ease, top 0.2s ease;
+  white-space: nowrap;
+}
+
+.ct-meet-callout-name {
+  font-family: var(--font-urania), sans-serif;
+  font-weight: 800;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.ct-meet-callout-role {
+  margin-top: 3px;
+  font-family: var(--font-dm-mono), ui-monospace, monospace;
+  font-size: 11.5px;
+  letter-spacing: 0.03em;
+  color: var(--accent3);
+}
+
+.ct-meet-callout-tail {
+  position: absolute;
+  bottom: -7px;
+  left: 26px;
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  transform: rotate(45deg);
+}
+
+.ct-meet-avatars {
+  display: flex;
+  /* 19 members (Leadership + Trading Mentors + Community Moderators) no
+     longer fit a single row at most widths — wrap onto multiple rows
+     instead of overflowing the container. The callout's position is
+     measured off the actual active avatar (see about-section.tsx), so it
+     still tracks correctly across rows. */
+  flex-wrap: wrap;
+  row-gap: 18px;
+}
+
+.ct-meet-avatar {
+  position: relative;
+  width: 62px;
+  height: 62px;
+  margin-left: -16px;
+  /* Padding (not 0) leaves the flat --accent3 background visible as a ring
+     around the photo, matching the reference's solid-color "sticker" halo
+     around each avatar — Mochi purple standing in for its neon green. */
+  padding: 3px;
+  border: 3px solid var(--paper);
+  border-radius: 50%;
+  background: var(--accent3);
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ct-meet-avatar:first-child {
+  margin-left: 0;
+}
+
+.ct-meet-avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.ct-meet-avatar-initials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--accent3);
+  color: #fff;
+  font-family: var(--font-dm-mono), ui-monospace, monospace;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.ct-meet-avatar:hover,
+.ct-meet-avatar:focus-visible,
+.ct-meet-avatar.is-active {
+  z-index: 1;
+  transform: translateY(-6px) scale(1.08);
+  box-shadow: 0 10px 20px rgba(149, 34, 230, 0.28);
+}
+
+.ct-meet-note {
+  /* A plain flex item now, trailing the lede paragraph in .ct-meet-intro-row
+     (see about-section.tsx) rather than stacked above the avatar row. */
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  max-width: 220px;
+  /* margin-left: auto pushes just this item to the row's right side
+     (without dragging the lede over too — see the comment on
+     .ct-meet-intro-row above); margin-right then pulls it back left off
+     that edge so both the caption and the arrow (whose own translateX
+     nudges it further right still, see .ct-meet-arrow-img) land over the
+     LAST 3 avatars, with the arrow tip landing on the very last one —
+     retuned for the current 18-member roster (was 150px at 19 members;
+     each member removed/added shifts the shrink-to-fit avatar row by
+     about one avatar's ~46px pitch, so re-check this against a screenshot
+     whenever the roster count changes). */
+  margin-left: auto;
+  margin-right: 190px;
+  /* No gap between caption and arrow (caption is first, arrow second) —
+     the arrow's own top curve starts right at the text and needs every
+     pixel of the space below to reach toward the avatar row. */
+  gap: 0;
+  transform: rotate(-2deg);
+}
+
+.ct-meet-arrow-img {
+  /* The client's own arrow.psd artwork (a solid hand-drawn swoosh + open
+     arrowhead), exported as a trimmed transparent PNG and used as a mask so
+     `background` recolors it to the Mochi brand purple instead of shipping
+     baked-in black pixels — same footprint/position as the earlier
+     hand-coded SVG it replaces. */
+  display: block;
+  width: 46px;
+  height: 67px;
+  margin-top: -4px;
+  background-color: var(--accent3);
+  -webkit-mask-image: url("/images/arrow-mochi.png");
+  mask-image: url("/images/arrow-mochi.png");
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-position: center;
+  mask-position: center;
+  /* The artwork's tail (its open, starting end) sits at the LEFT edge of
+     its own bounding box — the big loop is what reaches the box's right
+     edge — so right-aligning the box like the caption above it leaves the
+     tail stranded well left of "Web3!". Nudge the whole image right so the
+     tail tucks in right under the end of the text instead. Folded into the
+     draw-in/nudge keyframes below too, since each `transform` there
+     replaces this one while it's running. */
+  transform: translateX(30px);
+  /* Hidden until the intro row scrolls into view (see .reveal.visible
+     below), then draws itself in top-to-bottom before settling into a
+     gentle looping nudge toward the avatar row it's pointing at. */
+  clip-path: inset(0 0 100% 0);
+  opacity: 0;
+}
+
+.reveal.visible .ct-meet-arrow-img {
+  animation:
+    ct-arrow-draw-in 0.7s cubic-bezier(0.3, 0.7, 0.4, 1) 0.15s forwards,
+    ct-arrow-nudge 1.8s ease-in-out 0.9s infinite;
+}
+
+@keyframes ct-arrow-draw-in {
+  from {
+    clip-path: inset(0 0 100% 0);
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    clip-path: inset(0 0 0% 0);
+    opacity: 1;
+    transform: translateX(30px);
+  }
+}
+
+@keyframes ct-arrow-nudge {
+  0%,
+  100% {
+    transform: translateX(30px) translateY(0);
+  }
+  50% {
+    transform: translateX(30px) translateY(5px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ct-meet-arrow-img {
+    clip-path: none;
+    opacity: 1;
+  }
+
+  .reveal.visible .ct-meet-arrow-img {
+    animation: none;
+  }
+}
+
+.ct-meet-caption {
+  margin: 2px 4px 0 0;
+  font-family: var(--font-caveat), cursive;
+  font-size: 25px;
+  line-height: 1.18;
+  font-weight: 700;
+  color: var(--accent3);
+  text-align: right;
+  text-wrap: balance;
+}
+
+@media (max-width: 640px) {
+  .ct-meet-intro-row {
+    /* Stack the note under the lede paragraph instead of squeezing both
+       onto one line at narrow widths. */
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .ct-meet-note {
+    /* Left-aligned, un-rotated, full-width on mobile instead of the
+       desktop's right-aligned note (its arrow is hidden below anyway, so
+       there's nothing left to point). */
+    align-items: flex-start;
+    max-width: none;
+    transform: none;
+  }
+
+  .ct-meet-arrow-img {
+    display: none;
+  }
+
+  .ct-meet-caption {
+    text-align: left;
+    font-size: 20px;
+  }
+
+  .ct-meet-avatar {
+    width: 52px;
+    height: 52px;
+    margin-left: -14px;
+  }
+}
+
+/* ── Stat strip ── */
+.ct-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+.ct-stat {
+  padding: 22px 0;
+}
+
+.ct-stat-value {
+  font-family: var(--font-urania), sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
+
+.ct-stat-label {
+  margin-top: 6px;
+  letter-spacing: 0.14em;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+}
+
+/* ── Photo slots ── */
+.ct-slot {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(149, 34, 230, 0.1), rgba(94, 240, 210, 0.14));
+  flex-shrink: 0;
+}
+
+.ct-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Ryzen's source photo is a wider environmental shot (lots of headroom and
+   shoulders/torso) rather than a tight headshot like everyone else's — cover
+   alone still reads as "half-body" instead of a face-forward portrait.
+   Scaling the already-cover-fit image and re-centering on the face crops it
+   down to match the other members' framing. `.ct-slot` has overflow:hidden,
+   so this only reveals more of the face, never spills past the slot. */
+.ct-photo-zoom {
+  transform: scale(1.9);
+  transform-origin: 52% 39%;
+}
+
+.ct-slot-initials {
+  font-family: var(--font-urania), sans-serif;
+  color: var(--ink-soft);
+  letter-spacing: 0.02em;
+}
+
+.ct-slot-circle,
+.ct-slot-lead,
+.ct-slot-moderator {
+  border-radius: 50%;
+}
+
+.ct-slot-founder {
+  width: 340px;
+  height: 420px;
+  border-radius: 20px;
+}
+
+.ct-slot-founder .ct-slot-initials {
+  font-size: 56px;
+}
+
+.ct-slot-lead {
+  width: 96px;
+  height: 96px;
+}
+
+.ct-slot-lead .ct-slot-initials {
+  font-size: 26px;
+}
+
+.ct-slot-mentor {
+  width: 100%;
+  height: 300px;
+  border-radius: 16px;
+}
+
+.ct-slot-mentor .ct-slot-initials {
+  font-size: 44px;
+}
+
+.ct-slot-moderator {
+  width: 120px;
+  height: 120px;
+}
+
+.ct-slot-moderator .ct-slot-initials {
+  font-size: 32px;
+}
+
+/* ── Founder feature ── */
+.ct-founder {
+  display: grid;
+  grid-template-columns: 340px minmax(0, 1fr);
+  gap: 0 56px;
+  align-items: start;
+  padding: 56px 0 0;
+}
+
+.ct-founder-text {
+  padding-top: 6px;
+}
+
+.ct-kicker {
+  letter-spacing: 0.18em;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--accent3);
+  text-transform: uppercase;
+}
+
+.ct-founder-name {
+  margin-top: 18px;
+  font-family: var(--font-urania), sans-serif;
+  font-weight: 800;
+  font-size: clamp(34px, 4.6vw, 58px);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+}
+
+.ct-founder-handle {
+  margin-top: 14px;
+  font-family: var(--font-dm-mono), ui-monospace, monospace;
+  font-size: 13px;
+  color: var(--accent3);
+}
+
+.ct-founder-blurb {
+  margin: 26px 0 0;
+  max-width: 560px;
+  font-size: clamp(18px, 1.7vw, 23px);
+  line-height: 1.45;
+  letter-spacing: -0.015em;
+  color: var(--ink-strong);
+  text-wrap: pretty;
+}
+
+/* ── Section rules ── */
+.ct-rule-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 24px 0 0;
+}
+
+.ct-rule-head-plain {
+  margin: 0;
+}
+
+.ct-rule-title {
+  margin: 0;
+  letter-spacing: 0.18em;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--ink);
+  text-transform: uppercase;
+}
+
+.ct-rule-line {
+  flex: 1;
+  height: 1px;
+  /* Matches the "More from the community" divider on the testimonials wall. */
+  background: rgba(200, 142, 241, 0.18);
+}
+
+.ct-rule-note {
+  margin: 0;
+  letter-spacing: 0.14em;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+}
+
+.ct-section-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 0 56px;
+  align-items: start;
+  padding: 64px 0 0;
+}
+
+.ct-section-note {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-muted);
+  text-wrap: pretty;
+}
+
+/* ── Leadership rows ── */
+.ct-rows {
+  border-bottom: 1px solid var(--rule-soft);
+  margin-top: 18px;
+}
+
+.ct-row {
+  display: grid;
+  grid-template-columns: 56px 96px minmax(0, 1.05fr) minmax(0, 1fr) 130px;
+  column-gap: 26px;
+  align-items: start;
+  padding: 26px 0;
+  border-top: 1px solid var(--rule-soft);
+  transition: background 0.3s ease;
+}
+
+.ct-row:hover {
+  background: linear-gradient(90deg, rgba(149, 34, 230, 0.06), transparent 72%);
+}
+
+.ct-row-num {
+  font-family: var(--font-urania), sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  color: var(--numeral);
+}
+
+.ct-row-name {
+  font-family: var(--font-urania), sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+.ct-row-role {
+  margin-top: 8px;
+  letter-spacing: 0.14em;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--accent3);
+  text-transform: uppercase;
+}
+
+.ct-row-handle {
+  margin-top: 8px;
+  font-family: var(--font-dm-mono), ui-monospace, monospace;
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+
+.ct-row-blurb {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-muted);
+  text-wrap: pretty;
+}
+
+/* ── Socials / SOON ── */
+.ct-socials {
+  display: flex;
+  gap: 12px;
+  font-family: var(--font-dm-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+}
+
+.ct-soon {
+  font-family: var(--font-dm-mono), ui-monospace, monospace;
+  font-size: 11px;
+  color: var(--ink-faint);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ct-row .ct-socials,
+.ct-row .ct-soon {
+  padding-top: 4px;
+}
+
+/* ── Mentors ── */
+.ct-mentors {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  margin-top: 30px;
+  max-width: 760px;
+}
+
+.ct-mentor {
+  min-width: 0;
+}
+
+.ct-mentor-name {
+  margin-top: 16px;
+  font-family: var(--font-urania), sans-serif;
+  font-weight: 700;
+  font-size: 21px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.ct-mentor-handle {
+  margin-top: 5px;
+  font-family: var(--font-dm-mono), ui-monospace, monospace;
+  font-size: 11.5px;
+  color: var(--ink-soft);
+}
+
+.ct-mentor .ct-socials,
+.ct-mentor .ct-soon {
+  margin-top: 10px;
+}
+
+/* ── Moderators ── */
+.ct-mods {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 40px;
+  margin-top: 30px;
+}
+
+.ct-mod {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr);
+  column-gap: 20px;
+  align-items: center;
+  padding: 18px 0;
+  border-top: 1px solid var(--rule-soft);
+}
+
+.ct-mod-id {
+  min-width: 0;
+}
+
+.ct-mod-name {
+  font-family: var(--font-urania), sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.ct-mod-handle {
+  margin-top: 4px;
+  font-family: var(--font-dm-mono), ui-monospace, monospace;
+  font-size: 11px;
+  color: var(--ink-soft);
+}
+
+.ct-mod .ct-socials,
+.ct-mod .ct-soon {
+  margin-top: 8px;
+}
+
+/* ── Responsive ──
+   The source file is desktop-only; everything below is new. Leadership rows
+   collapse to a stacked card at 900px, and the two-up grids go single column
+   at 640px. */
+@media (max-width: 900px) {
+  .ct-page {
+    padding: 24px 24px 88px;
+  }
+
+  .ct-masthead {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+    align-items: start;
+  }
+
+  .ct-lede {
+    max-width: none;
+    padding-bottom: 0;
+  }
+
+  .ct-founder {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+
+  .ct-slot-founder {
+    width: 100%;
+    max-width: 340px;
+    height: 380px;
+  }
+
+  /* Stacked card: the numeral and avatar sit on one line, then name, blurb,
+     and socials run full width beneath. */
+  .ct-row {
+    grid-template-columns: 56px minmax(0, 1fr);
+    row-gap: 14px;
+    padding: 24px 0;
+  }
+
+  .ct-row-num {
+    grid-row: 1;
+  }
+
+  .ct-row .ct-slot-lead {
+    grid-row: 1;
+    grid-column: 2;
+  }
+
+  .ct-row-id,
+  .ct-row-blurb,
+  .ct-row .ct-socials,
+  .ct-row .ct-soon {
+    grid-column: 1 / -1;
+  }
+
+  .ct-section-head {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+    padding: 52px 0 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .ct-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ct-mentors,
+  .ct-mods {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ct-mod {
+    grid-template-columns: 88px minmax(0, 1fr);
+  }
+
+  .ct-slot-moderator {
+    width: 88px;
+    height: 88px;
+  }
+
+  .ct-slot-moderator .ct-slot-initials {
+    font-size: 24px;
+  }
+}

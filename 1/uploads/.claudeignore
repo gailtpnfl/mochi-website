@@ -1,0 +1,4 @@
+# Never read into context — 3MB of inlined base64
+mochiworld-v2.html
+design-reference/mochiworld-v2.slim.html
+design-reference/assets/

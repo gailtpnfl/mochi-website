@@ -1,0 +1,3339 @@
+/* Landing page styles — scoped to .mw-landing
+   Generated from ref-package/reference-styles.css — do not edit by hand.
+   Regenerate with: node scripts/scope-landing-css.js */
+
+:root {
+    --bg: #0d0b24;
+    --bg2: #130f38;
+    --surface: rgba(149,34,230,0.07);
+    --surface2: rgba(149,34,230,0.13);
+    --border: rgba(200,142,241,0.12);
+    --border2: rgba(200,142,241,0.22);
+    --text: #f0eeff;
+    --text-muted: rgba(220,210,255,0.60);
+    --text-sub: rgba(220,210,255,0.38);
+    --accent: #c88ef1;
+    --accent2: #b06eee;
+    --accent3: #9522e6;
+    --glow: rgba(149,34,230,0.40);
+    --pink: #f472b6;
+    --teal: #5ef0d2;
+    --gold: #fbbf24;
+    --radius: 14px;
+    --radius-lg: 20px;
+  }
+.mw-landing {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-dm-sans), sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    background-image: radial-gradient(ellipse 100% 60% at 50% 0%, rgba(26,21,78,0.9) 0%, transparent 70%);
+  }
+/* noise overlay removed */
+/* ── Typography ── */
+.mw-landing h1,
+.mw-landing h2,
+.mw-landing h3,
+.mw-landing h4,
+.mw-landing h5 { font-family: var(--font-urania), sans-serif; line-height: 1.1; }
+/* ── Layout ── */
+/* ── NAV ── */
+/* ── HERO ── */
+.mw-landing .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 120px 0 80px;
+  }
+/* Mesh background — vretail deep indigo style */
+.mw-landing .hero-mesh {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 70% at 50% 0%, rgba(26,21,78,0.95) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 50% at 80% 60%, rgba(149,34,230,0.14) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 40% at 10% 80%, rgba(200,142,241,0.08) 0%, transparent 55%);
+    pointer-events: none;
+  }
+.mw-landing .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(200,142,241,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(200,142,241,0.04) 1px, transparent 1px);
+    background-size: 70px 70px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
+    pointer-events: none;
+  }
+.mw-landing .hero-content {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    max-width: 720px;
+    align-items: center;
+    width: 100%;
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+.mw-landing .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(149,34,230,0.14);
+    border: 1px solid rgba(200,142,241,0.35);
+    border-radius: 30px;
+    padding: 7px 18px;
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    animation: fadeUp 0.6s ease both;
+  }
+.mw-landing .hero-badge::before {
+    content: none;
+  }
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.85); }
+  }
+.mw-landing .hero h1 {
+    font-size: clamp(40px, 5.5vw, 72px);
+    font-weight: 800;
+    letter-spacing: -2px;
+    line-height: 1.02;
+    margin-bottom: 24px;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+.mw-landing .hero h1 em {
+    font-style: normal;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--pink) 50%, var(--gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+.mw-landing .hero-sub {
+    font-size: 17px;
+    color: var(--text-muted);
+    line-height: 1.65;
+    max-width: 480px;
+    margin-bottom: 40px;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+.mw-landing .hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+.mw-landing .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent3);
+    color: #fff;
+    text-decoration: none;
+    padding: 13px 32px;
+    border-radius: 30px;
+    border: 1px solid var(--accent);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 24px rgba(149,34,230,0.35);
+  }
+.mw-landing .btn-primary:hover { background: var(--accent2); transform: translateY(-2px); box-shadow: 0 6px 32px rgba(149,34,230,0.55); }
+.mw-landing .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: 1px solid var(--border2);
+    color: var(--text);
+    text-decoration: none;
+    padding: 13px 32px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+  }
+.mw-landing .btn-secondary:hover { background: rgba(149,34,230,0.12); border-color: var(--accent); transform: translateY(-2px); }
+.mw-landing .hero-stats {
+    display: flex;
+    gap: 32px;
+    margin-top: 48px;
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+.mw-landing .hero-stat span { display: block; }
+.mw-landing .hero-stat .num {
+    font-family: var(--font-urania), sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--text);
+  }
+.mw-landing .hero-stat .label { font-size: 12px; color: var(--text-sub); text-transform: uppercase; letter-spacing: 0.06em; }
+/* Hero right — floating cards */
+.mw-landing .hero-visual {
+    position: relative;
+    height: 500px;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+.mw-landing .float-card {
+    position: absolute;
+    background: var(--surface);
+    border: 1px solid var(--border2);
+    border-radius: var(--radius-lg);
+    backdrop-filter: blur(20px);
+    padding: 20px 24px;
+    transition: transform 0.3s;
+  }
+.mw-landing .float-card:hover { transform: translateY(-6px) !important; }
+.mw-landing .card-main {
+    top: 30px; left: 0; right: 0;
+    background: linear-gradient(135deg, rgba(149,34,230,0.12), rgba(255,126,179,0.08));
+    border-color: rgba(149,34,230,0.3);
+  }
+.mw-landing .card-airdrop {
+    bottom: 40px; right: -10px;
+    width: 220px;
+    animation: float2 5s ease-in-out infinite;
+  }
+.mw-landing .card-stat {
+    top: 200px; left: -20px;
+    width: 180px;
+    animation: float3 6s ease-in-out infinite;
+  }
+@keyframes float1 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+@keyframes float2 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-16px)} }
+@keyframes float3 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+.mw-landing .card-tag {
+    font-size: 10px;
+    color: var(--accent);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+  }
+.mw-landing .card-title { font-family: var(--font-urania), sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+.mw-landing .card-desc { font-size: 12px; color: var(--text-muted); line-height: 1.5; margin-bottom: 16px; }
+.mw-landing .card-chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.mw-landing .chip {
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 100px;
+    border: 1px solid var(--border2);
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+.mw-landing .chip.live { border-color: rgba(94,240,210,0.4); color: var(--teal); background: rgba(94,240,210,0.06); }
+.mw-landing .chip.hot { border-color: rgba(255,126,179,0.4); color: var(--pink); background: rgba(255,126,179,0.08); }
+.mw-landing .card-num { font-family:var(--font-urania), sans-serif; font-size: 30px; font-weight:800; color:var(--teal); }
+.mw-landing .card-nlabel { font-size: 11px; color: var(--text-sub); margin-top: 2px; }
+.mw-landing .airdrop-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+  }
+.mw-landing .airdrop-row:last-child { border: none; }
+.mw-landing .airdrop-icon {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+.mw-landing .airdrop-name { font-size: 13px; font-weight: 600; flex: 1; }
+.mw-landing .airdrop-badge {
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 100px;
+    background: rgba(94,240,210,0.12);
+    color: var(--teal);
+    border: 1px solid rgba(94,240,210,0.25);
+    font-weight: 600;
+  }
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+/* ── TICKER ── */
+.mw-landing .ticker-wrap {
+    overflow: hidden;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--bg2);
+    padding: 14px 0;
+  }
+.mw-landing .ticker-track {
+    display: flex;
+    gap: 48px;
+    width: max-content;
+    animation: ticker 22s linear infinite;
+  }
+.mw-landing .ticker-wrap:hover .ticker-track { animation-play-state: paused; }
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.mw-landing .ticker-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+.mw-landing .ticker-item span { color: var(--text-sub); }
+.mw-landing .ticker-dot {
+    width: 5px; height: 5px;
+    background: var(--accent3);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+/* ── SECTIONS ── */
+.mw-landing section { padding: 100px 0; }
+.mw-landing .section-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+.mw-landing .section-eyebrow::before {
+    content: '';
+    width: 20px;
+    height: 2px;
+    background: var(--accent3);
+    border-radius: 2px;
+  }
+.mw-landing .section-eyebrow:has(.badge-dot)::before { content: none; display: none; }
+.mw-landing .section-eyebrow:has(.badge-dot) {
+    display: flex !important;
+    align-items: center;
+    gap: 8px;
+  }
+.mw-landing .section-title {
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    line-height: 1.05;
+    margin-bottom: 16px;
+  }
+.mw-landing .section-sub {
+    font-size: 16px;
+    color: var(--text-muted);
+    max-width: 560px;
+    line-height: 1.7;
+  }
+/* ── ABOUT ── */
+.mw-landing .about { background: linear-gradient(180deg, var(--bg2), rgba(19,15,56,0.95)); }
+.mw-landing .about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    max-width: 780px;
+    margin: 0 auto;
+  }
+.mw-landing .about-features { margin-top: 40px; display: flex; flex-direction: column; gap: 20px; }
+.mw-landing .about-feature {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 20px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    transition: border-color 0.2s, background 0.2s;
+    cursor: default;
+  }
+.mw-landing .about-feature:hover { border-color: var(--border2); background: var(--surface2); }
+.mw-landing .feature-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    font-size: 18px;
+    flex-shrink: 0;
+    background: rgba(149,34,230,0.15);
+  }
+.mw-landing .feature-title { font-family:var(--font-urania), sans-serif; font-weight:700; font-size:15px; margin-bottom:4px; }
+.mw-landing .feature-desc { font-size:13px; color:var(--text-muted); line-height:1.55; }
+/* About visual */
+.mw-landing .about-visual { position: relative; }
+.mw-landing .about-card-stack { position:relative; height:460px; }
+.mw-landing .stack-card {
+    position:absolute;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--border2);
+  }
+.mw-landing .stack-card-1 {
+    top:0; left:0; right:0;
+    height:260px;
+    background: linear-gradient(135deg, #1a154e, #0d0b24);
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    padding:28px;
+  }
+.mw-landing .stack-card-2 {
+    bottom:0; right:0;
+    width:200px;
+    background: var(--surface);
+    backdrop-filter:blur(20px);
+    padding:20px;
+  }
+.mw-landing .stack-card-3 {
+    bottom:80px; left:0;
+    width:190px;
+    background: var(--surface);
+    backdrop-filter:blur(20px);
+    padding:20px;
+  }
+.mw-landing .gradient-blob {
+    position:absolute;
+    top:40px; right:20px;
+    width:200px; height:200px;
+    background: radial-gradient(circle, rgba(149,34,230,0.5) 0%, transparent 70%);
+    border-radius:50%;
+    filter:blur(40px);
+    pointer-events:none;
+  }
+/* ── AIRDROPS ── */
+.mw-landing .airdrops-header {
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    margin-bottom:48px;
+    gap:20px;
+    flex-wrap:wrap;
+  }
+.mw-landing .filter-tabs {
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+  }
+.mw-landing .tab {
+    padding:8px 20px;
+    border-radius:30px;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:0.7px;
+    text-transform:uppercase;
+    border: 1px solid var(--border2);
+    background: transparent;
+    color: var(--text-muted);
+    cursor:pointer;
+    transition:all 0.2s;
+  }
+.mw-landing .tab:hover { color:var(--text); border-color:var(--accent); }
+.mw-landing .tab.active {
+    background: var(--accent3);
+    border-color: var(--accent);
+    color: #fff;
+  }
+.mw-landing .airdrops-grid {
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:20px;
+  }
+.mw-landing .airdrop-card {
+    background: rgba(13,11,36,0.7);
+    border:1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding:24px;
+    transition: border-color 0.25s, background 0.25s, transform 0.25s;
+    cursor:pointer;
+    position:relative;
+    overflow:hidden;
+    backdrop-filter: blur(8px);
+  }
+.mw-landing .airdrop-card::before {
+    content:'';
+    position:absolute;
+    inset:0;
+    background: linear-gradient(135deg, rgba(149,34,230,0.08), transparent 60%);
+    opacity:0;
+    transition:opacity 0.25s;
+  }
+.mw-landing .airdrop-card:hover { border-color:var(--border2); background:rgba(19,15,56,0.85); transform:translateY(-4px); }
+.mw-landing .airdrop-card:hover::before { opacity:1; }
+.mw-landing .airdrop-card-top {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:16px;
+  }
+.mw-landing .project-logo {
+    width:44px; height:44px;
+    border-radius:12px;
+    display:grid;
+    place-items:center;
+    font-size:20px;
+    border:1px solid var(--border2);
+  }
+.mw-landing .status-chip {
+    font-size:10px;
+    padding:4px 10px;
+    border-radius:100px;
+    font-weight:700;
+    letter-spacing:0.04em;
+  }
+.mw-landing .status-live { background:rgba(94,240,210,0.12); color:var(--teal); border:1px solid rgba(94,240,210,0.3); }
+.mw-landing .status-featured { background:rgba(255,213,126,0.12); color:var(--gold); border:1px solid rgba(255,213,126,0.3); }
+.mw-landing .status-new { background:rgba(255,126,179,0.12); color:var(--pink); border:1px solid rgba(255,126,179,0.3); }
+.mw-landing .airdrop-card h3 { font-family:var(--font-urania), sans-serif; font-size:18px; font-weight:700; margin-bottom:6px; }
+.mw-landing .airdrop-card p { font-size:13px; color:var(--text-muted); line-height:1.55; margin-bottom:18px; }
+.mw-landing .airdrop-meta {
+    display:flex;
+    gap:16px;
+    font-size:11px;
+    color:var(--text-sub);
+  }
+.mw-landing .airdrop-meta strong { color:var(--text-muted); font-weight:600; }
+.mw-landing .airdrop-card-footer {
+    margin-top:20px;
+    padding-top:16px;
+    border-top:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+.mw-landing .difficulty {
+    display:flex;
+    gap:4px;
+    align-items:center;
+    font-size:11px;
+    color:var(--text-sub);
+  }
+.mw-landing .diff-dot {
+    width:6px; height:6px;
+    border-radius:50%;
+    background:var(--border2);
+  }
+.mw-landing .diff-dot.filled { background: var(--accent2); }
+.mw-landing .card-link {
+    font-size:12px;
+    font-weight:600;
+    color:var(--accent);
+    text-decoration:none;
+    display:flex;
+    align-items:center;
+    gap:4px;
+    transition:gap 0.2s;
+  }
+.mw-landing .airdrop-card:hover .card-link { gap:8px; }
+/* ── EDUCATION ── */
+.mw-landing .education { background: var(--bg2); }
+.mw-landing .edu-grid {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+    margin-top:56px;
+  }
+.mw-landing .edu-card {
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius-lg);
+    padding:32px;
+    transition:border-color 0.2s, transform 0.2s;
+    position:relative;
+    overflow:hidden;
+  }
+.mw-landing .edu-card:hover { border-color:var(--border2); transform:translateY(-4px); }
+.mw-landing .edu-card.featured {
+    grid-column: span 2;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:48px;
+    align-items:center;
+    background: linear-gradient(135deg, rgba(149,34,230,0.12), rgba(200,142,241,0.06));
+    border-color:rgba(200,142,241,0.28);
+  }
+.mw-landing .edu-icon {
+    width:52px; height:52px;
+    border-radius:14px;
+    display:grid;
+    place-items:center;
+    font-size:24px;
+    background:rgba(149,34,230,0.12);
+    border:1px solid rgba(200,142,241,0.2);
+    margin-bottom:20px;
+  }
+.mw-landing .edu-card h3 { font-family:var(--font-urania), sans-serif; font-size:22px; font-weight:700; margin-bottom:10px; }
+.mw-landing .edu-card p { font-size:14px; color:var(--text-muted); line-height:1.7; margin-bottom:24px; }
+.mw-landing .edu-list { list-style:none; display:flex; flex-direction:column; gap:10px; }
+.mw-landing .edu-list li {
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:13px;
+    color:var(--text-muted);
+  }
+.mw-landing .edu-list li::before {
+    content:'';
+    width:6px; height:6px;
+    border-radius:50%;
+    background: var(--accent2);
+    flex-shrink:0;
+  }
+.mw-landing .edu-visual {
+    background: linear-gradient(135deg, rgba(149,34,230,0.15), rgba(94,240,210,0.06));
+    border-radius: var(--radius);
+    height:220px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:64px;
+    border:1px solid rgba(149,34,230,0.2);
+  }
+/* ── COMMUNITY ── */
+.mw-landing .community-grid {
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:20px;
+    margin-top:56px;
+  }
+.mw-landing .community-card {
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius-lg);
+    padding:28px;
+    transition:border-color 0.2s, background 0.2s;
+  }
+.mw-landing .community-card:hover { border-color:var(--border2); background:var(--surface2); }
+.mw-landing .comm-icon { font-size:28px; margin-bottom:16px; display:block; }
+.mw-landing .comm-eyebrow { font-size:10px; color:var(--accent); text-transform:uppercase; letter-spacing:0.1em; font-weight:700; margin-bottom:8px; }
+.mw-landing .community-card h3 { font-family:var(--font-urania), sans-serif; font-size:17px; font-weight:700; margin-bottom:8px; }
+.mw-landing .community-card p { font-size:13px; color:var(--text-muted); line-height:1.6; }
+/* ── TESTIMONIALS ── */
+.mw-landing .testimonials { background:var(--bg2); overflow:hidden; }
+.mw-landing .testi-track-wrap { overflow:hidden; margin-top:56px; }
+.mw-landing .testi-track {
+    display:flex;
+    gap:20px;
+    width:max-content;
+    animation: testiScroll 28s linear infinite;
+  }
+.mw-landing .testi-track:hover { animation-play-state:paused; }
+@keyframes testiScroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+.mw-landing .testi-card {
+    width:320px;
+    background:rgba(149,34,230,0.1);
+    border:1px solid var(--border2);
+    border-radius:var(--radius-lg);
+    padding:24px;
+    flex-shrink:0;
+  }
+.mw-landing .testi-stars { color:var(--gold); font-size:13px; margin-bottom:14px; letter-spacing:2px; }
+.mw-landing .testi-text { font-size:14px; color:var(--text-muted); line-height:1.7; margin-bottom:20px; font-style:italic; }
+.mw-landing .testi-author { display:flex; align-items:center; gap:12px; }
+.mw-landing .testi-avatar {
+    width:36px; height:36px;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    font-size:16px;
+    font-weight:700;
+    font-family:var(--font-urania), sans-serif;
+    flex-shrink:0;
+  }
+.mw-landing .testi-name { font-family:var(--font-urania), sans-serif; font-size:14px; font-weight:700; }
+.mw-landing .testi-role { font-size:11px; color:var(--text-sub); }
+/* ── PARTNERSHIP ── */
+.mw-landing .partner-grid {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+    margin-top:56px;
+  }
+.mw-landing .partner-card {
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius-lg);
+    padding:36px;
+    transition:border-color 0.2s, transform 0.2s;
+  }
+.mw-landing .partner-card:hover { border-color:var(--border2); transform:translateY(-4px); }
+.mw-landing .partner-card.highlight {
+    background: linear-gradient(135deg, rgba(149,34,230,0.14), rgba(200,142,241,0.06));
+    border-color:rgba(149,34,230,0.3);
+  }
+.mw-landing .partner-card h3 { font-family:var(--font-urania), sans-serif; font-size:22px; font-weight:700; margin-bottom:10px; }
+.mw-landing .partner-card p { font-size:14px; color:var(--text-muted); line-height:1.7; margin-bottom:28px; }
+/* ── PARTNERSHIP CTA (full-bleed gradient block, per RowShare reference) ── */
+.mw-landing .partner-cta {
+    padding: 160px 0;
+    background: var(--gradient-brand);
+    position: relative;
+    overflow: hidden;
+  }
+.mw-landing .partner-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(255,255,255,0.16), transparent 60%);
+    pointer-events: none;
+  }
+.mw-landing .partner-cta-inner {
+    position: relative;
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+  }
+/* ── Handshake visual, above the CTA title ──
+   The two clasped hands are the artwork's two flat shapes (see
+   handshake-icon.tsx) — each slides in from its own side and settles into a
+   grip, then keeps a small perpetual "shake" so it reads as alive rather
+   than a static badge. Recolored off the original file's teal/orange into
+   two brand pairs that cross-fade into each other: white↔--accent (purple)
+   on one hand, --accent↔--teal (cyan) on the other — purple is the
+   through-line between them, gold dropped as an off-brand note here. */
+.mw-landing .ptr-handshake {
+  position: relative;
+  width: 168px;
+  height: 122px;
+  margin: 0 auto 22px;
+}
+.mw-landing .ptr-handshake::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background: radial-gradient(circle, rgba(255,255,255,0.35) 0%, transparent 70%);
+  filter: blur(18px);
+  z-index: -1;
+  animation: ptr-glow 3.6s ease-in-out infinite;
+}
+.mw-landing .ptr-handshake-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter: drop-shadow(0 10px 22px rgba(5,4,20,0.28));
+}
+.mw-landing .ptr-hand {
+  transform-box: fill-box;
+}
+.mw-landing .ptr-hand-a {
+  transform-origin: 100% 55%;
+  fill: #fff;
+  animation:
+    ptr-hand-in-a 1.1s var(--ease-out-expo) both,
+    ptr-shake-a 2.2s ease-in-out 1.1s infinite,
+    ptr-color-a 4.4s ease-in-out 1.1s infinite;
+}
+.mw-landing .ptr-hand-b {
+  transform-origin: 0% 55%;
+  fill: var(--accent);
+  animation:
+    ptr-hand-in-b 1.1s var(--ease-out-expo) both,
+    ptr-shake-b 2.2s ease-in-out 1.1s infinite,
+    ptr-color-b 4.4s ease-in-out 1.1s infinite;
+}
+@keyframes ptr-hand-in-a {
+  from { transform: translate(-46px, -8px) rotate(-10deg); opacity: 0; }
+  to   { transform: translate(0, 0) rotate(0deg); opacity: 1; }
+}
+@keyframes ptr-hand-in-b {
+  from { transform: translate(46px, 8px) rotate(10deg); opacity: 0; }
+  to   { transform: translate(0, 0) rotate(0deg); opacity: 1; }
+}
+@keyframes ptr-shake-a {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25%      { transform: translateY(3.5px) rotate(-3deg); }
+  75%      { transform: translateY(-3.5px) rotate(3deg); }
+}
+@keyframes ptr-shake-b {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25%      { transform: translateY(-3.5px) rotate(3deg); }
+  75%      { transform: translateY(3.5px) rotate(-3deg); }
+}
+@keyframes ptr-color-a {
+  0%, 100% { fill: #fff; }
+  50%      { fill: var(--accent); }
+}
+@keyframes ptr-color-b {
+  0%, 100% { fill: var(--accent); }
+  50%      { fill: var(--teal); }
+}
+@keyframes ptr-glow {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50%      { opacity: 1; transform: scale(1.12); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mw-landing .ptr-hand,
+  .mw-landing .ptr-handshake::before {
+    animation: none;
+  }
+}
+@media (max-width: 480px) {
+  .mw-landing .ptr-handshake { width: 132px; height: 96px; margin-bottom: 16px; }
+}
+.mw-landing .partner-cta-title {
+    font-family: var(--font-urania), sans-serif;
+    font-size: clamp(26px, 3.6vw, 42px);
+    font-weight: 800;
+    letter-spacing: -0.6px;
+    line-height: 1.25;
+    color: #fff;
+    margin-bottom: 18px;
+  }
+/* Same highlighter-marker treatment as #community-stats .ml-stats-highlight
+   (solid tinted box behind bold text, slight rotation) — but inverted to
+   white-on-dark, since the accent3/teal gradient marker there would vanish
+   against .partner-cta's own accent3/teal gradient background. */
+.mw-landing .partner-cta-highlight {
+    display: inline-block;
+    padding: 2px 14px 6px;
+    background: #fff;
+    color: #14131c;
+    border-radius: 8px;
+    transform: rotate(-1deg);
+  }
+.mw-landing .partner-cta-sub {
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.85);
+    max-width: 560px;
+    margin: 0 auto 36px;
+  }
+.mw-landing .partner-cta-actions {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+/* Light twin of .btn-dark (see the "Buttons" block above) — same sticker
+   mechanics (thick ink border, hard offset shadow, badge icon that levels
+   from ↗ to → and back on hover) but with a white fill instead of purple,
+   since these two buttons sit on the partner-cta section's purple gradient
+   background where a purple-on-purple button would disappear. Hover still
+   flips to solid ink like .btn-dark; the badge mirrors that by flipping to
+   white (its own base fill) instead of purple. */
+.mw-landing .btn-light {
+  display: inline-flex; align-items: center; gap: 14px;
+  background: #fff; color: var(--ink);
+  padding: 8px 8px 8px 28px; border-radius: var(--radius-pill);
+  font-size: 0.88rem; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase;
+  text-decoration: none; position: relative;
+  border: 2.5px solid var(--ink);
+  /* var(--btn-shadow) — ink by default, flipped to white by the
+     dark-background override below (near-black ink is invisible against a
+     near-black section). */
+  box-shadow: 4px 4px 0 0 var(--btn-shadow, var(--ink));
+  transition: background 0.3s ease, color 0.3s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+.mw-landing .btn-light:hover {
+  background: var(--ink);
+  color: #fff;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 0 var(--btn-shadow, var(--ink));
+}
+.mw-landing .btn-light .btn-icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px; flex-shrink: 0;
+  background: var(--ink); color: #fff;
+  border-radius: 14px;
+  font-size: 1rem; font-style: normal;
+  transform: rotate(45deg);
+  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+.mw-landing .btn-light:hover .btn-icon {
+  background: #fff; color: var(--ink);
+  transform: rotate(0deg);
+}
+/* Book a Call carries no .btn-icon badge (the arrow was removed) — the
+   base padding above is lopsided (extra room on the left to balance the
+   icon on the right), so even it out when that badge isn't there. */
+.mw-landing .btn-light:not(:has(.btn-icon)) {
+  padding: 13px 32px;
+}
+@media (max-width: 480px) {
+  .mw-landing .partner-cta { padding: 100px 0; }
+}
+/* ── FAQ ── */
+.mw-landing .faq { background:var(--bg2); }
+.mw-landing .faq-list { max-width:740px; margin: 56px auto 0; }
+.mw-landing .faq-item {
+    border-bottom:1px solid var(--border);
+    overflow:hidden;
+  }
+.mw-landing .faq-q {
+    width:100%;
+    background:none;
+    border:none;
+    color:var(--text);
+    font-family:var(--font-urania), sans-serif;
+    font-size:17px;
+    font-weight:700;
+    text-align:left;
+    padding:24px 0;
+    cursor:pointer;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:16px;
+    transition:color 0.2s;
+  }
+.mw-landing .faq-q:hover { color:var(--accent); }
+.mw-landing .faq-arrow {
+    font-size:20px;
+    transition:transform 0.3s;
+    flex-shrink:0;
+    color:var(--text-muted);
+  }
+.mw-landing .faq-item.open .faq-arrow { transform:rotate(45deg); color:var(--accent); }
+.mw-landing .faq-a {
+    font-size:14px;
+    color:var(--text-muted);
+    line-height:1.75;
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.35s ease, padding 0.35s;
+    padding-bottom:0;
+  }
+.mw-landing .faq-item.open .faq-a { max-height:200px; padding-bottom:24px; }
+/* ── CTA BANNER ── */
+.mw-landing .cta-banner {
+    margin:0 32px 80px;
+    background: linear-gradient(135deg, rgba(149,34,230,0.18), rgba(200,142,241,0.06));
+    border:1px solid rgba(200,142,241,0.25);
+    border-radius:28px;
+    padding:72px 60px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+.mw-landing .cta-banner::before {
+    content:'';
+    position:absolute;
+    top:-60px; left:50%;
+    transform:translateX(-50%);
+    width:300px; height:300px;
+    background: radial-gradient(circle, rgba(149,34,230,0.45), transparent 70%);
+    pointer-events:none;
+    filter:blur(40px);
+  }
+.mw-landing .cta-banner h2 { font-size:clamp(28px, 4vw, 52px); font-weight:800; letter-spacing:-1.5px; margin-bottom:16px; position:relative; }
+.mw-landing .cta-banner p { font-size:16px; color:var(--text-muted); margin-bottom:36px; position:relative; }
+.mw-landing .cta-btns { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; position:relative; }
+/* ── FOOTER ── */
+.mw-landing .social-btn {
+    width:36px; height:36px;
+    border-radius:10px;
+    background:rgba(149,34,230,0.1);
+    border:1px solid var(--border2);
+    display:grid;
+    place-items:center;
+    text-decoration:none;
+    font-size:15px;
+    transition:background 0.2s, transform 0.2s;
+  }
+.mw-landing .social-btn:hover { background:var(--surface2); transform:translateY(-2px); }
+/* Scroll reveal — slowed down and eased out so content settles in gently
+   rather than snapping into place (was 0.6s ease / 30px; then 1.2s / 36px,
+   which still read as too quick to notice while scrolling normally). */
+.mw-landing .reveal {
+  opacity: 0;
+  transform: translateY(56px);
+  transition: opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1), transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.mw-landing .reveal.visible { opacity:1; transform:none; }
+@media (prefers-reduced-motion: reduce) {
+  .mw-landing .reveal { transition: opacity 0.2s linear; transform: none; }
+}
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .mw-landing .hero-content { grid-template-columns:1fr; }
+  .mw-landing .hero-visual { display:none; }
+  .mw-landing .about-grid { grid-template-columns:1fr; gap:40px; }
+  .mw-landing .about-visual { display:none; }
+  .mw-landing .airdrops-grid { grid-template-columns:1fr; }
+  .mw-landing .edu-grid { grid-template-columns:1fr; }
+  .mw-landing .edu-card.featured { grid-column:span 1; grid-template-columns:1fr; }
+  .mw-landing .community-grid { grid-template-columns:1fr; }
+  .mw-landing .partner-grid { grid-template-columns:1fr; }
+  .mw-landing .cta-banner { margin:0 16px 60px; padding:48px 28px; }
+  .mw-landing section { padding:70px 0; }
+}
+/* ══════════════ ABOUT SPLIT LAYOUT ══════════════ */
+.mw-landing #story.v2-light { padding: 0; }
+.mw-landing .about-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 620px;
+}
+.mw-landing .about-img-col {
+  position: relative;
+  overflow: hidden;
+  background: #050f1e;
+  min-height: 500px;
+}
+.mw-landing .about-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: opacity 1.1s ease;
+  /* Grayscale, matching the Funded Traders showcase's black-and-white
+     avatars, so the homepage's community photos read as the same
+     photographic style rather than a full-color patch next to it. */
+  filter: grayscale(1) contrast(1.05);
+}
+.mw-landing .about-photo-dots {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  bottom: 22px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 9px;
+}
+.mw-landing .about-photo-dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255,255,255,.35);
+  cursor: pointer;
+  transition: background .25s ease, transform .25s ease;
+}
+.mw-landing .about-photo-dot:hover { background: rgba(255,255,255,.6); }
+.mw-landing .about-photo-dot.is-active {
+  background: #fff;
+  transform: scale(1.3);
+}
+.mw-landing .about-img-inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, #050f1e 0%, #091a36 55%, #0d2347 100%);
+}
+.mw-landing .about-img-rings {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.mw-landing .about-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(120,80,220,0.15);
+}
+.mw-landing .about-ring-1 { width: 300px; height: 300px; animation: about-ring-pulse 4s ease-in-out infinite; }
+.mw-landing .about-ring-2 { width: 450px; height: 450px; animation: about-ring-pulse 4s ease-in-out 1.3s infinite; }
+.mw-landing .about-ring-3 { width: 600px; height: 600px; animation: about-ring-pulse 4s ease-in-out 2.6s infinite; }
+@keyframes about-ring-pulse { 0%,100%{opacity:.15;} 50%{opacity:.4;} }
+.mw-landing .about-img-decor {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+.mw-landing .about-img-logo {
+  font-family: var(--font-urania), sans-serif;
+  font-size: clamp(5rem, 10vw, 9rem);
+  font-weight: 900;
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: .5rem;
+  filter: drop-shadow(0 0 40px rgba(120,80,220,.4));
+}
+.mw-landing .about-img-wordmark {
+  font-family: var(--font-urania), sans-serif;
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: rgba(255,255,255,.9);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-bottom: .4rem;
+}
+.mw-landing .about-img-tagline {
+  font-size: .78rem;
+  color: rgba(255,255,255,.4);
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  margin-bottom: 1.8rem;
+}
+.mw-landing .about-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+  justify-content: center;
+}
+.mw-landing .about-chip {
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.12);
+  color: rgba(255,255,255,.7);
+  padding: .35rem .85rem;
+  border-radius: 50px;
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  backdrop-filter: blur(10px);
+}
+/* RIGHT TEXT COL */
+.mw-landing .about-text-col {
+  padding: 5rem 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #f9f8f5;
+}
+.mw-landing .about-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+}
+.mw-landing .about-text-col h2 {
+  font-size: clamp(2rem, 3.2vw, 3rem);
+  font-weight: 900;
+  line-height: 1.12;
+  letter-spacing: -.03em;
+  color: #050f1e;
+  margin-bottom: 1.5rem;
+}
+.mw-landing .about-text-col p {
+  color: #5a5a6e;
+  line-height: 1.75;
+  margin-bottom: .9rem;
+  font-size: 1rem;
+}
+.mw-landing .about-stats {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin: 2rem 0;
+  padding: 1.5rem 0;
+  border-top: 1px solid rgba(0,0,0,.08);
+  border-bottom: 1px solid rgba(0,0,0,.08);
+  flex-wrap: wrap;
+}
+.mw-landing .about-stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.mw-landing .about-stat-num {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: #050f1e;
+  letter-spacing: -.02em;
+  line-height: 1;
+}
+.mw-landing .about-stat-label {
+  font-size: .72rem;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+.mw-landing .about-stat-divider {
+  width: 1px;
+  height: 36px;
+  background: rgba(0,0,0,.1);
+}
+.mw-landing .about-learn-btn {
+  align-self: flex-start;
+  cursor: pointer;
+  font-family: inherit;
+}
+@media(max-width:768px) {
+  .mw-landing .about-split { grid-template-columns: 1fr; }
+  .mw-landing .about-img-col { min-height: 320px; }
+  .mw-landing .about-text-col { padding: 3rem 1.5rem; }
+  .mw-landing .about-stats { gap: 1.2rem; }
+}
+/* ══════════════ ABOUT OVERLAY ══════════════ */
+.mw-landing .about-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform .5s cubic-bezier(.4,0,.2,1);
+}
+.mw-landing .about-overlay.is-open { transform: translateX(0); }
+.mw-landing .about-overlay-close {
+  position: fixed;
+  top: 1.5rem;
+  right: 2rem;
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.2);
+  color: #fff;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .2s;
+  z-index: 10000;
+}
+.mw-landing .about-overlay-close:hover { background: rgba(255,255,255,.25); }
+/* Sections */
+.mw-landing .ao-section { width: 100%; }
+.mw-landing .ao-dark { background: #050f1e; }
+.mw-landing .ao-light { background: #f9f8f5; }
+.mw-landing .ao-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+}
+.mw-landing .ao-cta-section .ao-container { padding: 4rem 2rem; }
+/* Partners page: the hero and the form panel are two stacked .ao-dark
+   sections now (no light section breaking them up visually), so their
+   default 5rem/5rem .ao-container padding meeting in the middle read as a
+   ~160px dead gap. Trim both sides down where they touch. */
+.mw-landing .ptr-hero-section .ao-container { padding-bottom: 1.5rem; }
+.mw-landing .ptr-form-section .ao-container { padding-top: 0; }
+/* Typography — dark sections */
+.mw-landing .ao-super {
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+.mw-landing .ao-super-light { color: var(--accent3); }
+.mw-landing .ao-section-title {
+  font-size: clamp(2rem, 5vw, 3.8rem);
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -.03em;
+  line-height: 1.05;
+  margin-bottom: 1rem;
+}
+.mw-landing .ao-title-dark { color: #050f1e; }
+.mw-landing .ao-intro {
+  color: rgba(255,255,255,.55);
+  font-size: 1rem;
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+}
+.mw-landing .ao-intro-dark { color: #5a5a6e; }
+.mw-landing .ao-cta-label {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: rgba(255,255,255,.7);
+  margin-bottom: 1.8rem;
+}
+/* overlay hero (dark) — badge pill + two-line display headline */
+.mw-landing .ao-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(149,34,230,0.14);
+  border: 1px solid rgba(200,142,241,0.35);
+  border-radius: 30px;
+  padding: 7px 18px;
+  font-size: 11px;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+.mw-landing .ao-hero-title {
+  font-size: clamp(2.6rem, 7vw, 5.2rem);
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -.03em;
+  line-height: 1.05;
+  margin-bottom: 1.8rem;
+}
+.mw-landing .ao-hero-title em {
+  font-style: italic;
+}
+.mw-landing .ao-hero-text {
+  max-width: 480px;
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,.55);
+}
+
+/* overlay "why we exist" — light section, quote/body split like the
+   Brilliant Digital reference */
+.mw-landing .ao-why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+.mw-landing .ao-why-left .ao-super {
+  display: inline-flex;
+  align-items: center;
+}
+.mw-landing .ao-quote {
+  font-size: clamp(1.5rem, 3vw, 2.3rem);
+  font-weight: 800;
+  line-height: 1.3;
+  color: #050f1e;
+  letter-spacing: -.01em;
+  margin: 0;
+}
+/* Partnership overlay's "Get in Touch" intro column — heading (reuses
+   .ao-quote's size/weight), a subhead, then a lede paragraph whose "talk"
+   is an inline link to Calendly, same underline treatment as other inline
+   links in this file (e.g. #events .ev-add-note a), tuned to this light
+   section's accent instead of the dark section's. */
+.mw-landing .ao-why-subhead {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--accent3);
+  margin: 0.6rem 0 1.1rem;
+}
+.mw-landing .ao-why-lede {
+  font-size: 1.1rem;
+  line-height: 1.75;
+  color: #5a5a6e;
+  margin: 0;
+}
+.mw-landing .ao-quote a,
+.mw-landing .ao-why-lede a {
+  color: var(--accent3);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s;
+}
+.mw-landing .ao-quote a:hover,
+.mw-landing .ao-why-lede a:hover { color: var(--accent2); }
+.mw-landing .ao-why-right p {
+  font-size: .95rem;
+  line-height: 1.75;
+  color: #5a5a6e;
+  margin-bottom: 1.2rem;
+}
+.mw-landing .ao-why-right p:last-child { margin-bottom: 0; }
+@media (max-width: 800px) {
+  .mw-landing .ao-why-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+/* PartnershipInquiryForm on /partners — painted to match the "Let's talk"
+   dark hero (.ao-dark, #050f1e) rather than white, so the card reads as the
+   same dark surface carried down into this otherwise-light section, instead
+   of a plain white box. Was .partner-form-light (a light re-theme of the
+   form's dark-tuned defaults); renamed since the direction flipped back to
+   dark, just pinned to .ao-dark's solid navy instead of the default
+   translucent-on-dark .mw-card look (which needs a dark page behind it to
+   read, not this section's light #f9f8f5). */
+.mw-landing .partner-form-card .mw-card {
+  background: #050f1e;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+.mw-landing .partner-form-card .mw-card:hover {
+  background: #050f1e;
+  border-color: rgba(255, 255, 255, 0.18);
+}
+.mw-landing .partner-form-card .mw-card label {
+  color: #fff;
+}
+.mw-landing .partner-form-card .mw-card input,
+.mw-landing .partner-form-card .mw-card textarea {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+.mw-landing .partner-form-card .mw-card input::placeholder,
+.mw-landing .partner-form-card .mw-card textarea::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+/* Tailwind's focus:ring paints a 1px accent-end ring regardless of theme —
+   redo it here so focus reads as an intentional, branded lift instead of a
+   thin line barely visible against the dark card. */
+.mw-landing .partner-form-card .mw-card input:focus,
+.mw-landing .partner-form-card .mw-card textarea:focus {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(200, 142, 241, 0.2);
+}
+.mw-landing .partner-form-card .mw-card.text-muted {
+  color: rgba(255, 255, 255, 0.6);
+}
+/* Form header strip — small eyebrow label + a right-aligned helper note,
+   ruled off from the fields below. Reference: "START A PROJECT" /
+   "Fastest way to a scoped reply. * required." at the top of its bordered
+   form panel — same idea, Mochi's own type and accent color, now flipped to
+   light-on-dark along with the rest of the card. */
+.mw-landing .pf-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-bottom: 0.9rem;
+  margin-bottom: 0.2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+.mw-landing .pf-head-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.mw-landing .pf-head-note {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.45);
+}
+/* Button row — Send Inquiry (primary) + Book a Call (secondary), same pair
+   as the reference's "Send inquiry" / "Book a 15-min intro" buttons. */
+.mw-landing .pf-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 0.3rem;
+}
+.mw-landing .pf-submit {
+  padding: 13px 28px;
+  font-size: 0.85rem;
+}
+.mw-landing .pf-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+.mw-landing .pf-submit:disabled:hover {
+  background: var(--accent3);
+  transform: none;
+  box-shadow: none;
+}
+/* .btn-secondary's default (--text, --border2) is already tuned for a dark
+   background, so it needs no override now that the card is dark again. */
+/* overlay timeline */
+.mw-landing .ao-timeline { display: flex; flex-direction: column; gap: 0; }
+.mw-landing .ao-tl-item {
+  display: flex;
+  gap: 1.5rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.mw-landing .ao-tl-item:last-child { border-bottom: none; }
+.mw-landing .ao-tl-dot {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--gradient-brand);
+  margin-top: .35rem;
+  box-shadow: 0 0 12px rgba(120,80,220,.6);
+}
+.mw-landing .ao-tl-content { flex: 1; }
+.mw-landing .ao-tl-date {
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: .4rem;
+}
+.mw-landing .ao-tl-content h3 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: .6rem;
+}
+.mw-landing .ao-tl-content p {
+  color: rgba(255,255,255,.55);
+  line-height: 1.7;
+  font-size: .95rem;
+}
+
+/* overlay "our story" — flowing narrative essay layout (dark section kept
+   as-is; only the internal treatment changes to match the reference: a
+   giant low-opacity "Est." year mark, eyebrow + two-line title, narrative
+   paragraphs, and a decorative brand graphic alongside). */
+.mw-landing .ao-story-section { position: relative; overflow: hidden; }
+/* Sits in normal flow directly above "Our Story", left-aligned with the
+   rest of the column. Same fill treatment as .offer-watermark on the
+   landing page's Education/Mentorship/Tools panels — transparent fill with
+   a thin stroke outline — just at this section's own smaller size/position. */
+.mw-landing .ao-story-ghost {
+  display: block;
+  font-family: var(--font-urania), sans-serif;
+  font-size: clamp(2.4rem, 5vw, 4.2rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255,255,255,0.18);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  line-height: 1.15;
+  margin: 0 0 1.5rem;
+}
+.mw-landing .ao-story-container {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: 3rem;
+  align-items: center;
+}
+.mw-landing .ao-story-title {
+  margin-bottom: 1.6rem;
+}
+.mw-landing .ao-story-body p {
+  color: rgba(255,255,255,.55);
+  line-height: 1.75;
+  font-size: .98rem;
+  margin-bottom: 1.15rem;
+}
+.mw-landing .ao-story-body p:last-child { margin-bottom: 0; }
+.mw-landing .ao-story-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.mw-landing .ao-story-visual::before {
+  content: "";
+  position: absolute;
+  inset: 10%;
+  background: radial-gradient(circle, var(--glow) 0%, transparent 70%);
+  filter: blur(30px);
+  z-index: -1;
+  animation: ao-crest-glow 6s ease-in-out infinite;
+}
+.mw-landing .ao-story-visual img {
+  width: 100%;
+  max-width: 340px;
+  height: auto;
+  filter: drop-shadow(0 20px 40px rgba(149,34,230,.35));
+  /* A slow float + gentle tilt so the crest reads as a living emblem
+     instead of a static logo drop — the glow behind it (::before) breathes
+     in and out on the same cycle so the two feel like one effect. */
+  animation: ao-crest-float 6s ease-in-out infinite;
+}
+@keyframes ao-crest-float {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-12px) rotate(2deg); }
+}
+@keyframes ao-crest-glow {
+  0%, 100% { opacity: 0.65; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mw-landing .ao-story-visual img,
+  .mw-landing .ao-story-visual::before {
+    animation: none;
+  }
+}
+@media (max-width: 800px) {
+  .mw-landing .ao-story-container { grid-template-columns: 1fr; }
+  .mw-landing .ao-story-visual { order: -1; max-width: 220px; margin: 0 auto 1rem; }
+  .mw-landing .ao-story-visual img { max-width: 200px; }
+}
+/* ── Core Team, aligned to match "Why We Exist" ──
+   core-team.css is already a light "paper" theme (--paper/--ink/--rule etc.
+   from globals.css), same family as the light overlay sections, so no color
+   token overrides are needed — just alignment. It's embedded inside the
+   overlay rather than rendered as its own route, so: drop the page-level
+   min-height/padding and let the surrounding .ao-section + .ao-container own
+   the spacing (same 1100px measure as "Why We Exist" and "Our Story", instead
+   of the standalone page's own wider .ct-shell), transparent .ct-page
+   background so .ao-light's #f9f8f5 shows through evenly, and don't repeat
+   the "Meet the Core Team" lede's max-width/spacing twice. */
+.mw-landing .ct-page.ct-embedded {
+  background: transparent;
+  min-height: 0;
+  padding: 0;
+}
+.mw-landing .ct-page.ct-embedded .ct-lede-intro {
+  /* Sits inline with the "People behind Mochi Web3!" note now (see
+     .ct-meet-intro-row in core-team.css) rather than stacked above the
+     avatar strip, so spacing below comes from .ct-meet-strip's own
+     margin-top instead of a margin here. */
+  max-width: 400px;
+  margin-bottom: 0;
+}
+/* Founder + Leadership + Mentors + Moderators as a boxed photo-card grid
+   (same brand palette/fonts as the rest of the section — just a different
+   layout for these tiers than the standalone /core-team page's feature
+   block + row list). Each card flips on hover/focus to reveal the
+   responsibility text filling the whole card — front (photo, name, role,
+   handle, socials) and back (just the blurb) are two faces of one 3D card,
+   so the grid reads clean at rest and the detail replaces the card rather
+   than covering part of it. */
+.mw-landing .ct-embedded .ct-card-grid {
+  /* Overrides the generic `.mw-landing section { padding: 100px 0; }` rule —
+     without this, every card grid (it's a <section>) picks up that 100px
+     top/bottom padding on top of its own spacing. Kept to a small 20px
+     breathing room instead of removing it outright. */
+  padding: 20px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.75rem;
+}
+.mw-landing .ct-embedded .ct-card-grid-founder {
+  grid-template-columns: minmax(0, 240px);
+}
+/* One shared row style for every "team" grid (Leadership, Trading Mentors,
+   Community Moderators) — a single fixed card width so Mentors' two cards
+   render the same size as everyone else's instead of stretching to fill
+   auto-fill's leftover space, and Leadership/Moderators' six cards fit in
+   one row instead of wrapping into two rows of three (which read as too
+   big). Flex instead of grid so a group with fewer members (Mentors) just
+   leaves empty space on the right rather than its cards growing to fill it. */
+.mw-landing .ct-embedded .ct-card-grid-row {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1.75rem;
+}
+.mw-landing .ct-embedded .ct-card-grid-row .ct-team-card {
+  flex: 0 0 148px;
+}
+@media (max-width: 1024px) {
+  .mw-landing .ct-embedded .ct-card-grid-row {
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 640px) {
+  .mw-landing .ct-embedded .ct-card-grid-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .mw-landing .ct-embedded .ct-card-grid-row .ct-team-card {
+    flex-basis: auto;
+  }
+}
+/* The photo, name, role, and back-of-card blurb were all sized for the old
+   ~326px card — at this row's 148px card they no longer fit their padding
+   (the 112px photo alone was wider than the space left inside it). Scaled
+   proportionally down for every card in a one-row group. */
+.mw-landing .ct-embedded .ct-card-grid-row .ct-team-card-front,
+.mw-landing .ct-embedded .ct-card-grid-row .ct-team-card-back {
+  padding: 1rem 0.75rem;
+}
+.mw-landing .ct-embedded .ct-card-grid-row .ct-team-card-back {
+  padding: 1.15rem 0.9rem;
+}
+.mw-landing .ct-embedded .ct-card-grid-row .ct-team-card-media {
+  width: 68px;
+  height: 68px;
+  margin-bottom: 0.7rem;
+}
+.mw-landing .ct-embedded .ct-card-grid-row .ct-team-card-name {
+  font-size: 0.82rem;
+}
+.mw-landing .ct-embedded .ct-card-grid-row .ct-team-card-role {
+  margin-top: 0.25rem;
+  font-size: 0.56rem;
+  letter-spacing: 0.1em;
+}
+.mw-landing .ct-embedded .ct-card-grid-row .ct-team-card-back p {
+  font-size: 0.72rem;
+  line-height: 1.45;
+}
+.mw-landing .ct-embedded .ct-card-grid-row .ct-socials {
+  gap: 8px;
+  margin-top: 0.5rem;
+}
+.mw-landing .ct-embedded .ct-card-grid-row .ct-socials svg {
+  width: 13px;
+  height: 13px;
+}
+.mw-landing .ct-embedded .ct-team-card {
+  position: relative;
+  aspect-ratio: 5 / 7;
+  outline: none;
+  perspective: 1400px;
+}
+.mw-landing .ct-embedded .ct-team-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  /* The 180ms delay is hover-intent, not styling: reaching the socials row
+     below the photo means the pointer has to cross the photo first, which
+     would otherwise trigger the flip mid-click and swap the link out from
+     under the cursor before the click lands. A transition-delay lets a quick
+     pass-through revert before the animation ever starts (the browser drops
+     a pending transition if the target value changes back within the delay),
+     while a real hover-to-flip still fires once the delay elapses. */
+  transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1) 180ms;
+  transform-style: preserve-3d;
+}
+/* Flip only triggers off the photo itself, not the whole card — otherwise
+   the socials row on the front face is impossible to actually hover/click
+   before the card rotates away. Keyboard focus on the card still flips it
+   (there's no pointer to conflict with there). */
+.mw-landing .ct-embedded .ct-team-card-inner:has(.ct-team-card-media:hover),
+.mw-landing .ct-embedded .ct-team-card:focus-visible .ct-team-card-inner,
+.mw-landing .ct-embedded .ct-team-card:focus-within .ct-team-card-inner {
+  transform: rotateY(180deg);
+}
+.mw-landing .ct-embedded .ct-team-card-front,
+.mw-landing .ct-embedded .ct-team-card-back {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  /* Same navy as "Our Story" (.ao-dark), so the cards read as one theme with
+     the section above them instead of a light card on a light panel. */
+  background: #050f1e;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 1.75rem 1.4rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  overflow: hidden;
+}
+.mw-landing .ct-embedded .ct-team-card:hover .ct-team-card-front,
+.mw-landing .ct-embedded .ct-team-card:focus-visible .ct-team-card-front,
+.mw-landing .ct-embedded .ct-team-card:focus-within .ct-team-card-front {
+  box-shadow: 0 16px 36px rgba(149, 34, 230, 0.28);
+}
+.mw-landing .ct-embedded .ct-team-card-back {
+  transform: rotateY(180deg);
+  padding: 2.25rem 1.75rem;
+}
+.mw-landing .ct-embedded .ct-team-card-back p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.75);
+  font-style: italic;
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+.mw-landing .ct-embedded .ct-team-card-media {
+  position: relative;
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 1.2rem;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.mw-landing .ct-embedded .ct-team-card-media .ct-slot {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 50% !important;
+}
+.mw-landing .ct-embedded .ct-team-card-media .ct-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+/* Christer's photo is a tall 340×420 portrait (originally the standalone
+   founder feature shot) with more headroom-to-chest framing than the square
+   headshots used for everyone else, so a plain center-crop into this circle
+   clips the top of his head/hair. Shift the crop up so his whole head stays
+   in frame — see the `ct-team-card-media-tall` class in about-section.tsx. */
+.mw-landing .ct-embedded .ct-team-card-media-tall .ct-slot img {
+  object-position: center 15%;
+}
+.mw-landing .ct-embedded .ct-team-card-name {
+  font-family: var(--font-urania), sans-serif;
+  font-weight: 700;
+  font-size: 1.08rem;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+.mw-landing .ct-embedded .ct-team-card-role {
+  margin-top: 0.35rem;
+  letter-spacing: 0.14em;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+.mw-landing .ct-embedded .ct-team-card-handle {
+  margin-top: 0.3rem;
+  font-family: var(--font-dm-mono), ui-monospace, monospace;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+.mw-landing .ct-embedded .ct-team-card .ct-socials {
+  margin-top: 0.6rem;
+  justify-content: center;
+}
+.mw-landing .ct-embedded .ct-socials a,
+.mw-landing .ct-embedded .ct-socials .ct-social-soon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.mw-landing .ct-embedded .ct-socials a {
+  color: var(--accent);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+.mw-landing .ct-embedded .ct-socials a:hover {
+  color: #fff;
+  transform: translateY(-2px);
+}
+/* Platforms without a link yet — same icon, muted and unclickable, ready to
+   light up the moment a real link is added. */
+.mw-landing .ct-embedded .ct-socials .ct-social-soon {
+  color: rgba(255, 255, 255, 0.22);
+  cursor: default;
+}
+@media (max-width: 640px) {
+  .mw-landing .ct-embedded .ct-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+/* overlay team */
+.mw-landing .ao-team-block { margin-bottom: 4rem; }
+.mw-landing .ao-team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.mw-landing .ao-team-card {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.07);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  transition: border-color .3s, transform .3s, box-shadow .3s;
+}
+.mw-landing .ao-team-card:hover {
+  border-color: rgba(149,34,230,.25);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(149,34,230,.1);
+}
+.mw-landing .ao-team-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+.mw-landing .ao-team-card h3 { color: #050f1e; font-weight: 800; font-size: 1.05rem; margin-bottom: .3rem; }
+.mw-landing .ao-team-role {
+  font-size: .78rem;
+  font-weight: 700;
+  color: var(--accent3);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  margin-bottom: .8rem;
+}
+.mw-landing .ao-team-card p { color: #5a5a6e; font-size: .88rem; line-height: 1.65; }
+/* cta */
+.mw-landing .ao-cta { text-align: center; padding-top: 2rem; }
+@media(max-width:600px) {
+  .mw-landing .ao-team-grid { grid-template-columns: 1fr 1fr; }
+  .mw-landing .about-overlay-inner { padding: 3rem 1rem 4rem; }
+}
+.mw-landing .offer-apply-btn { margin-top: 2rem; }
+/* ── Dark panel (explicit) ── */
+.mw-landing .offer-panel:not(.offer-light) { background: #050f1e; }
+/* ── Light panel theme ── */
+.mw-landing .offer-panel.offer-light { background: #f9f8f5; }
+/* This panel paints its own light cream background over its dark .v2-dark
+   ancestor (#what-we-offer), but --btn-shadow doesn't know that — custom
+   properties inherit through the DOM regardless of what a descendant paints
+   over itself, so "Apply for mentorship" was inheriting the white shadow
+   meant for the section's other (actually dark) panels and going nearly
+   invisible against this light one. Set it back to ink here so this button
+   matches "Learn More About Us" (about-learn-btn), the other .btn-dark that
+   sits on a light background. */
+.mw-landing .offer-panel.offer-light { --btn-shadow: var(--ink); }
+.mw-landing .offer-panel.offer-light .offer-eyebrow { color: rgba(5,15,30,.45); }
+.mw-landing .offer-panel.offer-light .offer-num-label { color: var(--accent3); }
+.mw-landing .offer-panel.offer-light .offer-title { color: #050f1e; }
+.mw-landing .offer-panel.offer-light .offer-desc { color: #5a5a6e; }
+.mw-landing .offer-panel.offer-light .offer-big-num { color: #050f1e; }
+.mw-landing .offer-panel.offer-light .offer-big-label { color: rgba(5,15,30,.45); }
+.mw-landing .offer-panel.offer-light .offer-watermark { color: rgba(5,15,30,0.08); -webkit-text-stroke: 0; }
+.mw-landing .offer-wrap.offer-wrap-light .offer-nav-dash { background: rgba(5,15,30,.18); }
+.mw-landing .offer-wrap.offer-wrap-light .offer-nav-dash.is-active { background: var(--accent3); }
+/* ══════════════ OFFER SLIDER ══════════════ */
+.mw-landing #what-we-offer { padding: 0; height: 600vh; }
+.mw-landing .offer-wrap {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: #050f1e;
+  transition: background 0.5s ease;
+}
+.mw-landing .offer-wrap.offer-wrap-light { background: #f9f8f5; }
+.mw-landing .offer-panel {
+  display: none;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 5rem 6vw 3rem;
+  gap: 4rem;
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+.mw-landing .offer-panel.is-active { display: grid; }
+/* LEFT */
+.mw-landing .offer-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.45);
+  margin-bottom: 1.6rem;
+}
+.mw-landing .offer-num-label {
+  color: var(--accent);
+}
+.mw-landing .offer-title {
+  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -.03em;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+.mw-landing .offer-desc {
+  color: rgba(255,255,255,.5);
+  font-size: 1rem;
+  line-height: 1.75;
+  max-width: 480px;
+}
+.mw-landing .offer-left { position: relative; z-index: 1; }
+/* RIGHT */
+.mw-landing .offer-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+.mw-landing .offer-big-stat {
+  display: flex;
+  align-items: flex-start;
+  line-height: 1;
+  margin-bottom: .8rem;
+}
+.mw-landing .offer-big-num {
+  font-size: clamp(5rem, 12vw, 10rem);
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -.04em;
+  line-height: 1;
+}
+.mw-landing .offer-big-plus {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 900;
+  color: var(--accent);
+  margin-top: .5rem;
+}
+.mw-landing .offer-big-label {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.5);
+}
+.mw-landing .offer-dash-line {
+  display: inline-block;
+  width: 28px;
+  height: 2px;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+.mw-landing .offer-watermark {
+  position: absolute;
+  bottom: -0.12em;
+  right: -0.04em;
+  font-family: var(--font-urania), sans-serif;
+  font-size: clamp(5rem, 10vw, 12rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  /* Solid low-contrast fill (same treatment the light Mentorship panel
+     already used) instead of an outline-only stroke, on Education and
+     Tools' dark background. */
+  color: rgba(255,255,255,0.06);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+  z-index: 0;
+}
+/* All three panels — a slow light sweep across the giant background
+   watermark so the section reads as subtly "alive" instead of static,
+   without competing with the readable copy sitting in front of it.
+   Education (0) and Tools (2) share the dark-panel white sweep; Mentorship
+   (1) is the light panel, so it gets an ink-toned sweep matching its own
+   base watermark color instead (see .offer-light .offer-watermark above). */
+.mw-landing .offer-panel[data-panel="0"] .offer-watermark,
+.mw-landing .offer-panel[data-panel="2"] .offer-watermark {
+  background-image: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0.06) 0%,
+    rgba(255, 255, 255, 0.06) 40%,
+    rgba(255, 255, 255, 0.26) 50%,
+    rgba(255, 255, 255, 0.06) 60%,
+    rgba(255, 255, 255, 0.06) 100%
+  );
+  background-size: 260% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: offerWatermarkShimmer 6s ease-in-out infinite;
+}
+.mw-landing .offer-panel.offer-light[data-panel="1"] .offer-watermark {
+  background-image: linear-gradient(
+    100deg,
+    rgba(5, 15, 30, 0.08) 0%,
+    rgba(5, 15, 30, 0.08) 40%,
+    rgba(5, 15, 30, 0.28) 50%,
+    rgba(5, 15, 30, 0.08) 60%,
+    rgba(5, 15, 30, 0.08) 100%
+  );
+  background-size: 260% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 0;
+  animation: offerWatermarkShimmer 6s ease-in-out infinite;
+}
+@keyframes offerWatermarkShimmer {
+  0% { background-position: 120% 0; }
+  50% { background-position: -20% 0; }
+  100% { background-position: 120% 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mw-landing .offer-panel .offer-watermark { animation: none; }
+}
+/* NAV DASHES */
+.mw-landing .offer-nav-bar {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  padding: 0 6vw 3rem;
+}
+.mw-landing .offer-nav-dash {
+  height: 3px;
+  border-radius: 99px;
+  border: none;
+  background: rgba(255,255,255,.2);
+  width: 28px;
+  cursor: pointer;
+  transition: width .35s ease, background .35s ease;
+  padding: 0;
+}
+.mw-landing .offer-nav-dash.is-active {
+  width: 56px;
+  background: var(--accent);
+}
+.mw-landing .offer-nav-dash:hover:not(.is-active) {
+  background: rgba(255,255,255,.4);
+}
+/* panel fade-in animation */
+@keyframes offerFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.mw-landing .offer-panel.is-active { animation: offerFadeIn .5s cubic-bezier(.4,0,.2,1) forwards; }
+/* nav bar sits at the bottom of the sticky wrap */
+.mw-landing .offer-nav-bar { flex-shrink: 0; padding: 0 6vw 2.5rem; }
+@media(max-width: 768px) {
+  .mw-landing #what-we-offer { height: 650vh; }
+  .mw-landing .offer-panel { grid-template-columns: 1fr; padding: 3rem 1.5rem 1.5rem; gap: 1.5rem; }
+  .mw-landing .offer-watermark { display: none; }
+  .mw-landing .offer-nav-bar { padding: 0 1.5rem 2rem; }
+}
+/* ══════════════ OPPORTUNITIES SECTION ══════════════ */
+.mw-landing .opp-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: flex-end;
+  gap: 3rem;
+  margin-bottom: 4rem;
+  padding-top: 1rem;
+}
+.mw-landing .opp-header-left .section-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 1.2rem;
+}
+.mw-landing .opp-header-left .section-eyebrow::before { content: none; }
+.mw-landing .opp-title {
+  font-size: clamp(2rem, 3.8vw, 3.5rem);
+  font-weight: 900;
+  color: #050f1e;
+  letter-spacing: -.03em;
+  line-height: 1.08;
+}
+.mw-landing .opp-header-right p {
+  color: #5a5a6e;
+  font-size: 1rem;
+  line-height: 1.75;
+  text-align: right;
+}
+.mw-landing .opp-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.mw-landing .opp-card {
+  background: #fff;
+  border: 1px solid rgba(5,15,30,.07);
+  border-radius: 20px;
+  padding: 2.2rem 2rem;
+  transition: border-color .3s, box-shadow .3s, transform .3s;
+}
+.mw-landing .opp-card:hover {
+  border-color: rgba(149,34,230,.2);
+  box-shadow: 0 12px 40px rgba(149,34,230,.08);
+  transform: translateY(-4px);
+}
+.mw-landing .opp-card-icon {
+  font-size: 2rem;
+  margin-bottom: 1.2rem;
+  display: block;
+}
+.mw-landing .opp-card h3 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #050f1e;
+  margin-bottom: .8rem;
+}
+.mw-landing .opp-card p {
+  color: #5a5a6e;
+  font-size: .92rem;
+  line-height: 1.7;
+}
+@media(max-width: 900px) {
+  .mw-landing .opp-header { grid-template-columns: 1fr; }
+  .mw-landing .opp-header-right p { text-align: left; }
+  .mw-landing .opp-cards { grid-template-columns: 1fr; }
+}
+/* ============================================================
+   MOCHI × BRILLIANT.DIGITAL — Design System
+   Adapted to mochiworld-revamp purple palette
+   --accent #c88ef1  --teal #5ef0d2  --accent3 #9522e6
+   ============================================================ */
+:root {
+  --gradient-brand:            linear-gradient(135deg, var(--accent3) 0%, var(--teal) 100%);
+  --gradient-brand-horizontal: linear-gradient(90deg,  var(--accent3) 0%, var(--teal) 100%);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out:   cubic-bezier(0.4, 0, 0.2, 1);
+  --radius-card:   20px;
+  --radius-pill:   30px;
+}
+/* ── Keyframes (brilliant-digital-animations.md) ── */
+@keyframes badgePulse {
+  0%, 100% { box-shadow: rgba(41, 213, 90, 0.55) 0px 0px; }
+  50%       { box-shadow: rgba(41, 213, 90, 0)    0px 0px 0px 8px; }
+}
+@keyframes brilliant-flow {
+  0%   { background-position: 0%   center; }
+  50%  { background-position: 100% center; }
+  100% { background-position: 0%   center; }
+}
+@keyframes scrollFill {
+  0%   { transform: translateX(-50%) translateY(-14px); }
+  50%  { transform: translateX(-50%) translateY(40px); }
+  100% { transform: translateX(-50%) translateY(-14px); }
+}
+@keyframes marquee-scroll { 0% { transform: translate(0px);   } 100% { transform: translate(-50%); } }
+@keyframes marquee-scroll-left { 0% { transform: translate(0px);   } 100% { transform: translate(-50%); } }
+@keyframes marquee-scroll-right { 0% { transform: translate(-50%);  } 100% { transform: translate(0px);  } }
+
+/* ── Claims marquee ──
+   Full-bleed brand-gradient strip right under the hero, bold uppercase
+   claims scrolling edge to edge — reuses marquee-scroll-left, the same
+   keyframe the testimonials ticker runs on. */
+.mw-landing .claims-marquee {
+  overflow: hidden;
+  background: var(--gradient-brand-horizontal);
+}
+.mw-landing .claims-track {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  width: max-content;
+  padding: 16px 0;
+  animation: marquee-scroll-left 34s linear infinite;
+  will-change: transform;
+}
+.mw-landing .claims-marquee:hover .claims-track {
+  animation-play-state: paused;
+}
+.mw-landing .claims-item {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-family: var(--font-urania), sans-serif;
+  font-weight: 800;
+  font-size: clamp(14px, 1.5vw, 19px);
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: #050f1e;
+  white-space: nowrap;
+}
+.mw-landing .claims-dot {
+  opacity: 0.4;
+  font-size: 0.7em;
+}
+@media (prefers-reduced-motion: reduce) {
+  .mw-landing .claims-track { animation: none; }
+}
+
+/* ── Section curve ──
+   A wide arc instead of a hard seam between two full-bleed sections of
+   contrasting background. The dome is a genuine circular arc — an SVG
+   <path> using the sagitta formula (R = (c² + s²) / 2s for half-chord c=500
+   and sagitta s=100 in the viewBox below, giving R=1300) — rather than the
+   old border-radius:100% 100% 0 0 trick, which stretches a rectangle into
+   an ELLIPSE whenever its width and height differ (always, on a full-bleed
+   band). An earlier version tried getting real circularity from an
+   oversized 8000×8000px div; that was expensive to keep rasterized/
+   composited and was the actual cause of scroll jank. An SVG path has no
+   such cost — it's vector geometry, not a giant painted layer — so this
+   gets true circularity without that regression.
+
+   The remaining piece: `height: 10vw` (not a fixed px breakpoint) keeps
+   the rendered box's aspect ratio locked to the viewBox's own 1000:100
+   (10:1) ratio at every viewport width — width is always ~100vw (the
+   full-bleed section) and height is always 10% of that, so the two never
+   drift apart. That's what lets `preserveAspectRatio="none"` scale the
+   path with zero distortion instead of squashing it back into an ellipse;
+   clamp() only bends this slightly at extreme viewport sizes.
+
+   Sits between Community Wins (#community-stats, dark) and Funded Traders
+   (#funded, light) — a cream dome rising out of the dark section, per the
+   projectone.website reference. `.section-curve`'s own background matches
+   the section above (so the flat corners — where the arc's fill tapers to
+   nothing at the very left/right edges — blend in seamlessly); `--to-light`
+   colors the dome fill with the section below's color. */
+.mw-landing .section-curve {
+  position: relative;
+  overflow: hidden;
+  height: clamp(40px, 10vw, 200px);
+  z-index: 0;
+}
+.mw-landing .section-curve-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.mw-landing .section-curve--to-light {
+  background: #050f1e;
+}
+.mw-landing .section-curve--to-light .section-curve-svg path {
+  fill: #f9f8f5;
+}
+
+/* ── ht-serif: italic gradient text ── */
+/* display:inline-block + a little right padding: background-clip:text wraps
+   the glyph run's advance width exactly, so an italic run's overhang on its
+   last character (the slant carries past the glyph's own advance box) gets
+   clipped without the extra room — most visible on trailing letters like the
+   "s" in "Events". */
+.mw-landing .ht-serif {
+  display: inline-block;
+  padding-right: 0.1em;
+  font-style: italic;
+  -webkit-text-fill-color: transparent;
+  background: var(--gradient-brand);
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-size: 200% auto;
+  animation: brilliant-flow 5s ease-in-out infinite;
+}
+/* ── Scroll progress bar ── */
+/* ── Section typography ── */
+.mw-landing .section-eyebrow {
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  color: var(--accent) !important;
+  margin-bottom: 0.85rem !important;
+  display: block;
+}
+.mw-landing .section-title {
+  font-size: clamp(2rem, 4.5vw, 3.8rem) !important;
+  font-weight: 900 !important;
+  line-height: 1.05 !important;
+  letter-spacing: -0.02em !important;
+  margin-bottom: 1.1rem !important;
+}
+.mw-landing .section-sub {
+  font-size: 1.05rem !important;
+  line-height: 1.7 !important;
+  color: var(--text-muted) !important;
+}
+/* ── Hero ── */
+.mw-landing .hero { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; }
+.mw-landing .hero-dots {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(rgba(149,34,230,0.1) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none; z-index: 0;
+}
+.mw-landing .hero-glow-bg {
+  position: absolute; top: -20%; right: -5%;
+  width: 55%; height: 75%;
+  background: radial-gradient(ellipse, rgba(149,34,230,0.15) 0%, transparent 70%);
+  pointer-events: none; z-index: 0;
+}
+.mw-landing .hero-inner {
+  position: relative; z-index: 1; width: 100%;
+  max-width: 1280px; margin: 0 auto;
+  padding: 0 clamp(1.5rem, 5vw, 4rem);
+}
+.mw-landing .hero-left { max-width: 680px; }
+.mw-landing .hero-right { display: none; }
+.mw-landing .hero-eyebrow {
+  font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 1.25rem; display: block;
+}
+.mw-landing .hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(149,34,230,0.1);
+  border: 1px solid rgba(149,34,230,0.3);
+  border-radius: 30px; padding: 6px 14px 6px 10px;
+  font-size: 0.78rem; font-weight: 600;
+  color: var(--accent); letter-spacing: 0.04em;
+  margin-bottom: 1.5rem;
+}
+.mw-landing .badge-dot {
+  display: inline-block !important;
+  width: 8px !important; height: 8px !important; border-radius: 50%;
+  background: #29d55a !important;
+  animation: badgePulse 2s ease-in-out infinite;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+.mw-landing .hero h1 {
+  font-size: clamp(2rem, 4vw, 3.8rem) !important;
+  font-weight: 900 !important; line-height: 1.03 !important;
+  letter-spacing: -0.03em !important; margin-bottom: 1.5rem !important;
+}
+.mw-landing .scroll-indicator {
+  display: flex; align-items: center; gap: 10px;
+  margin-top: 3rem; color: rgba(220,210,255,0.4);
+  font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+}
+.mw-landing .scroll-mouse {
+  width: 22px; height: 36px;
+  border: 1.5px solid rgba(149,34,230,0.4);
+  border-radius: 11px; position: relative; overflow: hidden;
+}
+.mw-landing .scroll-dot {
+  width: 4px; height: 7px;
+  background: var(--gradient-brand-horizontal);
+  border-radius: 2px; position: absolute;
+  left: 50%; top: 50%;
+  transform: translateX(-50%) translateY(-14px);
+  animation: scrollFill 2s ease-in-out infinite;
+}
+/* ── Nav ── */
+/* ── Buttons ── */
+/* "Sticker" pill button — thick ink border, hard offset shadow (no blur),
+   and a separate icon badge riding inside the pill, patterned after a
+   projectone.website reference button. Colors are Mochi's own (--accent3
+   purple + --ink near-black) rather than the reference's lime green —
+   only the shape/interaction was borrowed. Normal: purple fill, dark
+   text, dark badge with a light arrow rotated +45deg so the ↗ glyph
+   levels out to read as a plain →. Hover: the whole fill flips to
+   --ink, text turns white, and the badge flips to purple with a dark
+   arrow derotated back to its natural ↗ diagonal — a two-part color
+   swap instead of a single tone change. */
+/* --btn-shadow drives the sticker shadow color for .btn-dark/.btn-light:
+   ink by default (readable on light/gradient backgrounds), flipped to
+   white wherever a section's background goes dark — see the two overrides
+   right after .btn-outline below, and the note on .btn-light above. */
+.mw-landing .btn-dark {
+  display: inline-flex; align-items: center; gap: 14px;
+  background: var(--accent3); color: var(--ink);
+  padding: 8px 8px 8px 28px; border-radius: var(--radius-pill);
+  font-size: 0.88rem; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase;
+  text-decoration: none; position: relative;
+  border: 2.5px solid var(--ink);
+  box-shadow: 4px 4px 0 0 var(--btn-shadow, var(--ink));
+  transition: background 0.3s ease, color 0.3s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+.mw-landing .btn-dark:hover {
+  background: var(--ink);
+  color: #fff;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 0 var(--btn-shadow, var(--ink));
+}
+.mw-landing .btn-dark .btn-icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px; flex-shrink: 0;
+  background: var(--ink); color: #fff;
+  border-radius: 14px;
+  font-size: 1rem; font-style: normal;
+  /* The glyph itself is "↗" (already diagonal); rotating it +45deg
+     (clockwise) levels it out to read as a plain "→" at rest. */
+  transform: rotate(45deg);
+  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+.mw-landing .btn-dark:hover .btn-icon {
+  background: var(--accent3); color: var(--ink);
+  transform: rotate(0deg);
+}
+/* Dark-background contexts these sticker buttons render in: the hero
+   (dark by default — no wrapper class, it just sits on the page's own dark
+   background), any .v2-dark section (e.g. "what-we-offer"), and any
+   .ao-dark panel (the About/Partnership overlays and the standalone
+   /partners page, all navy). A near-black ink shadow disappears against a
+   near-black background, so swap it for white there. .v2-light sections
+   and .partner-cta's purple/teal gradient are light/vibrant enough for the
+   ink shadow to stay legible, so they're left at the default above. */
+.mw-landing .hero,
+.mw-landing .v2-dark,
+.mw-landing .ao-dark {
+  --btn-shadow: #fff;
+}
+.mw-landing .btn-outline {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; border: 1.5px solid rgba(149,34,230,0.35);
+  color: var(--text); padding: 14px 32px; border-radius: var(--radius-pill);
+  font-size: 0.88rem; font-weight: 700; text-decoration: none;
+  position: relative; overflow: hidden;
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+.mw-landing .btn-outline::before {
+  content: ""; position: absolute; inset: 0;
+  background: var(--gradient-brand); opacity: 0;
+  transition: opacity 0.4s; border-radius: inherit; z-index: 0;
+}
+.mw-landing .btn-outline:hover::before { opacity: 0.12; }
+.mw-landing .btn-outline:hover {
+  border-color: var(--accent);
+  box-shadow: rgba(149,34,230,0.25) 0px 8px 24px;
+  transform: translateY(-2px);
+}
+.mw-landing .btn-outline span { position: relative; z-index: 1; }
+/* ── srv-row (numbered service/education rows) ── */
+.mw-landing .srv-rows { margin-top: 3rem; }
+.mw-landing .srv-row {
+  display: flex; align-items: center; gap: 2rem;
+  padding: 2rem 1rem;
+  border-bottom: 1px solid rgba(149,34,230,0.12);
+  position: relative; cursor: pointer;
+  transition: padding 0.4s var(--ease-in-out);
+  border-radius: 8px; text-decoration: none; color: inherit;
+}
+.mw-landing .srv-row::after {
+  content: ""; position: absolute; inset: 0;
+  background: rgba(149,34,230,0.04);
+  border-radius: 8px; opacity: 0;
+  transition: opacity 0.4s; pointer-events: none;
+}
+.mw-landing .srv-row:hover { padding-left: 1.5rem; padding-right: 1.5rem; }
+.mw-landing .srv-row:hover::after { opacity: 1; }
+.mw-landing .srv-num {
+  font-size: clamp(2rem, 3vw, 3rem); font-weight: 900;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1.5px rgba(149,34,230,0.35);
+  min-width: 72px; line-height: 1;
+  transition: all 0.4s var(--ease-in-out);
+}
+.mw-landing .srv-row:hover .srv-num {
+  -webkit-text-stroke-color: transparent;
+  background: var(--gradient-brand);
+  background-clip: text; -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.mw-landing .srv-body { flex: 1; }
+.mw-landing .srv-body h3 { font-size: 1.15rem; font-weight: 700; color: var(--text); margin-bottom: 0.4rem; }
+.mw-landing .srv-body p { font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; max-width: 520px; }
+.mw-landing .srv-arrow { font-size: 1.4rem; color: var(--text-sub); transition: transform 0.3s, color 0.3s; margin-left: auto; }
+.mw-landing .srv-row:hover .srv-arrow { color: var(--accent); transform: translate(4px,-4px); }
+/* ── Dual marquee testimonials ── */
+.mw-landing .marquee-row {
+  overflow: hidden; padding-block: 0.5rem;
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+.mw-landing .marquee-track { display: flex; gap: 1.5rem; width: max-content; }
+.mw-landing .marquee-track-left { animation: 40s linear 0s infinite normal none running marquee-scroll-left; }
+.mw-landing .marquee-track-right { animation: 40s linear 0s infinite normal none running marquee-scroll-right; }
+.mw-landing .marquee-row:hover .marquee-track { animation-play-state: paused; }
+.mw-landing .testi-card-bd {
+  min-width: 320px; max-width: 380px;
+  background: rgba(149,34,230,0.05);
+  border: 1px solid rgba(149,34,230,0.15);
+  border-radius: var(--radius-card); padding: 1.5rem 1.75rem;
+  flex-shrink: 0;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.mw-landing .testi-card-bd:hover {
+  border-color: rgba(149,34,230,0.3);
+  box-shadow: rgba(149,34,230,0.12) 0px 8px 30px;
+}
+.mw-landing .testi-card-bd .testi-stars { color: var(--accent); font-size: 0.85rem; margin-bottom: 0.75rem; }
+.mw-landing .testi-card-bd .testi-text { font-size: 0.92rem; line-height: 1.65; color: rgba(220,210,255,0.75); margin-bottom: 1rem; font-style: italic; }
+.mw-landing .testi-card-bd .testi-name { font-weight: 700; font-size: 0.88rem; color: var(--text); }
+.mw-landing .testi-card-bd .testi-role { font-size: 0.78rem; color: var(--text-sub); margin-top: 2px; }
+/* ── Footer social icons (ft-soc) ── */
+/* ── clink animated underline ── */
+.mw-landing .clink { text-decoration: none; color: inherit; }
+.mw-landing .clink-val { position: relative; }
+.mw-landing .clink-val::after {
+  content: ""; position: absolute;
+  bottom: -2px; left: 0; width: 0; height: 1.5px;
+  background: var(--gradient-brand-horizontal);
+  transition: width 0.35s var(--ease-out-expo);
+}
+.mw-landing .clink:hover .clink-val::after { width: 100%; }
+/* ── Card hover lift ── */
+.mw-landing .airdrop-card,
+.mw-landing .edu-card,
+.mw-landing .partner-card {
+  transition: transform 0.35s var(--ease-out-expo), box-shadow 0.35s var(--ease-out-expo), border-color 0.35s;
+}
+.mw-landing .edu-card:hover,
+.mw-landing .partner-card:hover {
+  transform: translateY(-5px);
+  box-shadow: rgba(149,34,230,0.2) 0px 16px 48px;
+  border-color: rgba(149,34,230,0.3);
+}
+/* ── Text / card link underline ── */
+.mw-landing .card-link,
+.mw-landing .text-link { position: relative; text-decoration: none; }
+.mw-landing .card-link::after,
+.mw-landing .text-link::after {
+  content: ""; position: absolute;
+  bottom: -2px; left: 0; width: 0; height: 1.5px;
+  background: var(--gradient-brand-horizontal);
+  transition: width 0.35s var(--ease-out-expo);
+}
+.mw-landing .card-link:hover::after,
+.mw-landing .text-link:hover::after { width: 100%; }
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .mw-landing .ht-serif,
+  .mw-landing h1 em,
+  .mw-landing h2 em { animation: none !important; }
+  .mw-landing .marquee-track { animation: none !important; }
+  .mw-landing .badge-dot,
+  .mw-landing .scroll-dot { animation: none !important; }
+}
+/* ============================================================
+   BRILLIANT.DIGITAL SECTION BACKGROUNDS
+   Dark: #050f1e  |  Light: #f4f3ef  |  Off-white: #f9f8f5
+   Same alternating pattern as brilliant.digital
+   ============================================================ */
+:root {
+  --bd-dark:      #050f1e;
+  --bd-light:     #f4f3ef;
+  --bd-off-white: #f9f8f5;
+  --bd-text-dark: #050f1e;
+  --bd-text-sec:  #4a4a6a;
+}
+/* NAV */
+/* HERO — dark */
+.mw-landing section.hero,
+.mw-landing section#home {
+  background: var(--bd-dark) !important;
+}
+/* ABOUT — light */
+.mw-landing section.about,
+.mw-landing section#about {
+  background: var(--bd-off-white) !important;
+  color: var(--bd-text-dark) !important;
+}
+.mw-landing section#about .section-eyebrow { color: var(--accent3) !important; }
+.mw-landing section#about .section-title { color: var(--bd-text-dark) !important; }
+.mw-landing section#about .section-sub { color: var(--bd-text-sec) !important; }
+.mw-landing section#about h2,
+.mw-landing section#about h3 { color: var(--bd-text-dark) !important; }
+.mw-landing section#about p { color: var(--bd-text-sec) !important; }
+.mw-landing section#about .about-feature { background: rgba(149,34,230,0.06); border-color: rgba(149,34,230,0.15); }
+.mw-landing section#about .feature-title { color: var(--bd-text-dark) !important; }
+.mw-landing section#about .feature-desc { color: var(--bd-text-sec) !important; }
+/* EDUCATION — dark */
+.mw-landing section.education,
+.mw-landing section#education {
+  background: var(--bd-dark) !important;
+}
+/* COMMUNITY — light */
+.mw-landing section#community {
+  background: var(--bd-off-white) !important;
+  color: var(--bd-text-dark) !important;
+}
+.mw-landing section#community .section-eyebrow { color: var(--accent3) !important; }
+.mw-landing section#community .section-title { color: var(--bd-text-dark) !important; }
+.mw-landing section#community .section-sub { color: var(--bd-text-sec) !important; }
+.mw-landing section#community h2,
+.mw-landing section#community h3 { color: var(--bd-text-dark) !important; }
+.mw-landing section#community p { color: var(--bd-text-sec) !important; }
+.mw-landing section#community .partner-card {
+  background: #fff !important;
+  border-color: rgba(149,34,230,0.12) !important;
+}
+.mw-landing section#community .partner-card h3 { color: var(--bd-text-dark) !important; }
+.mw-landing section#community .partner-card p { color: var(--bd-text-sec) !important; }
+/* TESTIMONIALS — dark */
+.mw-landing section.testimonials {
+  background: var(--bd-dark) !important;
+}
+/* FAQ — dark */
+.mw-landing section.faq,
+.mw-landing section#faq {
+  background: var(--bd-dark) !important;
+}
+/* FOOTER — dark */
+/* Ticker strip between hero and next section */
+.mw-landing .ticker-wrap {
+  background: var(--bd-dark) !important;
+  border-top: 1px solid rgba(255,255,255,0.05) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+}
+/* ── Section transition dividers (subtle line between dark→light) ── */
+.mw-landing section.about::before,
+.mw-landing section#community::before {
+  content: '';
+  display: block;
+  height: 1px;
+  background: rgba(149,34,230,0.15);
+  margin-bottom: 0;
+}
+/* ============================================================
+   MOCHIWORLD V2 — Section-specific styles
+   ============================================================ */
+/* Section background helpers */
+.mw-landing .v2-dark { background: #050f1e !important; }
+.mw-landing .v2-light { background: #f9f8f5 !important; color: #050f1e !important; }
+.mw-landing .v2-mid { background: #0d1f3c !important; }
+.mw-landing .v2-mid .section-eyebrow { color: var(--accent3) !important; }
+.mw-landing .v2-mid .section-title { color: #fff !important; }
+.mw-landing .v2-mid .section-sub { color: rgba(255,255,255,0.65) !important; }
+.mw-landing .v2-light .section-eyebrow { color: var(--accent3) !important; }
+.mw-landing .v2-light .section-title { color: #050f1e !important; }
+.mw-landing .v2-light .section-sub { color: #4a4a6a !important; }
+.mw-landing .v2-light h2,
+.mw-landing .v2-light h3 { color: #050f1e !important; }
+.mw-landing .v2-light p { color: #4a4a6a; }
+.mw-landing .v2-light .srv-num { -webkit-text-stroke-color: rgba(149,34,230,0.3) !important; }
+.mw-landing .v2-light .srv-body h3 { color: #050f1e !important; }
+.mw-landing .v2-light .srv-body p { color: #4a4a6a !important; }
+.mw-landing .v2-light .srv-row { border-bottom-color: rgba(149,34,230,0.12) !important; }
+.mw-landing .v2-light .srv-arrow { color: rgba(5,15,30,0.25) !important; }
+/* Community Testimonials (testimonials.css) is written for a dark panel —
+   #fff / near-white text, and --text-sub tuned for a navy background.
+   Re-pointing --text-sub here fixes every var(--text-sub) consumer at once
+   (stat labels, disclaimer, meta lines); the rest are literal light-on-dark
+   colors in testimonials.css that need their own override. */
+.mw-landing #community-love.v2-light { --text-sub: rgba(74, 74, 106, 0.75); }
+.mw-landing .v2-light .ml-stat-value,
+.mw-landing .v2-light .ml-lede-quote,
+.mw-landing .v2-light .ml-name,
+.mw-landing .v2-light .ml-tick-feature p {
+  color: #050f1e !important;
+}
+.mw-landing .v2-light .ml-rowquote,
+.mw-landing .v2-light .ml-events p {
+  color: rgba(5, 15, 30, 0.82) !important;
+}
+.mw-landing .v2-light .ml-tick p { color: rgba(5, 15, 30, 0.62) !important; }
+/* The base rules for these live under the `#community-love` id selector, so
+   matching that specificity (rather than !important everywhere) here. */
+.mw-landing #community-love.v2-light .ml-idx { color: rgba(149, 34, 230, 0.22); }
+.mw-landing #community-love.v2-light .ml-tick-mark { color: rgba(149, 34, 230, 0.38); }
+.mw-landing #community-love.v2-light .ml-stat,
+.mw-landing #community-love.v2-light .ml-stat-wide {
+  background: #fff;
+  border-color: rgba(5, 15, 30, 0.08);
+}
+.mw-landing #community-love.v2-light .ml-stat-wide {
+  background: linear-gradient(150deg, rgba(157, 107, 255, 0.12), rgba(149, 34, 230, 0.04));
+}
+/* Section head */
+.mw-landing .v2-section-head { margin-bottom: 3rem; }
+/* ── Timeline ── */
+.mw-landing .story-timeline { position: relative; padding-left: 2.5rem; }
+.mw-landing .story-timeline::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 2px; background: linear-gradient(to bottom, var(--accent3), var(--teal));
+  border-radius: 2px;
+}
+.mw-landing .timeline-item { position: relative; margin-bottom: 3rem; }
+.mw-landing .timeline-dot {
+  position: absolute; left: -2.9rem; top: 4px;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--gradient-brand); border: 2px solid #f9f8f5;
+  flex-shrink: 0;
+}
+.mw-landing .timeline-date {
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--accent3); margin-bottom: 0.4rem;
+}
+.mw-landing .timeline-content h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem; }
+.mw-landing .timeline-content p { font-size: 0.95rem; line-height: 1.7; }
+/* ── Team grid ── */
+.mw-landing .team-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.5rem;
+}
+.mw-landing .team-card {
+  background: rgba(149,34,230,0.06); border: 1px solid rgba(149,34,230,0.15);
+  border-radius: var(--radius-lg); padding: 2rem 1.5rem; text-align: center;
+  transition: transform 0.35s var(--ease-out-expo), box-shadow 0.35s, border-color 0.35s;
+}
+.mw-landing .team-card:hover { transform: translateY(-4px); box-shadow: rgba(149,34,230,0.2) 0 12px 40px; border-color: rgba(149,34,230,0.3); }
+.mw-landing .team-avatar { width: 72px; height: 72px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 1rem; }
+.mw-landing .team-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.25rem; }
+.mw-landing .team-role { font-size: 0.78rem; color: var(--accent); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.75rem; }
+.mw-landing .team-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.25rem; }
+.mw-landing .team-links { display: flex; gap: 8px; justify-content: center; }
+/* ── Job tags ── */
+.mw-landing .job-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 0.5rem; }
+.mw-landing .job-tag {
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.06em;
+  padding: 3px 9px; border-radius: 20px;
+  background: rgba(149,34,230,0.1); border: 1px solid rgba(149,34,230,0.2);
+  color: var(--accent);
+}
+.mw-landing .v2-light .job-tag { background: rgba(149,34,230,0.08); color: var(--accent3); }
+/* ── Mentorship grid ── */
+.mw-landing .mentorship-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap: 1.5rem; }
+.mw-landing .mentor-card {
+  background: #fff; border: 1px solid rgba(149,34,230,0.12);
+  border-radius: var(--radius-lg); padding: 2rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.mw-landing .mentor-card:hover { transform: translateY(-4px); box-shadow: rgba(149,34,230,0.12) 0 12px 32px; }
+.mw-landing .mentor-card.highlight-card { background: linear-gradient(135deg, var(--accent3) 0%, var(--teal) 100%); color: #fff; border: none; }
+.mw-landing .mentor-card.highlight-card p,
+.mw-landing .mentor-card.highlight-card h3 { color: #fff !important; }
+.mw-landing .mentor-icon { font-size: 2rem; margin-bottom: 1rem; }
+.mw-landing .mentor-card h3 { font-size: 1.05rem; font-weight: 700; color: #050f1e; margin-bottom: 0.75rem; }
+.mw-landing .mentor-card p { font-size: 0.9rem; color: #4a4a6a; line-height: 1.65; }
+.mw-landing .edu-list { list-style: none; padding: 0; margin: 0.5rem 0 0; }
+.mw-landing .edu-list li { font-size: 0.88rem; color: #4a4a6a; padding: 0.3rem 0; padding-left: 1.1rem; position: relative; }
+.mw-landing .edu-list li::before { content: '→'; position: absolute; left: 0; color: var(--accent3); }
+.mw-landing .mentor-card.highlight-card .edu-list li { color: rgba(255,255,255,0.85); }
+.mw-landing .mentor-card.highlight-card .edu-list li::before { color: rgba(255,255,255,0.7); }
+/* ── Merch grid ── */
+.mw-landing .merch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px,1fr)); gap: 1.5rem; }
+.mw-landing .merch-card {
+  background: #fff; border: 1px solid rgba(149,34,230,0.1);
+  border-radius: var(--radius-lg); overflow: hidden;
+  transition: transform 0.35s, box-shadow 0.35s;
+}
+.mw-landing .merch-card:hover { transform: translateY(-4px); box-shadow: rgba(149,34,230,0.15) 0 12px 40px; }
+.mw-landing .merch-img { height: 180px; background: linear-gradient(135deg,rgba(149,34,230,0.1),rgba(94,240,210,0.1)); display: flex; align-items: center; justify-content: center; font-size: 4rem; }
+.mw-landing .merch-info { padding: 1.25rem 1.5rem; }
+.mw-landing .merch-info h3 { font-size: 1rem; font-weight: 700; color: #050f1e; margin-bottom: 0.4rem; }
+.mw-landing .merch-info p { font-size: 0.88rem; color: #4a4a6a; line-height: 1.6; margin-bottom: 0.75rem; }
+/* ── NFT grid ── */
+.mw-landing .nft-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 1.5rem; }
+.mw-landing .nft-card {
+  background: #fff; border: 1px solid rgba(149,34,230,0.1);
+  border-radius: var(--radius-lg); overflow: hidden;
+  transition: transform 0.35s, box-shadow 0.35s;
+}
+.mw-landing .nft-card:hover { transform: translateY(-5px); box-shadow: rgba(149,34,230,0.15) 0 16px 48px; }
+.mw-landing .nft-img { height: 180px; display: flex; align-items: center; justify-content: center; position: relative; }
+.mw-landing .nft-emoji { font-size: 4rem; filter: drop-shadow(0 4px 16px rgba(0,0,0,0.2)); }
+.mw-landing .nft-info { padding: 1.25rem 1.5rem; }
+.mw-landing .nft-info h3 { font-size: 1.05rem; font-weight: 700; color: #050f1e; margin-bottom: 0.4rem; }
+.mw-landing .nft-info p { font-size: 0.88rem; color: #4a4a6a; line-height: 1.6; margin-bottom: 0.75rem; }
+.mw-landing .nft-meta { display: flex; align-items: center; justify-content: space-between; font-size: 0.78rem; color: #4a4a6a; }
+/* ── News grid ── */
+.mw-landing .news-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+@media (max-width: 768px) {
+  .mw-landing .news-grid { grid-template-columns: 1fr; }
+}
+.mw-landing .news-card {
+  background: rgba(149,34,230,0.05); border: 1px solid rgba(149,34,230,0.12);
+  border-radius: var(--radius-lg); padding: 1.5rem;
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+.mw-landing .news-card:hover { transform: translateY(-3px); box-shadow: rgba(149,34,230,0.15) 0 8px 30px; border-color: rgba(149,34,230,0.25); }
+.mw-landing .news-card.featured-news { grid-column: span 2; background: rgba(149,34,230,0.08); }
+@media (max-width: 768px) {
+  .mw-landing .news-card.featured-news { grid-column: span 1; }
+}
+.mw-landing .news-tag { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+.mw-landing .news-card h3 { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 0.6rem; line-height: 1.4; }
+.mw-landing .news-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem; }
+.mw-landing .news-meta { display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; color: var(--text-sub); }
+/* ── Tools grid ── */
+.mw-landing .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px,1fr)); gap: 1.5rem; }
+.mw-landing .tool-card {
+  background: #fff; border: 1px solid rgba(149,34,230,0.1);
+  border-radius: var(--radius-lg); padding: 2rem 1.75rem;
+  transition: transform 0.35s, box-shadow 0.35s;
+}
+.mw-landing .tool-card:hover { transform: translateY(-4px); box-shadow: rgba(149,34,230,0.15) 0 12px 40px; }
+.mw-landing .tool-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+.mw-landing .tool-card h3 { font-size: 1.05rem; font-weight: 700; color: #050f1e; margin-bottom: 0.5rem; }
+.mw-landing .tool-card p { font-size: 0.9rem; color: #4a4a6a; line-height: 1.65; margin-bottom: 0.75rem; }
+.mw-landing .tool-meta { margin-top: 0.5rem; }
+/* ── Footer ── */
+/* ── Mobile menu ── */
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .mw-landing .team-grid { grid-template-columns: 1fr 1fr; }
+  .mw-landing .merch-grid { grid-template-columns: 1fr; }
+  .mw-landing .nft-grid { grid-template-columns: 1fr; }
+  .mw-landing .tools-grid { grid-template-columns: 1fr 1fr; }
+  .mw-landing .mentorship-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .mw-landing .team-grid { grid-template-columns: 1fr; }
+  .mw-landing .tools-grid { grid-template-columns: 1fr; }
+}
+/* ── Nav Dropdowns ── */
+/* ── Nav logo animation (from index.html) ── */
+@keyframes logoBob {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-4px); }
+}
+/* ── Hero orb-stage (from index.html) ── */
+.mw-landing .hero-inner-grid {
+  display: grid;
+  grid-template-columns: 1.08fr 0.92fr;
+  gap: 44px;
+  align-items: center;
+  width: 100%;
+}
+.mw-landing .orb-stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 430px;
+}
+.mw-landing .hexglow {
+  width: 300px;
+  height: 330px;
+  position: relative;
+  animation: bob 6s ease-in-out infinite;
+}
+@keyframes bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-16px)} }
+.mw-landing .hexglow img {
+  width: 100%; height: 100%; object-fit: contain;
+  filter: drop-shadow(0 10px 30px rgba(0,0,0,.6)) drop-shadow(0 0 50px rgba(120,90,230,.4));
+}
+.mw-landing .orb-ring {
+  position: absolute; inset: -40px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.08);
+  animation: orbSpin 26s linear infinite;
+}
+.mw-landing .orb-ring::after {
+  content: ""; position: absolute; top: -4px; left: 50%;
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #4E9BFF;
+  box-shadow: 0 0 40px rgba(78,155,255,.35);
+  transform: translateX(-50%);
+}
+.mw-landing .orb-ring.r2 {
+  inset: -72px; animation-duration: 40s;
+  animation-direction: reverse; opacity: .6;
+}
+.mw-landing .orb-ring.r2::after { background: #A66BF0; box-shadow: 0 0 40px rgba(166,107,240,.35); }
+@keyframes orbSpin { to { transform: rotate(360deg); } }
+.mw-landing .orb-chip {
+  position: absolute;
+  background: rgba(13,19,36,.92);
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 15px; padding: 11px 14px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.4), 0 20px 50px rgba(0,0,0,.4);
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13px; font-weight: 600; color: #EDEFF5;
+  animation: orbFloat 5s ease-in-out infinite;
+  white-space: nowrap;
+}
+.mw-landing .orb-chip small { display:block; font-weight:400; color:#9AA0AE; font-size:11px; }
+.mw-landing .orb-chip .ic { width:30px; height:30px; border-radius:9px; display:grid; place-items:center; font-size:15px; flex-shrink:0; }
+.mw-landing .orb-chip.c1 { top:20px; right:-16px; animation-delay:-1s; }
+.mw-landing .orb-chip.c2 { bottom:64px; left:-30px; animation-delay:-3s; }
+.mw-landing .orb-chip.c3 { bottom:0; right:24px; animation-delay:-2s; }
+@keyframes orbFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+@media (max-width: 900px) {
+  .mw-landing .hero-inner-grid { grid-template-columns: 1fr !important; }
+  .mw-landing .orb-stage { min-height: 300px; order: -1; }
+  .mw-landing .hexglow { width: 220px; height: 240px; }
+  .mw-landing .orb-chip.c1,
+  .mw-landing .orb-chip.c2,
+  .mw-landing .orb-chip.c3 { font-size: 11px; padding: 8px 10px; }
+}
+/* ── Footer watermark ── */
+/* ── Community Love marquee ── */
+.mw-landing .testi-marquee {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  overflow: hidden;
+  margin-top: 3rem;
+  /* Break out of container to go full viewport width */
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  mask-image: linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
+}
+.mw-landing .testi-marquee .testi-track-left { animation: marquee-scroll-right 40s linear infinite; }
+.mw-landing .testi-marquee .testi-track-right { animation: marquee-scroll-left  40s linear infinite; }
+.mw-landing .testi-marquee:hover .testi-track { animation-play-state: paused; }
+.mw-landing .testi-author {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* ── FUNDED TRADERS (light) ── */
+/* Shimmer for .fund-figure. Lives in the reference's 04-community-love.css,
+   which was never ported — the testimonials here use a marquee instead — so the
+   keyframe is defined alongside its only remaining consumer. */
+@keyframes ml-stat-shimmer {
+  from { background-position: 0% 50%; }
+  to { background-position: 220% 50%; }
+}
+/* Overrides the generic `.mw-landing section { padding: 100px 0; }` rule —
+   #funded sits directly under .section-curve--to-light's dome, so its own
+   full top padding on top of the curve's height left a big flat gap of the
+   same cream background before "Funded Traders" appeared. Pulled up flush
+   against the dome; bottom padding is untouched. */
+.mw-landing #funded { padding-top: 0; }
+
+.mw-landing #funded .fund-lede {
+  margin-top: 48px; padding-bottom: 22px;
+  border-bottom: 1px solid rgba(20,10,40,0.14);
+  display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: end; gap: 32px;
+}
+.mw-landing #funded .fund-figure {
+  margin: 0; font-size: clamp(56px, 11vw, 150px); font-weight: 800;
+  line-height: 0.86; letter-spacing: -0.05em;
+  background: linear-gradient(100deg, #9522e6, #6d5cf0, #9522e6);
+  background-size: 220% 100%;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  animation: ml-stat-shimmer 9s linear infinite;
+}
+.mw-landing #funded .fund-figure-label {
+  letter-spacing: 0.16em; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; color: #8b8794; margin-bottom: 14px;
+}
+.mw-landing #funded .fund-note {
+  margin: 0 0 10px; max-width: 320px; font-size: 15px; line-height: 1.6;
+  color: #5b5966; text-wrap: pretty;
+}
+.mw-landing #funded .fund-subhead {
+  display: flex; align-items: center; gap: 16px; margin: 40px 0 20px;
+}
+.mw-landing #funded .fund-subhead span:first-child {
+  letter-spacing: 0.18em; font-size: 11px; font-weight: 700;
+  color: #14131c; text-transform: uppercase;
+}
+.mw-landing #funded .fund-subrule { flex: 1; height: 1px; background: rgba(20,10,40,0.12); }
+.mw-landing #funded .fund-subhead span:last-child {
+  letter-spacing: 0.14em; font-size: 11px; font-weight: 600;
+  color: #9b96a8; text-transform: uppercase;
+}
+.mw-landing #funded .fund-list {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px;
+}
+.mw-landing #funded .fund-chip {
+  display: grid; grid-template-columns: 34px minmax(0,1fr); align-items: center;
+  column-gap: 14px; padding: 14px 18px;
+  border: 1px solid rgba(20,10,40,0.12); border-radius: 14px;
+  background: rgba(149,34,230,0.04);
+  transition: border-color .25s ease, transform .25s ease, box-shadow .25s ease;
+}
+.mw-landing #funded .fund-chip:hover {
+  border-color: rgba(149,34,230,0.45); transform: translateY(-3px);
+  box-shadow: 0 14px 34px -20px rgba(149,34,230,0.6);
+}
+.mw-landing #funded .fund-num {
+  font-size: 13px; font-weight: 800; letter-spacing: 0.04em; color: #c0b6d0;
+}
+.mw-landing #funded .fund-ign {
+  min-width: 0; font-size: 16px; font-weight: 700; letter-spacing: -0.015em;
+  color: #14131c; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.mw-landing #funded .fund-empty {
+  margin-top: 18px; padding: 26px 30px; text-align: center;
+  border: 1px dashed rgba(149,34,230,0.30); border-radius: 16px;
+  font-size: 14px; line-height: 1.6; color: #8b8794;
+}
+
+/* Nine highlighted funded-trader photos, one row drifting left-to-right on a
+   loop — grayscale by default, full color on hover (same duplicated-track
+   marquee technique as .ml-marquee in testimonials.css). Pauses on hover. */
+.mw-landing #funded .fund-marquee {
+  margin-top: 44px;
+  width: 100vw; position: relative; left: 50%; right: 50%;
+  margin-left: -50vw; margin-right: -50vw;
+  mask-image: linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
+}
+.mw-landing #funded .fund-marquee-row { overflow: visible; padding-block: 22px; }
+.mw-landing #funded .fund-marquee-track {
+  display: flex; align-items: center; gap: 48px; width: max-content; will-change: transform;
+  animation: marquee-scroll-right 36s linear infinite;
+}
+.mw-landing #funded .fund-marquee:hover .fund-marquee-track {
+  animation-play-state: paused;
+}
+/* Instant-camera / Polaroid-style print: a white card with a thick bottom
+   "caption" border and a slight alternating tilt so the row reads like a
+   scattered stack of printed photos rather than a flat grid of avatars.
+   The shadow is the same hard-edged "sticker" ink border/drop-shadow as
+   the Patricia/Pabikog/w3bs-meetup testimonial cards (see
+   testimonials.css's #community-love .ml-wall-card[data-testimonial-id=...]
+   rules) rather than a soft blurred shadow, for the same reason those
+   cards use it — a crisp, printed-card look instead of a hovering one.
+   Straightens and pops out (translate, same as those cards' hover) on
+   hover. */
+.mw-landing #funded .fund-frame {
+  flex: 0 0 auto;
+  width: 200px;
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  background: #fff;
+  border-radius: 6px;
+  padding: 10px 10px 26px;
+  border: 2px solid var(--ink);
+  box-shadow: 4px 4px 0 0 var(--ink);
+  transform: rotate(-3deg);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.mw-landing #funded .fund-marquee-track .fund-frame:nth-child(even) {
+  transform: rotate(3deg);
+}
+.mw-landing #funded .fund-frame-avatar {
+  width: 100%; aspect-ratio: 1 / 1; margin-bottom: 14px;
+  border-radius: 2px; overflow: hidden;
+}
+.mw-landing #funded .fund-frame-avatar img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  filter: grayscale(1);
+  transition: filter 0.35s ease, transform 0.35s ease;
+}
+/* Guarded to real pointers only — on touch, tapping a card to scroll the
+   marquee would otherwise leave it stuck "hovered" (straightened, popped
+   out, in color) until something else is tapped. */
+@media (hover: hover) and (pointer: fine) {
+  .mw-landing #funded .fund-marquee-track .fund-frame:hover {
+    transform: rotate(0deg) translate(-2px, -2px);
+    box-shadow: 6px 6px 0 0 var(--ink);
+    z-index: 1;
+  }
+  .mw-landing #funded .fund-frame:hover .fund-frame-avatar img {
+    filter: grayscale(0);
+    transform: scale(1.05);
+  }
+}
+.mw-landing #funded .fund-frame-name {
+  max-width: 100%;
+  font-size: 13px; font-weight: 600; letter-spacing: -0.01em; color: #14131c;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+@media (prefers-reduced-motion: reduce) {
+  .mw-landing #funded .fund-marquee-track { animation: none; }
+  .mw-landing #funded .fund-frame-avatar img { transition: none; }
+  .mw-landing #funded .fund-frame { transition: none; }
+}
+@media (max-width: 480px) {
+  .mw-landing #funded .fund-frame { width: 140px; padding: 8px 8px 20px; }
+  .mw-landing #funded .fund-marquee-track { gap: 32px; }
+}
+
+/* ── EVENTS (blue) ── */
+.mw-landing #events.ev-blue {
+  background: #0a1020;
+  color: #eaf1ff;
+  position: relative;
+  overflow: hidden;
+}
+.mw-landing #events.ev-blue > .container {
+  position: relative;
+  z-index: 1;
+}
+/* Drifting "spark" background — same rising-glowing-dot recipe as Community
+   Wins' .ml-spark (testimonials.css, #community-stats), swapped in here in
+   place of the old traveling dashed route line. aria-hidden, sits behind
+   .container, never intercepts clicks. See EVENT_SPARKS in page.tsx. */
+.mw-landing #events.ev-blue .ev-sparks {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.mw-landing #events.ev-blue .ev-spark {
+  position: absolute;
+  bottom: -24px;
+  border-radius: 50%;
+  opacity: 0;
+  animation-name: ev-spark-rise;
+  animation-timing-function: ease-in;
+  animation-iteration-count: infinite;
+}
+.mw-landing #events.ev-blue .ev-spark-accent {
+  background: radial-gradient(circle, #fff 0%, rgba(200,142,241,1) 35%, rgba(200,142,241,0) 72%);
+  box-shadow: 0 0 16px 3px rgba(200,142,241,0.85);
+}
+.mw-landing #events.ev-blue .ev-spark-teal {
+  background: radial-gradient(circle, #fff 0%, rgba(94,240,210,1) 35%, rgba(94,240,210,0) 72%);
+  box-shadow: 0 0 16px 3px rgba(94,240,210,0.8);
+}
+@keyframes ev-spark-rise {
+  0% { transform: translateY(0) scale(0.6); opacity: 0; }
+  15% { opacity: 1; }
+  80% { opacity: 0.9; }
+  100% { transform: translateY(-420px) scale(1); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mw-landing #events.ev-blue .ev-spark { animation: none; opacity: 0; }
+}
+.mw-landing #events.ev-blue .section-title { color: #fff !important; }
+.mw-landing #events.ev-blue .section-sub { color: rgba(210,226,255,0.72) !important; }
+/* Matches "Community Wins" (#community-stats), which has no override of its
+   own and just falls through to .section-eyebrow's default var(--accent). */
+.mw-landing #events.ev-blue .section-eyebrow { color: var(--accent) !important; }
+
+/* Upcoming/Completed segmented control. The pill behind the active label
+   slides on a CSS transform; .is-completed shifts it into the second slot. */
+.mw-landing #events .ev-tabs {
+  position: relative;
+  display: inline-grid; grid-template-columns: repeat(2, 1fr); gap: 4px;
+  margin-top: 30px; padding: 4px; border-radius: 999px;
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(149,34,230,0.22);
+}
+/* Solid accent3 fill + accent border — same colors as .btn-dark (the
+   "Start Learning" button on the homepage hero) instead of the old
+   off-brand cyan-to-purple gradient. */
+.mw-landing #events .ev-tabs-pill {
+  position: absolute; top: 4px; bottom: 4px; left: 4px;
+  width: calc(50% - 4px); border-radius: 999px;
+  background: var(--accent3);
+  border: 1px solid var(--accent);
+  transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.mw-landing #events .ev-tabs-pill.is-completed {
+  transform: translateX(calc(100% + 4px));
+}
+.mw-landing #events .ev-tab {
+  position: relative; z-index: 1;
+  padding: 10px 24px; border: none; border-radius: 999px; background: transparent;
+  font-size: 13px; font-weight: 700; letter-spacing: 0.01em;
+  color: rgba(210,226,255,0.65); cursor: pointer;
+  transition: color 0.3s ease, background 0.3s ease;
+}
+.mw-landing #events .ev-tab.is-active { color: #fff; }
+/* Simple hover affordance for the inactive tab only — the active one
+   already reads as "on" via the sliding accent pill, so it doesn't need
+   its own hover state. Guarded to real pointers so a tap on touch (which
+   immediately switches tabs anyway) never leaves this looking stuck. */
+@media (hover: hover) and (pointer: fine) {
+  .mw-landing #events .ev-tab:not(.is-active):hover {
+    color: rgba(255,255,255,0.9);
+    background: rgba(255,255,255,0.06);
+  }
+}
+.mw-landing #events .ev-tab-count {
+  margin-left: 5px; font-size: 11px; opacity: 0.75;
+}
+
+/* One row, always — instead of squeezing every card into view (which kept
+   shrinking as Completed grew), the rail scrolls horizontally at each
+   card's original ~3-up size and the arrow buttons page through it. */
+.mw-landing #events .ev-rail {
+  position: relative;
+  margin-top: 30px;
+}
+/* The next/previous card peeks in at the rail's edge as a "there's more"
+   hint, but a hard clip there read as a rendering glitch — this fades it
+   into the section background instead. Toggled by .can-scroll-left/-right
+   (set in JS from the same scroll position the arrows use) so the fade
+   only shows on the side that actually has more cards to reveal. */
+.mw-landing #events .ev-rail::before,
+.mw-landing #events .ev-rail::after {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 4px;
+  width: 72px;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.mw-landing #events .ev-rail::before {
+  left: 0;
+  background: linear-gradient(to right, #0a1020, transparent);
+}
+.mw-landing #events .ev-rail::after {
+  right: 0;
+  background: linear-gradient(to left, #0a1020, transparent);
+}
+.mw-landing #events .ev-rail.can-scroll-left::before { opacity: 1; }
+.mw-landing #events .ev-rail.can-scroll-right::after { opacity: 1; }
+.mw-landing #events .ev-grid {
+  display: flex;
+  gap: 22px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: 4px;
+  padding-bottom: 4px;
+  /* Firefox + Chromium/Safari scrollbar hiding — the arrow buttons are the
+     intended way to page through, native scrollbar just looks noisy here. */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.mw-landing #events .ev-grid::-webkit-scrollbar { display: none; }
+.mw-landing #events .ev-card {
+  flex: 0 0 340px;
+  min-width: 0;
+  scroll-snap-align: start;
+  opacity: 0; transform: translateY(16px);
+  animation: ev-card-in 0.55s ease forwards;
+  animation-delay: calc(var(--i, 0) * 80ms);
+}
+.mw-landing #events .ev-arrow {
+  position: absolute;
+  top: 110px;
+  z-index: 2;
+  display: flex; align-items: center; justify-content: center;
+  width: 42px; height: 42px; border-radius: 50%;
+  background: rgba(10,16,32,0.75);
+  border: 1px solid rgba(122,217,240,0.35);
+  color: #eaf1ff;
+  cursor: pointer;
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  transition: border-color 0.25s ease, background 0.25s ease, opacity 0.25s ease, transform 0.15s ease;
+}
+.mw-landing #events .ev-arrow svg { width: 18px; height: 18px; }
+.mw-landing #events .ev-arrow-prev { left: -21px; }
+.mw-landing #events .ev-arrow-next { right: -21px; }
+.mw-landing #events .ev-arrow:disabled {
+  opacity: 0; pointer-events: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  .mw-landing #events .ev-arrow:not(:disabled):hover {
+    border-color: rgba(122,217,240,0.7);
+    background: rgba(10,16,32,0.92);
+  }
+}
+.mw-landing #events .ev-arrow:active { transform: scale(0.94); }
+@media (max-width: 640px) {
+  .mw-landing #events .ev-arrow { display: none; }
+}
+@keyframes ev-card-in {
+  to { opacity: 1; transform: none; }
+}
+.mw-landing #events .ev-shot {
+  position: relative;
+  width: 100%; height: 240px; border-radius: 18px; overflow: hidden;
+  border: 1px solid rgba(122,217,240,0.28);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.mw-landing #events .ev-shot img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.4s ease;
+}
+/* Simple photo-zoom + glow on hover, same idea as the Funded Traders
+   frames' image zoom — the card itself doesn't move, just the photo inside
+   it and its border/glow, so the three-up grid doesn't jostle its
+   neighbors. Guarded to real pointers only. */
+@media (hover: hover) and (pointer: fine) {
+  .mw-landing #events .ev-card:hover .ev-shot {
+    border-color: rgba(122,217,240,0.55);
+    box-shadow: 0 18px 40px -18px rgba(122,217,240,0.35);
+  }
+  .mw-landing #events .ev-card:hover .ev-shot img {
+    transform: scale(1.06);
+  }
+}
+/* Stands in for the reference's bare <image-slot> element, which has no
+   definition anywhere in the design reference beyond its size. */
+.mw-landing #events .ev-shot-empty {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  padding: 0 18px; text-align: center;
+  background: linear-gradient(135deg, rgba(122,217,240,0.10), rgba(149,34,230,0.10));
+  letter-spacing: 0.12em; font-size: 10px; font-weight: 700;
+  text-transform: uppercase; color: rgba(210,226,255,0.55);
+}
+.mw-landing #events .ev-status {
+  position: absolute; top: 12px; left: 12px;
+  padding: 4px 11px; border-radius: 999px;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+}
+.mw-landing #events .ev-status-upcoming { background: #7ad9f0; color: #0a1020; }
+.mw-landing #events .ev-status-completed {
+  background: rgba(10,16,32,0.55); color: #eaf1ff;
+  border: 1px solid rgba(255,255,255,0.25);
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+}
+.mw-landing #events .ev-date {
+  margin-top: 14px; font-size: 11px; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase; color: #7ad9f0;
+}
+.mw-landing #events .ev-title {
+  margin-top: 4px; font-size: 19px; font-weight: 700;
+  letter-spacing: -0.02em; color: #fff;
+}
+.mw-landing #events .ev-caption {
+  margin: 8px 0 0; font-size: 14.5px; line-height: 1.6;
+  color: rgba(210,226,255,0.62);
+}
+.mw-landing #events .ev-caption strong {
+  font-weight: 700; color: #fff;
+}
+.mw-landing #events .ev-empty {
+  margin-top: 30px; padding: 44px 30px; text-align: center;
+  border: 1px dashed rgba(122,217,240,0.30); border-radius: 16px;
+  font-size: 14px; color: rgba(210,226,255,0.6);
+}
+.mw-landing #events .ev-add-note {
+  margin: 34px 0 0; text-align: center;
+  font-size: 14px; line-height: 1.6; color: rgba(210,226,255,0.6);
+}
+.mw-landing #events .ev-add-note a {
+  color: #7ad9f0; text-decoration: underline; text-underline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .mw-landing #events .ev-card { animation: none; opacity: 1; transform: none; }
+  .mw-landing #events .ev-tabs-pill { transition: none; }
+}
+@media (max-width: 900px) {
+  .mw-landing #funded .fund-lede { grid-template-columns: 1fr; }
+  .mw-landing #events .ev-card { flex-basis: 280px; }
+}
+/* ── Burger button ── */

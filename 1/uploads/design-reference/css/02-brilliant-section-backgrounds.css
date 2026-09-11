@@ -1,0 +1,94 @@
+/* ============================================================
+   BRILLIANT.DIGITAL SECTION BACKGROUNDS
+   Dark: #050f1e  |  Light: #f4f3ef  |  Off-white: #f9f8f5
+   Same alternating pattern as brilliant.digital
+   ============================================================ */
+
+:root {
+  --bd-dark:      #050f1e;
+  --bd-light:     #f4f3ef;
+  --bd-off-white: #f9f8f5;
+  --bd-text-dark: #050f1e;
+  --bd-text-sec:  #4a4a6a;
+}
+
+/* NAV */
+nav { background: var(--bd-dark); }
+
+/* HERO — dark */
+section.hero,
+section#home {
+  background: var(--bd-dark) !important;
+}
+
+/* ABOUT — light */
+section.about,
+section#about {
+  background: var(--bd-off-white) !important;
+  color: var(--bd-text-dark) !important;
+}
+section#about .section-eyebrow { color: var(--accent3) !important; }
+section#about .section-title   { color: var(--bd-text-dark) !important; }
+section#about .section-sub     { color: var(--bd-text-sec) !important; }
+section#about h2, section#about h3 { color: var(--bd-text-dark) !important; }
+section#about p  { color: var(--bd-text-sec) !important; }
+section#about .about-feature   { background: rgba(149,34,230,0.06); border-color: rgba(149,34,230,0.15); }
+section#about .feature-title   { color: var(--bd-text-dark) !important; }
+section#about .feature-desc    { color: var(--bd-text-sec) !important; }
+
+/* EDUCATION — dark */
+section.education,
+section#education {
+  background: var(--bd-dark) !important;
+}
+
+/* COMMUNITY — light */
+section#community {
+  background: var(--bd-off-white) !important;
+  color: var(--bd-text-dark) !important;
+}
+section#community .section-eyebrow { color: var(--accent3) !important; }
+section#community .section-title   { color: var(--bd-text-dark) !important; }
+section#community .section-sub     { color: var(--bd-text-sec) !important; }
+section#community h2, section#community h3 { color: var(--bd-text-dark) !important; }
+section#community p  { color: var(--bd-text-sec) !important; }
+section#community .partner-card {
+  background: #fff !important;
+  border-color: rgba(149,34,230,0.12) !important;
+}
+section#community .partner-card h3 { color: var(--bd-text-dark) !important; }
+section#community .partner-card p  { color: var(--bd-text-sec) !important; }
+
+/* TESTIMONIALS — dark */
+section.testimonials {
+  background: var(--bd-dark) !important;
+}
+
+/* FAQ — dark (section markup awaiting user re-upload) */
+section.faq,
+section#faq {
+  background: var(--bd-dark) !important;
+}
+
+/* FOOTER — dark */
+footer {
+  background: var(--bd-dark) !important;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+/* Ticker strip between hero and next section */
+.ticker-wrap {
+  background: var(--bd-dark) !important;
+  border-top: 1px solid rgba(255,255,255,0.05) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+}
+
+/* ── Section transition dividers (subtle line between dark→light) ── */
+section.about::before,
+section#community::before {
+  content: '';
+  display: block;
+  height: 1px;
+  background: rgba(149,34,230,0.15);
+  margin-bottom: 0;
+}

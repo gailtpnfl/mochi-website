@@ -1,0 +1,203 @@
+/* Crypto Trading 101 — course styling built on Mochi Web3's design tokens.
+   The extracted content carries only ct-* classes; everything here maps them
+   to our palette (--accent/--accent3/--pink/--teal/--surface/--border). */
+
+.course-prose {
+  color: var(--foreground);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+.course-prose > div { display: contents; } /* neutralize leftover wrapper divs */
+
+.course-prose h2 {
+  font-size: 1.6rem;
+  color: var(--accent);
+  margin: 2.2rem 0 0.6rem;
+  line-height: 1.2;
+}
+.course-prose h3 {
+  font-size: 1.2rem;
+  color: var(--foreground);
+  margin: 1.9rem 0 0.5rem;
+}
+.course-prose h4 { font-size: 1.02rem; margin: 1.4rem 0 0.4rem; color: var(--accent); }
+.course-prose p { margin: 0.7rem 0; color: rgba(240, 238, 255, 0.86); }
+.course-prose strong { color: var(--foreground); font-weight: 700; }
+.course-prose a { color: var(--teal); text-decoration: underline; text-underline-offset: 2px; }
+.course-prose ul,
+.course-prose ol { margin: 0.7rem 0 0.7rem 1.2rem; padding-left: 0.6rem; }
+.course-prose li { margin: 0.35rem 0; color: rgba(240, 238, 255, 0.86); }
+.course-prose hr { border: none; border-top: 1px solid var(--border); margin: 1.6rem 0; }
+
+/* intro / hero lead */
+.course-prose .ct-hero {
+  border-left: 3px solid var(--accent3);
+  background: var(--surface);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.5rem;
+}
+.course-prose .ct-hero h2 { margin-top: 0; }
+.course-prose .ct-hero p { margin-bottom: 0; }
+
+/* tables */
+.course-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+  display: block;
+  overflow-x: auto;
+}
+.course-prose th,
+.course-prose td {
+  border: 1px solid var(--border);
+  padding: 0.55rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+}
+.course-prose th { background: var(--surface2); color: var(--foreground); font-weight: 700; }
+.course-prose td { color: rgba(240, 238, 255, 0.82); }
+
+/* content cards + grids */
+.course-prose .ct-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.9rem;
+  margin: 1rem 0;
+}
+.course-prose .ct-grid.ct-grid-3 { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 640px) {
+  .course-prose .ct-grid,
+  .course-prose .ct-grid.ct-grid-3 { grid-template-columns: 1fr; }
+}
+.course-prose .ct-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.15rem;
+}
+.course-prose .ct-card-title { font-weight: 700; color: var(--accent); margin-bottom: 0.35rem; }
+.course-prose .ct-card p { margin: 0.3rem 0; font-size: 0.9rem; }
+
+/* callouts */
+.course-prose .ct-callout {
+  border: 1px solid var(--border);
+  border-left-width: 3px;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  background: var(--surface);
+  padding: 0.9rem 1.15rem;
+  margin: 1.1rem 0;
+}
+.course-prose .ct-callout p { margin: 0.25rem 0; }
+.course-prose .ct-callout-label { font-weight: 700; display: block; margin-bottom: 0.35rem; }
+.course-prose .ct-callout--analogy { border-left-color: var(--teal); }
+.course-prose .ct-callout--analogy .ct-callout-label { color: var(--teal); }
+.course-prose .ct-callout--tip { border-left-color: var(--teal); }
+.course-prose .ct-callout--tip .ct-callout-label { color: var(--teal); }
+.course-prose .ct-callout--info { border-left-color: var(--accent); }
+.course-prose .ct-callout--info .ct-callout-label { color: var(--accent); }
+.course-prose .ct-callout--warn { border-left-color: var(--gold); background: rgba(251, 191, 36, 0.06); }
+.course-prose .ct-callout--warn .ct-callout-label { color: var(--gold); }
+
+/* inline keyword + pills */
+.course-prose .ct-keyword { color: var(--accent); font-weight: 600; }
+.course-prose .ct-pill {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.15rem 0.6rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-strong);
+  color: var(--muted);
+  margin-top: 0.5rem;
+}
+.course-prose .ct-pill--green { color: var(--teal); border-color: rgba(94, 240, 210, 0.35); }
+.course-prose .ct-pill--blue { color: var(--accent); border-color: rgba(200, 142, 241, 0.35); }
+
+/* ── quiz ─────────────────────────────────────────────────────────── */
+.ct-quiz {
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  background: var(--surface-solid);
+  padding: 1.5rem;
+  margin: 2rem 0;
+}
+.ct-quiz-head { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1.1rem; }
+.ct-quiz-head h3 { margin: 0; font-size: 1.15rem; color: var(--accent); }
+.ct-quiz-badge {
+  margin-left: auto;
+  font-size: 0.72rem;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  padding: 0.15rem 0.7rem;
+}
+.ct-q { margin: 1.1rem 0; }
+.ct-q + .ct-q { border-top: 1px solid var(--border); padding-top: 1.1rem; }
+.ct-q-text { font-weight: 600; margin-bottom: 0.6rem; }
+.ct-opt {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.65rem 0.85rem;
+  margin: 0.4rem 0;
+  cursor: pointer;
+  font-size: 0.92rem;
+  transition: border-color 0.15s, background 0.15s;
+}
+.ct-opt:hover { border-color: var(--border-strong); background: var(--surface); }
+.ct-opt input { margin-top: 0.2rem; accent-color: var(--accent3); }
+.ct-opt.is-correct { border-color: var(--teal); background: rgba(94, 240, 210, 0.1); }
+.ct-opt.is-wrong { border-color: var(--pink); background: rgba(244, 114, 182, 0.1); }
+.ct-opt.is-answer { border-color: var(--teal); background: rgba(94, 240, 210, 0.05); }
+.ct-q-fb { font-size: 0.85rem; margin-top: 0.45rem; }
+.ct-q-fb.ok { color: var(--teal); }
+.ct-q-fb.no { color: var(--pink); }
+.ct-quiz-result {
+  margin-top: 1.2rem;
+  padding: 0.85rem 1.1rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.ct-quiz-result.pass { background: rgba(94, 240, 210, 0.12); color: var(--teal); }
+.ct-quiz-result.ok { background: rgba(200, 142, 241, 0.12); color: var(--accent); }
+.ct-quiz-result.fail { background: rgba(244, 114, 182, 0.12); color: var(--pink); }
+
+/* ── reader layout ────────────────────────────────────────────────── */
+.ct-reader { display: grid; grid-template-columns: 260px 1fr; gap: 2rem; align-items: start; }
+.ct-sidebar {
+  position: sticky;
+  top: 90px;
+  max-height: calc(100vh - 110px);
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+.ct-sidebar-group { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted-sub); margin: 1.1rem 0 0.4rem; }
+.ct-sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: var(--muted);
+  transition: background 0.15s, color 0.15s;
+}
+.ct-sidebar-link:hover { background: var(--surface); color: var(--foreground); }
+.ct-sidebar-link.active { background: var(--surface2); color: var(--foreground); font-weight: 600; }
+.ct-sidebar-check { margin-left: auto; color: var(--teal); font-size: 0.8rem; }
+@media (max-width: 900px) {
+  .ct-reader { grid-template-columns: 1fr; }
+  .ct-sidebar { position: static; max-height: none; order: 2; border-top: 1px solid var(--border); padding-top: 1rem; margin-top: 2rem; }
+}
+
+/* Smaller prev/next buttons — the default btn size is oversized for this row. */
+.ct-reader-nav .btn-primary,
+.ct-reader-nav .btn-secondary {
+  padding: 9px 18px !important;
+  font-size: 12.5px !important;
+}

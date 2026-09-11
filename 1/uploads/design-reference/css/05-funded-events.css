@@ -1,0 +1,92 @@
+/* ── FUNDED TRADERS (light) ── */
+#funded .fund-lede {
+  margin-top: 48px; padding-bottom: 22px;
+  border-bottom: 1px solid rgba(20,10,40,0.14);
+  display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: end; gap: 32px;
+}
+#funded .fund-figure {
+  margin: 0; font-size: clamp(56px, 11vw, 150px); font-weight: 800;
+  line-height: 0.86; letter-spacing: -0.05em;
+  background: linear-gradient(100deg, #9522e6, #6d5cf0, #9522e6);
+  background-size: 220% 100%;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  animation: ml-stat-shimmer 9s linear infinite;
+}
+#funded .fund-figure-label {
+  letter-spacing: 0.16em; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; color: #8b8794; margin-bottom: 14px;
+}
+#funded .fund-note {
+  margin: 0 0 10px; max-width: 320px; font-size: 15px; line-height: 1.6;
+  color: #5b5966; text-wrap: pretty;
+}
+#funded .fund-subhead {
+  display: flex; align-items: center; gap: 16px; margin: 40px 0 20px;
+}
+#funded .fund-subhead span:first-child {
+  letter-spacing: 0.18em; font-size: 11px; font-weight: 700;
+  color: #14131c; text-transform: uppercase;
+}
+#funded .fund-subrule { flex: 1; height: 1px; background: rgba(20,10,40,0.12); }
+#funded .fund-subhead span:last-child {
+  letter-spacing: 0.14em; font-size: 11px; font-weight: 600;
+  color: #9b96a8; text-transform: uppercase;
+}
+#funded .fund-list {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px;
+}
+#funded .fund-chip {
+  display: grid; grid-template-columns: 34px minmax(0,1fr); align-items: center;
+  column-gap: 14px; padding: 14px 18px;
+  border: 1px solid rgba(20,10,40,0.12); border-radius: 14px;
+  background: rgba(149,34,230,0.04);
+  transition: border-color .25s ease, transform .25s ease, box-shadow .25s ease;
+}
+#funded .fund-chip:hover {
+  border-color: rgba(149,34,230,0.45); transform: translateY(-3px);
+  box-shadow: 0 14px 34px -20px rgba(149,34,230,0.6);
+}
+#funded .fund-num {
+  font-size: 13px; font-weight: 800; letter-spacing: 0.04em; color: #c0b6d0;
+}
+#funded .fund-ign {
+  min-width: 0; font-size: 16px; font-weight: 700; letter-spacing: -0.015em;
+  color: #14131c; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+#funded .fund-empty {
+  margin-top: 18px; padding: 26px 30px; text-align: center;
+  border: 1px dashed rgba(149,34,230,0.30); border-radius: 16px;
+  font-size: 14px; line-height: 1.6; color: #8b8794;
+}
+
+/* ── EVENTS (blue) ── */
+#events.ev-blue {
+  background: #0a1020;
+  color: #eaf1ff;
+}
+#events.ev-blue .section-title { color: #fff; }
+#events.ev-blue .section-sub { color: rgba(210,226,255,0.72); }
+#events.ev-blue .section-eyebrow { color: #7ad9f0; }
+#events .ev-grid {
+  display: grid; grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 22px; margin-top: 30px;
+}
+#events .ev-card { min-width: 0; }
+#events .ev-shot {
+  width: 100%; height: 240px; border-radius: 18px; overflow: hidden;
+  border: 1px solid rgba(122,217,240,0.28);
+}
+#events .ev-shot image-slot { width: 100%; height: 100%; }
+#events .ev-title {
+  margin-top: 16px; font-size: 20px; font-weight: 800;
+  letter-spacing: -0.025em; color: #fff;
+}
+#events .ev-meta {
+  margin-top: 7px; letter-spacing: 0.12em; font-size: 10px;
+  font-weight: 700; text-transform: uppercase; color: #7ad9f0;
+}
+@media (max-width: 900px) {
+  #funded .fund-lede { grid-template-columns: 1fr; }
+  #events .ev-grid { grid-template-columns: 1fr; }
+}

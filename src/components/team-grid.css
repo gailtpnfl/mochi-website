@@ -1,0 +1,176 @@
+/* Core Team grid.
+   The card design is the design reference's `.ao-team-card` (sections/_about-overlay.html
+   + css/00-core.css): gradient avatar, name, uppercase role, bio. The page chrome
+   around it is core-team.html.
+
+   Scoped to .mw-team so the light palette never leaks into the dark site chrome,
+   and so the grid renders identically on /team and inside the landing page's
+   About overlay. The class names stay `mw-team-*` rather than the reference's
+   `ao-team-*`: landing.css already defines `.mw-landing .ao-team-card` at equal
+   specificity, and inside the overlay both scopes match the same element. */
+
+/* .mw-team is the styling scope only, so the grid can be embedded anywhere.
+   .mw-team-page adds the standalone-route chrome on top. */
+.mw-team {
+  color: #16151a;
+  font-family: var(--font-dm-sans), sans-serif;
+}
+
+.mw-team-page {
+  background: #f9f8f5;
+  min-height: 100vh;
+  padding: 72px 40px 96px;
+}
+
+.mw-team-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+/* ── Header ── */
+.mw-team-super {
+  letter-spacing: 0.18em;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent3);
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.mw-team h1 {
+  font-family: var(--font-urania), sans-serif;
+  font-size: clamp(38px, 6vw, 64px);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  color: #050f1e;
+  margin-bottom: 20px;
+}
+
+/* Mirrors .ht-serif (design-reference css/01-mochi-brilliant-patterns.css:40).
+   core-team.html shipped its own `linear-gradient(100deg, --accent3, #7aa0f0)`
+   here, which reads purple→periwinkle and does not match the brand ramp —
+   --gradient-brand is --accent3 → --teal. Both that token and the
+   `brilliant-flow` keyframe are declared globally by landing.css. */
+.mw-team h1 em {
+  font-style: italic;
+  background: var(--gradient-brand);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: brilliant-flow 5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mw-team h1 em {
+    animation: none;
+  }
+}
+
+.mw-team-intro {
+  font-size: 19px;
+  line-height: 1.5;
+  color: #5b5966;
+  max-width: 620px;
+  margin-bottom: 56px;
+}
+
+/* ── Card grid ── */
+/* auto-fill rather than a fixed 4-up: the reference happened to ship four
+   members, this roster is longer and flows onto further rows. */
+.mw-team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+  align-items: stretch;
+}
+
+/* Flex column so cards fill the row's height and the bio takes up the slack —
+   otherwise a short bio leaves dead space under it while the row is sized by
+   the tallest card. */
+.mw-team-person {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.mw-team-person:hover {
+  border-color: rgba(149, 34, 230, 0.25);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(149, 34, 230, 0.1);
+}
+
+.mw-team-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: var(--font-urania), sans-serif;
+  font-size: 1.35rem;
+  flex-shrink: 0;
+  margin-bottom: 1rem;
+}
+
+.mw-team-name {
+  font-family: var(--font-urania), sans-serif;
+  color: #050f1e;
+  font-weight: 800;
+  font-size: 1.05rem;
+  margin-bottom: 0.3rem;
+  /* Full names wrap to two lines at narrow column widths. */
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+.mw-team-role {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--accent3);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.8rem;
+}
+
+/* margin-top:auto is deliberate: it pins the bio to the bottom of the flex
+   column so the role sits directly under the name on every card, however long
+   the bio runs. */
+.mw-team-bio {
+  color: #5a5a6e;
+  font-size: 0.88rem;
+  line-height: 1.65;
+  margin: 0;
+  margin-top: auto;
+}
+
+.mw-team-empty {
+  font-size: 14px;
+  color: #8b8794;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .mw-team-page {
+    padding: 48px 20px 72px;
+  }
+}
+
+@media (max-width: 600px) {
+  .mw-team-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 420px) {
+  .mw-team-grid {
+    grid-template-columns: 1fr;
+  }
+}

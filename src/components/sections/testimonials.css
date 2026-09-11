@@ -1,0 +1,1034 @@
+/* Community testimonials.
+   Ported from design-reference/css/04-community-love.css. The reference's
+   #b98cff / #7ad9f0 ramp is mapped onto --accent / --teal rather than added as
+   near-duplicate hexes; --green is the one genuinely new value. See
+   design-reference/OPEN-QUESTIONS.md.
+
+   The `marquee-scroll-left` and `ml-stat-shimmer` keyframes are declared
+   globally in landing.css. */
+
+/* chrome.css styles the site footer with bare `footer {}` selectors — border,
+   background (with !important), padding, position, overflow. Attributions here
+   are <footer> elements inside <blockquote>, so those rules would draw a box
+   around every one. Reset first. */
+#community-love footer {
+  border: 0;
+  background: transparent !important;
+  padding: 0;
+  padding-block: 0;
+  margin: 0;
+  color: inherit;
+  position: static;
+  overflow: visible;
+}
+
+#community-love blockquote {
+  margin: 0;
+}
+
+/* ── Animated dot-grid background ──
+   A faint dotted grid, panning slowly on a diagonal, behind the whole
+   section — reads as a quiet "network of members" texture without pulling
+   focus from the card wall or ticker in front of it. `isolation: isolate`
+   gives the section its own stacking context so the `z-index: -1` pseudo
+   sits behind the cards but doesn't reach back to repaint anything outside
+   this section. Dots are ink-tinted at very low opacity to stay legible on
+   the section's own off-white (#f9f8f5, via .v2-light). */
+#community-love {
+  position: relative;
+  isolation: isolate;
+}
+#community-love::before {
+  content: "";
+  position: absolute;
+  inset: -20px;
+  z-index: -1;
+  background-image: radial-gradient(rgba(5, 15, 30, 0.09) 1.5px, transparent 1.5px);
+  background-size: 30px 30px;
+  animation: ml-grid-pan 50s linear infinite;
+  pointer-events: none;
+}
+@keyframes ml-grid-pan {
+  from { background-position: 0 0; }
+  to   { background-position: 300px 300px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #community-love::before { animation: none; }
+}
+
+#community-love .ml-cite {
+  font-style: normal;
+}
+
+/* ── Community stats ──
+   Lives in its own `#community-stats` section (see Testimonials.tsx),
+   between the ticker and Funded Traders, carrying the same dark theme
+   (`v2-dark`) as the "Education" panel of the offer slider — this is the
+   dark-panel look the rest of testimonials.css was originally written for,
+   before the `.v2-light` overrides in landing.css repainted #community-love
+   light. */
+#community-stats {
+  position: relative;
+  overflow: hidden;
+}
+#community-stats .container {
+  position: relative;
+  z-index: 1;
+}
+
+#community-stats .ml-stats-head {
+  margin-bottom: 3.5rem;
+}
+
+/* Matches `.offer-title` (the "Powerful Tools" headline in the offer slider)
+   instead of the larger site-wide `.section-title` clamp (up to 3.8rem). */
+#community-stats .ml-stats-head .section-title {
+  font-size: clamp(2rem, 3.5vw, 3.2rem) !important;
+}
+
+#community-stats .ml-stats-line {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  #community-stats .ml-stats-line {
+    white-space: normal;
+  }
+}
+
+/* Highlighter-marker treatment for the headline's last line — a solid tinted
+   box behind bold text, rather than the italic gradient `.ht-serif` used
+   elsewhere on the page. */
+#community-stats .ml-stats-highlight {
+  display: inline-block;
+  padding: 2px 14px 6px;
+  background: linear-gradient(100deg, var(--accent3), var(--teal));
+  color: #050f1e;
+  border-radius: 8px;
+  transform: rotate(-1deg);
+}
+
+#community-stats .ml-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+#community-stats .ml-stat,
+#community-stats .ml-stat-wide {
+  position: relative;
+  min-width: 0;
+  padding: 32px 34px;
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  transition: border-color 0.28s ease, transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+/* Diagonal sheen, swept across on hover. */
+#community-stats .ml-stat::after,
+#community-stats .ml-stat-wide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(105deg, transparent 35%, rgba(200, 142, 241, 0.16) 50%, transparent 65%);
+  transform: translateX(-120%);
+  transition: transform 0.7s ease;
+}
+
+/* Keyboard-focus version of the hover state below — always active
+   regardless of pointer type, so keyboard/switch-device users still get
+   the affordance. */
+#community-stats .ml-stat:focus-within,
+#community-stats .ml-stat-wide:focus-within {
+  border-color: rgba(200, 142, 241, 0.55);
+  transform: translateY(-5px);
+  box-shadow: 0 0 0 1px rgba(200, 142, 241, 0.22), 0 18px 50px -18px rgba(157, 107, 255, 0.55);
+}
+
+/* All :hover-driven effects on this page are scoped to devices that have a
+   real hover-capable, precise pointer (mouse/trackpad). Touch devices fire
+   :hover on tap and then leave the element "stuck" in its hover state
+   until something else is tapped — scoping like this means a tap just
+   activates the link/card normally instead of visibly sticking. */
+@media (hover: hover) and (pointer: fine) {
+  #community-stats .ml-stat:hover,
+  #community-stats .ml-stat-wide:hover {
+    border-color: rgba(200, 142, 241, 0.55);
+    transform: translateY(-5px);
+    box-shadow: 0 0 0 1px rgba(200, 142, 241, 0.22), 0 18px 50px -18px rgba(157, 107, 255, 0.55);
+  }
+
+  #community-stats .ml-stat:hover::after,
+  #community-stats .ml-stat-wide:hover::after {
+    transform: translateX(120%);
+  }
+}
+
+#community-stats .ml-stat-wide {
+  text-align: center;
+  margin-bottom: 12px;
+  padding: 44px 28px 40px;
+  background: linear-gradient(150deg, rgba(157, 107, 255, 0.16), rgba(149, 34, 230, 0.05));
+}
+
+#community-stats .ml-stat-label {
+  letter-spacing: 0.16em;
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-sub);
+  transition: color 0.28s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  #community-stats .ml-stat:hover .ml-stat-label,
+  #community-stats .ml-stat-wide:hover .ml-stat-label {
+    color: var(--accent);
+  }
+}
+
+#community-stats .ml-stat-value {
+  margin-top: 12px;
+  font-size: clamp(44px, 5.2vw, 68px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: #fff;
+  transition: text-shadow 0.28s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  #community-stats .ml-stat:hover .ml-stat-value {
+    text-shadow: 0 0 34px rgba(200, 142, 241, 0.75);
+  }
+}
+
+#community-stats .ml-stat-caption {
+  margin: 6px 0 0;
+  font-size: 12.5px;
+  color: var(--text-sub);
+}
+
+#community-stats .ml-stat-big {
+  margin-top: 14px;
+  font-size: clamp(52px, 9vw, 128px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  background: linear-gradient(100deg, var(--accent), var(--teal), var(--accent));
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: ml-stat-shimmer 9s linear infinite;
+  transition: filter 0.28s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  #community-stats .ml-stat-wide:hover .ml-stat-big {
+    filter: drop-shadow(0 0 38px rgba(157, 107, 255, 0.65));
+  }
+}
+
+/* Plays the hover glow once automatically, right after the peso figure's
+   count-up finishes, the first time it scrolls into view — `.visible` is
+   added by <Reveal> wrapping `.ml-stat-wide`. Re-declaring `animation` here
+   keeps the shimmer running alongside the one-off glow. */
+#community-stats .ml-stat-wide.visible .ml-stat-big {
+  animation: ml-stat-shimmer 9s linear infinite, ml-stat-glow-once 1.4s ease-out 1.1s 1;
+}
+
+@keyframes ml-stat-glow-once {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 0 rgba(157, 107, 255, 0));
+  }
+  50% {
+    filter: drop-shadow(0 0 38px rgba(157, 107, 255, 0.65));
+  }
+}
+
+/* Celebration burst — three firework "shells" (see .ml-win-shell) pop in
+   sequence over the peso-value card the instant its CountUp lands on target
+   (see Testimonials.tsx's onDone). .ml-stat-wide clips overflow, so shell
+   positions and --dist values stay comfortably inside the card rather than
+   escaping it; the container covers the card, above the number/label but
+   non-interactive. */
+#community-stats .ml-win-burst {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Each shell is just an anchor point (left/top set inline per-shell) that
+   its flash + particles are positioned relative to. */
+#community-stats .ml-win-shell {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+#community-stats .ml-win-flash {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 56px;
+  height: 56px;
+  margin: -28px 0 0 -28px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(157, 107, 255, 0.6) 35%,
+    rgba(94, 240, 210, 0.3) 65%,
+    transparent 75%
+  );
+  opacity: 0;
+  transform: scale(0);
+  animation: ml-win-flash 0.6s ease-out forwards;
+}
+
+#community-stats .ml-win-particle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) rotate(var(--angle)) translateX(0) scale(1);
+  opacity: 0;
+  animation: ml-win-burst-particle 1.05s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+#community-stats .ml-win-particle-accent {
+  background: var(--accent);
+  box-shadow: 0 0 16px 2px rgba(149, 34, 230, 0.75);
+}
+
+#community-stats .ml-win-particle-teal {
+  background: var(--teal);
+  box-shadow: 0 0 16px 2px rgba(45, 212, 191, 0.65);
+}
+
+@keyframes ml-win-flash {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+@keyframes ml-win-burst-particle {
+  0% {
+    transform: translate(-50%, -50%) rotate(var(--angle)) translateX(0) scale(1);
+    opacity: 1;
+  }
+  65% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(var(--angle)) translateX(var(--dist)) scale(0.25);
+    opacity: 0;
+  }
+}
+
+/* Disclaimer sits with the figure it qualifies. */
+#community-stats .ml-disclaimer {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--text-sub);
+  text-align: center;
+}
+
+/* ── Testimonial wall ──
+   Explicit 2-3-2 layout, matching the Laravel Cloud reference wall: column 1
+   holds the hero + 1 card, column 2 holds 3 cards, column 3 holds 1 card +
+   the gradient accent card. All three columns share the same 3 row tracks,
+   and the hero/accent cards span 2 of those rows each — so column 1 and
+   column 3 (2 cards apiece) end up exactly as tall as column 2 (3 cards),
+   with every cell filled and no gaps: one solid rectangle. Each card is
+   pinned to its cell with an `.ml-wall-pos-N` class (set in
+   Testimonials.tsx) rather than relying on grid auto-flow, so the 2-3-2
+   split stays exact regardless of card count elsewhere on the page. */
+#community-love .ml-wall {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, minmax(110px, auto));
+  gap: 18px;
+  margin-top: 56px;
+}
+
+#community-love .ml-wall-pos-1 { grid-column: 1; grid-row: 1 / 3; } /* hero, 2 rows tall */
+#community-love .ml-wall-pos-2-0 { grid-column: 1; grid-row: 3; }
+#community-love .ml-wall-pos-3-0 { grid-column: 2; grid-row: 1; }
+#community-love .ml-wall-pos-3-1 { grid-column: 2; grid-row: 2; }
+#community-love .ml-wall-pos-3-2 { grid-column: 2; grid-row: 3; }
+#community-love .ml-wall-pos-4-0 { grid-column: 3; grid-row: 1; }
+#community-love .ml-wall-pos-5 { grid-column: 3; grid-row: 2 / 4; } /* accent, 2 rows tall */
+
+/* Bolder "block" card treatment — chunkier corners, a solid ink-tinted
+   border instead of a hairline, and a flatter default shadow — patterned
+   after a projectone.website pricing-card reference (thick rounded solid
+   color panels). Colors stay Mochi's own; only the shape reads as
+   sturdier/boxier than the previous thin-bordered card. */
+#community-love .ml-wall-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 0;
+  padding: 26px 24px;
+  border: 2px solid rgba(5, 15, 30, 0.12);
+  border-radius: 28px;
+  background: #fff;
+  box-shadow: none;
+  transition: border-color 0.28s ease, transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+/* Simple lift + slight scale-up on hover, plus the existing border/shadow
+   change — nothing fancier than that (no sweeps, glows, or spinning
+   pseudo-elements). Scoped to (hover: hover) and (pointer: fine) — real
+   mouse/trackpad hover — so tapping a card on a touch device just follows
+   it normally instead of leaving the card visibly "stuck" lifted/scaled
+   the way a plain :hover would on mobile. */
+@media (hover: hover) and (pointer: fine) {
+  #community-love .ml-wall-card:hover {
+    border-color: rgba(149, 34, 230, 0.45);
+    transform: translateY(-6px) scale(1.015);
+    box-shadow: 0 18px 40px -22px rgba(149, 34, 230, 0.35);
+  }
+}
+
+#community-love .ml-wall-quote {
+  margin: 0;
+  font-size: clamp(12px, 1vw, 14px);
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: #26243a;
+  text-wrap: pretty;
+  overflow-wrap: break-word;
+}
+
+#community-love .ml-wall-quote em {
+  font-style: normal;
+  background: linear-gradient(100deg, var(--accent3), var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+#community-love .ml-wall-by {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+/* Patricia's quote is written in Tagalog — italicized to signal the
+   language shift, per the roster owner. Targeted by testimonial id rather
+   than a new data field since it's a one-off styling choice, not a trait
+   worth modeling on every Testimonial. */
+#community-love [data-testimonial-id="patricia"] .ml-wall-quote {
+  font-style: italic;
+}
+
+#community-love .ml-wall-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(149, 34, 230, 0.1);
+  color: var(--accent3);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+#community-love .ml-wall-name {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: #050f1e;
+  text-transform: uppercase;
+}
+
+#community-love .ml-wall-meta {
+  display: block;
+  margin-top: 3px;
+  letter-spacing: 0.02em;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: none;
+  color: rgba(74, 74, 106, 0.8);
+}
+
+/* Hero card: dark, first in DOM order so it lands at the top of column 1.
+   Flat solid block — no visible border — matching the reference's plain
+   black panels. */
+#community-love .ml-wall-hero {
+  padding: 32px 28px;
+  background: #050f1e;
+  border-color: transparent;
+  overflow: hidden;
+}
+
+#community-love .ml-wall-hero .ml-wall-quote {
+  font-size: clamp(26px, 2.8vw, 40px);
+  font-weight: 700;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  color: #fff;
+  overflow-wrap: break-word;
+}
+
+#community-love .ml-wall-hero .ml-wall-quote em {
+  background: linear-gradient(100deg, var(--accent), var(--teal));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#community-love .ml-wall-hero .ml-wall-name { color: #fff; }
+#community-love .ml-wall-hero .ml-wall-meta { color: rgba(255, 255, 255, 0.6); }
+
+#community-love .ml-wall-hero .ml-wall-avatar {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+/* Accent card: last in DOM order so it lands at the bottom of the final
+   column. Solid Mochi purple instead of the old purple-to-teal gradient —
+   a flat vivid color block, same idea as the reference's solid lime card. */
+#community-love .ml-wall-accent {
+  background: var(--accent3);
+  border-color: transparent;
+}
+
+#community-love .ml-wall-accent .ml-wall-quote {
+  font-size: clamp(18px, 1.6vw, 22px);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+#community-love .ml-wall-accent .ml-wall-quote,
+#community-love .ml-wall-accent .ml-wall-name {
+  color: #fff;
+}
+
+#community-love .ml-wall-accent .ml-wall-quote em {
+  background: none;
+  -webkit-text-fill-color: currentColor;
+  color: #fff;
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, 0.55);
+}
+
+#community-love .ml-wall-accent .ml-wall-meta {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+#community-love .ml-wall-accent .ml-wall-avatar {
+  background: rgba(255, 255, 255, 0.25);
+  color: #fff;
+}
+
+/* ── Per-member color overrides ──
+   Explicit request, independent of grid position/variant: Sung_Woo and
+   Damu Lag go solid purple (the same treatment as the accent card above);
+   "w3bs-welcome" (the current accent-slot card) goes solid dark, matching
+   the Koys hero card's color instead of its default variant. "w3bs-meetup"
+   stays on the plain light card treatment (grouped below with Patricia &
+   Pabikog). Attribute-selector specificity (0,2,0) beats the
+   .ml-wall-accent / .ml-wall-card class rules above (0,1,0) regardless of
+   source order, so these apply cleanly on top of whichever variant a card
+   was already given. */
+#community-love .ml-wall-card[data-testimonial-id="sung-woo"],
+#community-love .ml-wall-card[data-testimonial-id="damu-lag"] {
+  background: var(--accent3);
+  border-color: transparent;
+}
+#community-love .ml-wall-card[data-testimonial-id="sung-woo"] .ml-wall-quote,
+#community-love .ml-wall-card[data-testimonial-id="damu-lag"] .ml-wall-quote,
+#community-love .ml-wall-card[data-testimonial-id="sung-woo"] .ml-wall-name,
+#community-love .ml-wall-card[data-testimonial-id="damu-lag"] .ml-wall-name {
+  color: #fff;
+}
+#community-love .ml-wall-card[data-testimonial-id="sung-woo"] .ml-wall-meta,
+#community-love .ml-wall-card[data-testimonial-id="damu-lag"] .ml-wall-meta {
+  color: rgba(255, 255, 255, 0.8);
+}
+#community-love .ml-wall-card[data-testimonial-id="sung-woo"] .ml-wall-avatar,
+#community-love .ml-wall-card[data-testimonial-id="damu-lag"] .ml-wall-avatar {
+  background: rgba(255, 255, 255, 0.25);
+  color: #fff;
+}
+
+#community-love .ml-wall-card[data-testimonial-id="w3bs-welcome"] {
+  background: #050f1e;
+  border-color: transparent;
+}
+#community-love .ml-wall-card[data-testimonial-id="w3bs-welcome"] .ml-wall-quote,
+#community-love .ml-wall-card[data-testimonial-id="w3bs-welcome"] .ml-wall-name {
+  color: #fff;
+}
+#community-love .ml-wall-card[data-testimonial-id="w3bs-welcome"] .ml-wall-meta {
+  color: rgba(255, 255, 255, 0.6);
+}
+#community-love .ml-wall-card[data-testimonial-id="w3bs-welcome"] .ml-wall-avatar {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+/* Highlighted phrase inside w3bs-welcome's quote: a small solid-purple
+   bordered badge/pill — same idea as the reference's "THE ONE PLAN" tag,
+   recolored to brand purple instead of lime. Sits inline within the quote
+   paragraph rather than behaving like the plain underline emphasis used
+   elsewhere. */
+#community-love .ml-wall-card[data-testimonial-id="w3bs-welcome"] .ml-wall-quote em {
+  display: inline;
+  background: var(--accent3);
+  -webkit-text-fill-color: #fff;
+  color: #fff;
+  font-style: normal;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1.5px solid var(--accent);
+  border-radius: 8px;
+  padding: 0.05em 0.4em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* Patricia, Pabikog & w3bs-meetup: left on the plain light/white treatment,
+   but with a hard "sticker" drop-shadow border — same idea as the
+   reference's white bordered card ("At month 24…") — instead of the soft
+   tinted hairline the rest of the light cards use. */
+#community-love .ml-wall-card[data-testimonial-id="patricia"],
+#community-love .ml-wall-card[data-testimonial-id="pabikog"],
+#community-love .ml-wall-card[data-testimonial-id="w3bs-meetup"] {
+  border: 2px solid var(--ink);
+  box-shadow: 4px 4px 0 0 var(--ink);
+}
+@media (hover: hover) and (pointer: fine) {
+  #community-love .ml-wall-card[data-testimonial-id="patricia"]:hover,
+  #community-love .ml-wall-card[data-testimonial-id="pabikog"]:hover,
+  #community-love .ml-wall-card[data-testimonial-id="w3bs-meetup"]:hover {
+    border-color: var(--ink);
+    box-shadow: 6px 6px 0 0 var(--ink);
+    transform: translate(-2px, -2px);
+  }
+}
+
+@media (max-width: 900px) {
+  #community-love .ml-wall {
+    grid-template-columns: 1fr;
+  }
+
+  #community-love .ml-wall-pos-1,
+  #community-love .ml-wall-pos-2-0,
+  #community-love .ml-wall-pos-3-0,
+  #community-love .ml-wall-pos-3-1,
+  #community-love .ml-wall-pos-3-2,
+  #community-love .ml-wall-pos-4-0,
+  #community-love .ml-wall-pos-5 {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  #community-love .ml-wall-hero .ml-wall-quote {
+    font-size: clamp(22px, 6vw, 30px);
+  }
+}
+
+/* ── Editorial lede ── */
+#community-love .ml-lede {
+  margin-top: 56px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--border-strong);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+#community-love .ml-lede-quote {
+  margin: 0;
+  max-width: 940px;
+  font-size: clamp(28px, 4vw, 56px);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.045em;
+  color: #fff;
+  text-wrap: balance;
+}
+
+#community-love .ml-lede-quote em {
+  font-style: normal;
+  background: linear-gradient(100deg, var(--accent), var(--teal));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+#community-love .ml-lede-by {
+  flex-shrink: 0;
+  text-align: right;
+  padding-bottom: 6px;
+}
+
+/* ── Numbered rows ── */
+#community-love .ml-rows {
+  border-bottom: 1px solid var(--border);
+}
+
+#community-love .ml-rowitem {
+  display: grid;
+  grid-template-columns: 84px 1fr 232px;
+  align-items: start;
+  column-gap: 32px;
+  padding: 30px 8px 30px 0;
+  border-top: 1px solid var(--border);
+  transition: background 0.3s ease, padding-left 0.3s ease;
+}
+
+#community-love .ml-rowitem:first-child {
+  border-top: none;
+}
+
+#community-love .ml-rowitem:hover {
+  background: linear-gradient(90deg, rgba(157, 107, 255, 0.1), transparent 70%);
+  padding-left: 14px;
+}
+
+#community-love .ml-idx {
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  color: rgba(200, 142, 241, 0.3);
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+#community-love .ml-rowitem:hover .ml-idx {
+  color: var(--accent);
+  text-shadow: 0 0 26px rgba(185, 140, 255, 0.6);
+}
+
+#community-love .ml-rowquote {
+  margin: 0;
+  font-size: clamp(17px, 1.55vw, 22px);
+  line-height: 1.45;
+  letter-spacing: -0.015em;
+  color: rgba(240, 236, 255, 0.94);
+  text-wrap: pretty;
+}
+
+#community-love .ml-rowtag {
+  display: block;
+  margin-top: 14px;
+  letter-spacing: 0.16em;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+#community-love .ml-tag-teal { color: var(--teal); }
+#community-love .ml-tag-accent { color: var(--accent); }
+
+#community-love .ml-rowby {
+  padding-top: 6px;
+}
+
+#community-love .ml-name {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+#community-love .ml-meta {
+  display: block;
+  margin-top: 5px;
+  letter-spacing: 0.1em;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-sub);
+}
+
+/* ── Ticker ──
+   "More From The Community" now sits unframed on the section's own light
+   background — no boxed panel — with its eyebrow label stacked on top of
+   the scrolling mini-quote row instead of beside it, styled the same way
+   as the "Community Testimonials" eyebrow above (green pulsating
+   .badge-dot + accent-purple label text). */
+#community-love .ml-ticker {
+  margin-top: 52px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+#community-love .ml-ticker-label {
+  margin-bottom: 0;
+}
+
+#community-love .ml-marquee {
+  width: 100%;
+  margin-top: 0;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 4%, #000 90%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, #000 4%, #000 90%, transparent 100%);
+}
+
+@media (max-width: 720px) {
+  #community-love .ml-marquee {
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
+  }
+}
+
+#community-love .ml-row {
+  overflow: hidden;
+  padding-block: 6px;
+}
+
+#community-love .ml-track {
+  display: flex;
+  align-items: stretch;
+  gap: 20px;
+  width: max-content;
+  will-change: transform;
+  animation: marquee-scroll-left 95s linear infinite;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  #community-love .ml-marquee:hover .ml-track {
+    animation-play-state: paused;
+  }
+}
+
+/* Same "sticker" card treatment as Patricia's wall card above (see
+   [data-testimonial-id="patricia"] rules) — white panel, thick solid ink
+   border, hard offset drop-shadow instead of a soft blur — brought over to
+   the ticker so the two sections read as one consistent card language
+   instead of the ticker's old soft off-white/hairline-border look. */
+#community-love .ml-tick {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: 320px;
+  max-width: 420px;
+  padding: 14px 20px 12px;
+  border: 2px solid var(--ink);
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 4px 4px 0 0 var(--ink);
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+/* Same hard-shadow "press deeper" hover as Patricia's card: shadow grows
+   and the card nudges up-left toward it, no color/blur change. */
+@media (hover: hover) and (pointer: fine) {
+  #community-love .ml-tick:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 0 var(--ink);
+  }
+}
+
+#community-love .ml-tick-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+#community-love .ml-tick-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(149, 34, 230, 0.1);
+  color: var(--accent3);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* !important on the text colors below beats the `.mw-landing .v2-light
+   .ml-tick p / .ml-name / .ml-tick-feature p` repaint (landing.css), which
+   targets these same classes for the section's normal light-mode
+   testimonial text and would otherwise win on specificity. */
+#community-love .ml-tick-mark {
+  color: var(--ink) !important;
+  font-size: 38px;
+  line-height: 1;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+#community-love .ml-tick p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: var(--ink) !important;
+  text-wrap: pretty;
+}
+
+/* Anonymous's and Mochi | Z's mini-quotes are written in Tagalog —
+   italicized to signal the language shift, same treatment as Patricia's
+   wall card above. */
+#community-love .ml-tick[data-testimonial-id="anonymous"] p,
+#community-love .ml-tick[data-testimonial-id="mochi-z"] p {
+  font-style: italic;
+}
+
+#community-love .ml-tick-by {
+  margin-top: 8px;
+}
+
+#community-love .ml-tick .ml-name {
+  display: inline;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink) !important;
+}
+
+#community-love .ml-tick .ml-meta {
+  display: inline;
+  margin-left: 6px;
+  color: rgba(5, 15, 30, 0.55) !important;
+}
+
+#community-love .ml-tick-feature p {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ink) !important;
+  letter-spacing: -0.02em;
+}
+
+/* ── Events strip ── */
+#community-love .ml-events {
+  margin-top: 44px;
+  padding-top: 26px;
+  border-top: 1px solid var(--border-strong);
+  display: grid;
+  grid-template-columns: 84px 1fr 232px;
+  column-gap: 32px;
+  align-items: start;
+}
+
+#community-love .ml-events-kicker {
+  letter-spacing: 0.16em;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--green);
+  line-height: 1.4;
+}
+
+#community-love .ml-events p {
+  margin: 0;
+  font-size: clamp(17px, 1.55vw, 22px);
+  line-height: 1.45;
+  letter-spacing: -0.015em;
+  color: rgba(240, 236, 255, 0.94);
+  text-wrap: pretty;
+}
+
+/* ── Motion and responsive ── */
+@media (prefers-reduced-motion: reduce) {
+  #community-love .ml-track {
+    animation: none;
+  }
+
+  #community-stats .ml-stat-big,
+  #community-stats .ml-stat-wide.visible .ml-stat-big {
+    animation: none;
+  }
+
+  #community-stats .ml-stat::after,
+  #community-stats .ml-stat-wide::after {
+    display: none;
+  }
+
+  #community-stats .ml-win-burst {
+    display: none;
+  }
+
+  #community-stats .ml-stat:hover,
+  #community-stats .ml-stat-wide:hover {
+    transform: none;
+  }
+
+  #community-love .ml-wall-card:hover,
+  #community-love .ml-tick:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 900px) {
+  #community-love .ml-ticker {
+    padding: 28px 20px 24px;
+    border-radius: 20px;
+  }
+
+  #community-love .ml-rowitem,
+  #community-love .ml-events {
+    grid-template-columns: 52px 1fr;
+  }
+
+  #community-love .ml-idx {
+    font-size: 28px;
+  }
+
+  #community-love .ml-rowby {
+    grid-column: 2;
+    padding-top: 16px;
+  }
+
+  #community-love .ml-events-kicker {
+    grid-column: 1 / -1;
+    margin-bottom: 12px;
+  }
+
+  #community-love .ml-events p {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 760px) {
+  #community-stats .ml-stats {
+    grid-template-columns: 1fr;
+  }
+
+  #community-stats .ml-stat {
+    padding: 24px;
+  }
+
+  #community-stats .ml-stat-wide {
+    padding: 32px 22px 28px;
+  }
+}

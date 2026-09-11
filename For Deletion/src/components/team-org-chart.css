@@ -1,0 +1,343 @@
+/* Core Team org chart.
+   Scoped to .mw-team so the light palette never leaks into the dark site chrome.
+   Colours are the project's light-section tokens (#f9f8f5 / #050f1e / #9522e6),
+   fonts are the site's Urania Black + DM Sans. */
+
+/* .mw-team is the styling scope only, so the chart can be embedded anywhere
+   (it renders both on /team and inside the landing page's About overlay).
+   .mw-team-page adds the standalone-route chrome on top. */
+.mw-team {
+  color: #16151a;
+  font-family: var(--font-dm-sans), sans-serif;
+}
+
+.mw-team-page {
+  background: #f9f8f5;
+  min-height: 100vh;
+  padding: 72px 40px 96px;
+}
+
+.mw-team-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+/* ── Header ── */
+.mw-team-super {
+  letter-spacing: 0.18em;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent3);
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.mw-team h1 {
+  font-family: var(--font-urania), sans-serif;
+  font-size: clamp(38px, 6vw, 64px);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  color: #050f1e;
+  margin-bottom: 20px;
+}
+
+.mw-team h1 em {
+  font-style: italic;
+  background: linear-gradient(100deg, var(--accent3), #7aa0f0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.mw-team-intro {
+  font-size: 19px;
+  line-height: 1.5;
+  color: #5b5966;
+  max-width: 620px;
+  margin-bottom: 56px;
+}
+
+/* ── Shared card chrome ── */
+.mw-team-card {
+  background: #fff;
+  border: 1px solid #eceaf1;
+  border-radius: 18px;
+}
+
+.mw-team-avatar {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: var(--font-urania), sans-serif;
+  flex-shrink: 0;
+}
+
+.mw-team-name {
+  font-family: var(--font-urania), sans-serif;
+  color: #050f1e;
+  /* Full names wrap to two lines in the 4-up leadership grid, so this needs
+     room to breathe rather than the 1.0 a single line would want. */
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+/* Community handle, sits between the real name and the role. Deliberately
+   quieter than both so the name still leads. */
+.mw-team-ign {
+  font-size: 13px;
+  font-weight: 500;
+  color: #8b8794;
+  margin-top: 5px;
+  line-height: 1.2;
+}
+
+.mw-team-ign::before {
+  content: "@";
+  opacity: 0.55;
+}
+
+/* The role follows the handle, so it needs less of its own top gap. */
+.mw-team-ign + .mw-team-role {
+  margin-top: 6px;
+}
+
+.mw-team-role {
+  letter-spacing: 0.1em;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent3);
+  text-transform: uppercase;
+  margin-top: 8px;
+  line-height: 1.4;
+}
+
+/* ── Tier 1: Founder ── */
+.mw-team-founder-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.mw-team-founder {
+  width: 100%;
+  max-width: 560px;
+  border-radius: 22px;
+  padding: 32px 34px;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  box-shadow: 0 12px 40px -18px rgba(149, 34, 230, 0.28);
+}
+
+.mw-team-founder .mw-team-avatar {
+  width: 92px;
+  height: 92px;
+  font-size: 30px;
+}
+
+.mw-team-founder .mw-team-name {
+  font-size: 26px;
+}
+
+.mw-team-badge {
+  display: inline-block;
+  letter-spacing: 0.14em;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent3);
+  text-transform: uppercase;
+  background: #f2ecff;
+  padding: 5px 11px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+}
+
+.mw-team-bio {
+  font-size: 15px;
+  color: #5b5966;
+  margin-top: 8px;
+}
+
+/* ── Connector label between tiers ── */
+.mw-team-connector {
+  text-align: center;
+  letter-spacing: 0.16em;
+  font-size: 11px;
+  font-weight: 600;
+  color: #a8a4b3;
+  text-transform: uppercase;
+  margin: 34px 0 22px;
+}
+
+/* ── Tier 2: Leadership ── */
+.mw-team-leaders {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-bottom: 44px;
+}
+
+.mw-team-leaders > .mw-team-card {
+  padding: 24px 22px;
+}
+
+.mw-team-leaders .mw-team-avatar {
+  width: 60px;
+  height: 60px;
+  font-size: 20px;
+  margin-bottom: 18px;
+}
+
+.mw-team-leaders .mw-team-name {
+  font-size: 19px;
+}
+
+/* ── Grouped panels (managers / moderators) ── */
+.mw-team-panel {
+  border-radius: 22px;
+  padding: 30px 32px;
+  margin-bottom: 20px;
+}
+
+.mw-team-panel-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 22px;
+}
+
+.mw-team-panel-title {
+  font-family: var(--font-urania), sans-serif;
+  font-size: 20px;
+  color: #050f1e;
+}
+
+.mw-team-panel-note {
+  font-size: 14px;
+  color: #8b8794;
+}
+
+/* ── Tier 3: Trading managers ── */
+.mw-team-managers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.mw-team-chip {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  background: #f7f5fb;
+  border: 1px solid #efecf5;
+  border-radius: 14px;
+  padding: 12px 16px;
+}
+
+.mw-team-chip .mw-team-avatar {
+  width: 44px;
+  height: 44px;
+  font-size: 15px;
+}
+
+.mw-team-chip span {
+  font-family: var(--font-urania), sans-serif;
+  font-size: 16px;
+  color: #050f1e;
+}
+
+/* ── Tier 3b: Director ── */
+.mw-team-director-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 44px;
+}
+
+.mw-team-director {
+  padding: 22px 24px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  min-width: 320px;
+}
+
+.mw-team-director .mw-team-avatar {
+  width: 54px;
+  height: 54px;
+  font-size: 18px;
+}
+
+.mw-team-director .mw-team-name {
+  font-size: 18px;
+}
+
+/* ── Tier 4: Moderators ── */
+.mw-team-mods {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.mw-team-pill {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  background: #f7f5fb;
+  border: 1px solid #efecf5;
+  border-radius: 999px;
+  padding: 8px 18px 8px 9px;
+}
+
+.mw-team-pill .mw-team-avatar {
+  width: 38px;
+  height: 38px;
+  font-size: 14px;
+}
+
+.mw-team-pill span {
+  font-family: var(--font-urania), sans-serif;
+  font-size: 15px;
+  color: #050f1e;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .mw-team-page {
+    padding: 48px 20px 72px;
+  }
+
+  .mw-team-leaders {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .mw-team-managers {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .mw-team-founder {
+    flex-direction: column;
+    text-align: center;
+    gap: 18px;
+  }
+}
+
+@media (max-width: 560px) {
+  .mw-team-leaders,
+  .mw-team-managers {
+    grid-template-columns: 1fr;
+  }
+
+  .mw-team-panel {
+    padding: 24px 20px;
+  }
+
+  .mw-team-director {
+    min-width: 0;
+    width: 100%;
+  }
+}
