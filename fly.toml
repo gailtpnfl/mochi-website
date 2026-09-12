@@ -17,6 +17,11 @@ primary_region = 'sin'
   processes = ['app']
 
 [[vm]]
-  memory = '1gb'
+  # The Dockerfile now does the full build (compile + generate) at image-build
+  # time instead of re-running it on every container boot, so the running
+  # machine only ever serves the already-built app (`next start`) — 512MB is
+  # comfortable for that. If you ever see OOM errors in `fly logs` again,
+  # bump this back up.
+  memory = '512mb'
   cpu_kind = 'shared'
   cpus = 1
