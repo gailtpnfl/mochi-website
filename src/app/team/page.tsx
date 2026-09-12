@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { createClient } from "@/lib/supabase/server";
+import { isSupabaseConfigured } from "@/lib/supabase/config";
 import { TeamGrid } from "@/components/team-grid";
 import type { TeamMember } from "@/lib/types";
 
@@ -9,14 +10,20 @@ export const metadata: Metadata = {
 };
 
 export default async function TeamPage() {
-  const supabase = await createClient();
-  const { data } = await supabase
-    .from("team_members")
-    .select("*")
-    .eq("is_active", true)
-    .order("position", { ascending: true });
+  // No live Supabase project yet — degrade to an empty grid instead of
+  // crashing this (public, always-reachable) page. See isSupabaseConfigured.
+  let team: TeamMember[] = [];
 
-  const team = (data ?? []) as TeamMember[];
+  if (isSupabaseConfigured()) {
+    const supabase = await createClient();
+    const { data } = await supabase
+      .from("team_members")
+      .select("*")
+      .eq("is_active", true)
+      .order("position", { ascending: true });
+
+    team = (data ?? []) as TeamMember[];
+  }
 
   return (
     <div className="mw-team mw-team-page">

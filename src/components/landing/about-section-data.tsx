@@ -1,4 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
+import { isSupabaseConfigured } from "@/lib/supabase/config";
 import { AboutSection } from "@/components/landing/about-section";
 import type { TeamMember } from "@/lib/types";
 
@@ -13,8 +14,19 @@ import type { TeamMember } from "@/lib/types";
  * This is what made returning to "/" (e.g. closing the Partnership or
  * Mentorship overlays, both of which router.push("/")) feel slow: the whole
  * homepage used to wait on this query before rendering anything at all.
+ *
+ * There's no live Supabase project yet (see isSupabaseConfigured), so this
+ * degrades to an empty roster instead of crashing the whole homepage —
+ * AboutSection's own hand-drawn team strip (MeetTheTeamStrip) doesn't use
+ * this data at all, it reads the static roster in @/data/coreTeam, so an
+ * empty `team` here only affects the separate tiered org chart elsewhere in
+ * the About overlay.
  */
 export async function AboutSectionData() {
+  if (!isSupabaseConfigured()) {
+    return <AboutSection team={[]} />;
+  }
+
   const supabase = await createClient();
   // Full roster — the About overlay renders the whole tiered org chart.
   const { data } = await supabase
